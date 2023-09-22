@@ -69,6 +69,8 @@
     <Compile Include="gamestats13_key.cs" />
     <Compile Include="gamestats12_text.cs" />
     <Compile Include="gamestats11_time.cs" />
+    <Compile Include="init\001_visual_init.cs" />
+    <Compile Include="init\000_data_init.cs" />
     <Compile Include="VM\003_vm_elem_init.cs" />
     <Compile Include="VM\g1\010_vm_g1_eleminit.cs" />
     <Compile Include="VM\g1\031_vm_g1_show.cs" />

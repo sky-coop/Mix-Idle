@@ -258,12 +258,25 @@ namespace mix_idle
                     ScaleTransform s = (ScaleTransform)a;
                     s.ScaleX = mulx;
                     s.ScaleY = muly;
-                    s.CenterX = c_x * f.ActualWidth;
-                    s.CenterY = c_y * f.ActualHeight;
+                    if(f.ActualWidth != 0)
+                    {
+                        s.CenterX = c_x * f.ActualWidth;
+                    }
+                    if (f.ActualHeight != 0)
+                    {
+                        s.CenterY = c_y * f.ActualHeight;
+                    }
                     return;
                 }
             }
-            t.Children.Add(new ScaleTransform(mulx, muly, c_x * f.Width, c_y * f.Height));
+            if (f.Width.Equals(double.NaN) || f.Height.Equals(double.NaN))
+            {
+                t.Children.Add(new ScaleTransform(mulx, muly));
+            }
+            else
+            {
+                t.Children.Add(new ScaleTransform(mulx, muly, c_x * f.Width, c_y * f.Height));
+            }
         }
 
         public static void scale_mul(FrameworkElement f, double mulx, double muly)

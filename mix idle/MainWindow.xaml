@@ -141,7 +141,7 @@
                 <TextBlock x:Name="转生" HorizontalAlignment="Center" TextWrapping="Wrap" Text=" 转生 " VerticalAlignment="Center" Foreground="White" FontSize="32" Background="#FF287D7D" MouseLeftButtonDown="option_selected" Grid.Column="8" MouseRightButtonDown="option_res_selected"/>
             </Grid>
             <Grid x:Name="view_grid" HorizontalAlignment="Left" Height="550" VerticalAlignment="Top" Width="800" Margin="50,100,0,0">
-                <Grid x:Name="方块_grid">
+                <Grid x:Name="方块_grid" d:IsHidden="True">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition/>
                         <ColumnDefinition/>
@@ -743,7 +743,7 @@
                         </Grid>
                     </Grid>
                 </Grid>
-                <Grid x:Name="战斗_grid" d:IsHidden="True">
+                <Grid x:Name="战斗_grid">
                     <Grid.RowDefinitions>
                         <RowDefinition Height="100"/>
                         <RowDefinition/>

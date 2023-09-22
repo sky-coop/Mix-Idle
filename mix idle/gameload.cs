@@ -21,16 +21,12 @@ namespace mix_idle
     {
         public void game_load()
         {
-            time_boost_max_old = -1;
-
+            data_init();
             framework_elements = new Dictionary<string, FrameworkElement>();
 
             number_mode = unlocks.number_mode;
             m.number_mode_combobox.SelectedIndex = number_mode;
-            m.详细信息框.Visibility = (Visibility)2;
 
-            none = new resource(0, 0, "无", getSCB(Color.FromRgb(0, 0, 0)));
-            one = new resource(0, 1, "无", getSCB(Color.FromRgb(0, 0, 0)));
 
             foreach (TextBlock tb in m.options_grid.Children)
             {
@@ -51,7 +47,7 @@ namespace mix_idle
             {
                 if (unlocks.tab_unlock[i])
                 {
-                    t.Visibility = (Visibility)0;
+                    t.Visibility = 0;
                 }
                 else
                 {
@@ -61,7 +57,7 @@ namespace mix_idle
             }
             if (unlocks.tab_unlock[9])
             {
-                m.能量_grid.Visibility = (Visibility)0;
+                m.能量_grid.Visibility = 0;
             }
             else
             {
@@ -79,43 +75,6 @@ namespace mix_idle
                 {
                     ((CheckBox)m.FindName("能量" + Convert.ToString(p + 1) + "_checkbox")).IsChecked = false;
                 }
-            }
-
-
-
-            foreach (Grid g in m.制造_主_grid.Children)
-            {
-                g.Visibility = (Visibility)1;
-            }
-            
-
-            i = 0;
-            foreach (Grid g in m.战斗_option_grid.Children)
-            {
-                if (unlocks.fight_unlock[i])
-                {
-                    g.Visibility = (Visibility)0;
-                }
-                else
-                {
-                    g.Visibility = (Visibility)1;
-                }
-                i++;
-            }
-
-            foreach (Grid g in m.战斗_场景_grid.Children)
-            {
-                g.Visibility = (Visibility)1;
-            }
-            m.战斗_场景_information_grid.Visibility = (Visibility)1;
-            m.战斗_玩家_grid.Visibility = 0;
-
-            //选项之间有线
-            
-
-            foreach (Grid g in m.魔法_主_grid.Children)
-            {
-                g.Visibility = (Visibility)1;
             }
 
             //no.1 方块:
@@ -184,7 +143,6 @@ namespace mix_idle
             if (unlocks.food)
             {
                 m.制造_菜单_食物_grid.Visibility = 0;
-
             }
             else
             {
@@ -253,141 +211,14 @@ namespace mix_idle
 
             #endregion
 
-            //no.3 战斗:
-            #region
-
-            战斗_options = make_group(m.战斗_option_grid);
-
-            战斗_enemies = new List<List<Rectangle>>();
-            战斗_洁白世界_enemies = make_group(m.战斗_场景_洁白世界_enemy_grid);
-            战斗_enemies.Add(战斗_洁白世界_enemies);
-            战斗_草原_enemies = make_group(m.战斗_场景_草原_enemy_grid);
-            战斗_enemies.Add(战斗_草原_enemies);
-            战斗_死火山_enemies = make_group(m.战斗_场景_死火山_enemy_grid);
-            战斗_enemies.Add(战斗_死火山_enemies);
-            战斗_机关屋_enemies = make_group(m.战斗_场景_机关屋_enemy_grid);
-            战斗_enemies.Add(战斗_机关屋_enemies);
-            战斗_魔境_enemies = make_group(m.战斗_场景_魔境_enemy_grid);
-            战斗_enemies.Add(战斗_魔境_enemies);
-
-            战斗_自动攻击风格 = make_group(m.战斗_玩家_攻击风格_自动_grid);
-            //更多group……
             
-            
-            
-
-            //敌人
-            #region
-            //洁白世界
-            #region
-            {
-                //洁白世界::白色粒子
-            }
-            #endregion
-            //草原
-            #region
-            {
-
-                
-                //草原::橙色粒子
-                //resource res_橙色粒子 = new resource(4, 0, "橙色粒子",
-                    //getSCB(Color.FromRgb(255, 127, 0)));
-                //res_橙色粒子.unlocked = false;
-                //res_group_战斗.Add("橙色粒子", res_橙色粒子);
-
-
-                //草原::无色粒子
-                
-            }
-            #endregion
-
-            //死火山
-            #region
-            {
-
-                //死火山::红色粒子
-                
-            }
-            #endregion
-
-            //敌人结束
-            #endregion
-
-            enemy.curr_field = unlocks.current_field;
-            enemy.current = unlocks.current_enemy;
-
-            if (enemy.curr_field != null)
-            {
-                group_process(战斗_options, ((Rectangle)m.FindName("战斗_场景_" + enemy.curr_field)), true);
-
-                Grid field_grid = (Grid)(m.FindName("战斗_场景_" + enemy.curr_field + "_target_grid"));
-                Grid enemy_grid = (Grid)(m.FindName("战斗_场景_" + enemy.curr_field + "_enemy_grid"));
-                int count = 0;
-                foreach (Grid g in m.战斗_场景_grid.Children)
-                {
-                    if (g.Equals(field_grid))
-                    {
-                        break;
-                    }
-                    count++;
-                }
-
-                foreach (FrameworkElement f in enemy_grid.Children)
-                {
-                    if (f is Grid)
-                    {
-                        Grid g = (Grid)f;
-                        string name = g.Name.Split('_')[4];
-                        if (name == enemy.current.name)
-                        {
-                            group_process(战斗_enemies[count], (Rectangle)(g.Children[2]), false);
-                        }
-                    }
-                    else
-                    {
-                    }
-                }
-            }
-
-            {
-                Rectangle fight = m.战斗_场景_information_fight;
-                Rectangle background = (Rectangle)m.FindName(fight.Name + "_背景");
-                TextBlock text = (TextBlock)m.FindName(fight.Name + "_文字");
-                if (fighting)
-                {
-                    background.Fill = getSCB(Color.FromRgb(0, 0, 0));
-                    text.Foreground = getSCB(Color.FromRgb(255, 255, 255));
-                }
-                else
-                {
-                    background.Fill = getSCB(Color.FromRgb(0, 255, 195));
-                    text.Foreground = getSCB(Color.FromRgb(0, 0, 0));
-                }
-            }
-
-            //战斗_玩家_攻击风格_自动_重击
-            attack_form af = you.auto_attack_form;
-            group_process(战斗_自动攻击风格, (Rectangle)(m.FindName("战斗_玩家_攻击风格_自动_" + af.name)), false, getSCB(Color.FromRgb(100, 255, 100)));
-
-
-            //战斗结束
-            #endregion
 
 
 
 
             //no.4 魔法：
             #region
-            魔法_options = make_group(m.魔法_option_grid);
-            if (unlocks.potion)
-            {
-                m.魔法_菜单_药水_grid.Visibility = 0;
-
-            }
-            else
-            {
-                m.魔法_菜单_药水_grid.Visibility = (Visibility)1;
-            }
+            
 
             LinearGradientBrush lgb = get_lgb();
 
@@ -594,7 +425,6 @@ namespace mix_idle
             {
                 m.vm_main_grid.Visibility = Visibility.Visible;
             }
-            vm_elem_init();
             vm.dt_changed = true;
             vm_fullscreen = false;
             #endregion
@@ -606,370 +436,71 @@ namespace mix_idle
 
             //no.9 转生：
             #region
-
-
-
-
-
-            //转生：升级
-            m.转生_升级_资源保留_grid.Visibility = (Visibility)1;
-            m.转生_升级_时间力量_grid.Visibility = (Visibility)1;
-            m.转生_升级_魔法增幅_grid.Visibility = (Visibility)1;
-            m.转生_升级_强化等级_grid.Visibility = (Visibility)1;
-            m.转生_升级_战斗探索_grid.Visibility = (Visibility)1;
-            m.转生_升级_冷静_grid.Visibility = (Visibility)1;
-            //0-0 对数增益
-            #region
-            m.转生_升级_对数增益_grid.Visibility = 0;
-            #endregion
-
-            //1-0 生成器
-            #region
-            int level = prestige_ups["对数增益"].level;
-            m.转生_升级_生成器_grid.Visibility = 0;
-            #endregion
-
-            //                                                            深度优先
-            //对数增益——生成器
-            #region
-            bool task1 = false;
-            bool task2 = false;
-            link lk = links["对数增益_生成器"];
-            lk.s = m.转生_main_grid;
-            lk.a = m.转生_升级_对数增益_grid;
-            lk.b = m.转生_升级_生成器_grid;
-            lk.update_progress(level);
-            if (lk.complete)
+            List<string> punlocked = new List<string>(){ "对数增益", "制造", "成就加成" };
+            List<string> pall = new List<string>();
+            foreach (KeyValuePair<string, prestige_upgrade> pair in prestige_ups)
             {
-                prestige_ups["生成器"].unlocked = true;
-                //引出接下来的升级（及链接）;
-                m.转生_升级_资源保留_grid.Visibility = 0;
-                task1 = true;
-                //links["生成器_资源保留"].unlock();             task
+                pair.Value.unlocked = false;
+            }
+            foreach (KeyValuePair<string, link> pair in links)
+            {
+                string s1 = pair.Key.Split('_')[0];
+                string s2 = pair.Key.Split('_')[1];
+                link link = pair.Value;
+                link.s = m.转生_main_grid;
+                link.a = (Grid)m.FindName("转生_升级_" + s1 + "_grid");
+                link.b = (Grid)m.FindName("转生_升级_" + s2 + "_grid");
+                link.update_progress(0);
+            }
+
+
+            foreach (FrameworkElement g in m.转生_main_grid.Children)
+            {
+                if (g is Grid)
+                {
+                    pall.Add(g.Name.Split('_')[2]);
+                }
+            }
+            for(int k = 0; k < punlocked.Count; k++) 
+            { 
+                string s1 = punlocked[k];
+                prestige_ups[s1].unlocked = true;
+                foreach (string s2 in pall)
+                {
+                    if(links.ContainsKey(s1 + "_" + s2))
+                    {
+                        link link = links[s1 + "_" + s2];
+                        link.update_progress(prestige_ups[s1].level);
+                        if (link.complete)
+                        {
+                            punlocked.Add(s2);
+                        }
+                    }
+                }
+            }
+            foreach(KeyValuePair<string, prestige_upgrade> pair in prestige_ups)
+            {
+                prestige_upgrade prestige_upgrade = pair.Value;
+                string s1 = pair.Key;
+                foreach(string s2 in pall)
+                {
+                    if (links.ContainsKey(s1 + "_" + s2))
+                    {
+                        link link = links[s1 + "_" + s2];
+                        if (prestige_upgrade.unlocked)
+                        {
+                            link.b.Visibility = Visibility.Visible;
+                            link.unlock();
+                        }
+                    }
+                }
             }
             #endregion
 
-            //2-0 资源保留
-            #region
-            level = prestige_ups["生成器"].level;
-            #endregion
-
-            //生成器——资源保留
-            #region
-            lk = links["生成器_资源保留"];
-            lk.s = m.转生_main_grid;
-            lk.a = m.转生_升级_生成器_grid;
-            lk.b = m.转生_升级_资源保留_grid;
-
-
-            lk.update_progress(level);
-            if (task1)
-            {
-                links["生成器_资源保留"].unlock();
-            }
-            task1 = false;
-            if (lk.complete)
-            {
-                prestige_ups["资源保留"].unlocked = true;
-                //引出接下来的升级（及链接）;
-                m.转生_升级_升级保留_grid.Visibility = 0;
-                task1 = true;
-            }
-            #endregion
-            
-            //2-1 升级保留
-            #region
-            level = prestige_ups["资源保留"].level;
-            #endregion
-
-            //生成器——资源保留
-            #region
-            lk = links["资源保留_升级保留"];
-            lk.s = m.转生_main_grid;
-            lk.a = m.转生_升级_资源保留_grid;
-            lk.b = m.转生_升级_升级保留_grid;
-
-
-            lk.update_progress(level);
-            if (task1)
-            {
-                links["资源保留_升级保留"].unlock();
-            }
-            task1 = false;
-            if (lk.complete)
-            {
-                prestige_ups["升级保留"].unlocked = true;
-                //引出接下来的升级（及链接）;
-            }
-            #endregion
-
-
-
-
-            //0-7 制造
-            #region
-            m.转生_升级_制造_grid.Visibility = 0;
-            #endregion
-
-            //1-6 方块增幅
-            #region
-            level = prestige_ups["制造"].level;
-            m.转生_升级_方块增幅_grid.Visibility = 0;
-            #endregion
-
-
-            //                                                            深度优先
-            //制造——方块增幅
-            #region
-            lk = links["制造_方块增幅"];
-            lk.s = m.转生_main_grid;
-            lk.a = m.转生_升级_制造_grid;
-            lk.b = m.转生_升级_方块增幅_grid;
-            lk.update_progress(level);
-            if (lk.complete)
-            {
-                prestige_ups["方块增幅"].unlocked = true;
-                //引出接下来的升级（及链接） 设定vis;
-                m.转生_升级_魔法增幅_grid.Visibility = 0;
-                task1 = true;
-                //links["方块增幅_魔法增幅"].unlock();
-                m.转生_升级_时间力量_grid.Visibility = 0;
-                task2 = true;
-                //links["方块增幅_时间力量"].unlock();
-            }
-            #endregion
-
-
-            //1-5 时间力量
-            #region
-            level = prestige_ups["方块增幅"].level;
-            #endregion
-
-            //方块增幅——时间力量
-            #region
-            lk = links["方块增幅_时间力量"];
-            lk.s = m.转生_main_grid;
-            lk.a = m.转生_升级_方块增幅_grid;
-            lk.b = m.转生_升级_时间力量_grid;
-            lk.update_progress(level);
-            if (task2)
-            {
-                links["方块增幅_时间力量"].unlock();
-            }
-            task2 = false;
-            if (lk.complete)
-            {
-                prestige_ups["时间力量"].unlocked = true;
-                //引出接下来的升级（及链接） 设定vis;
-            }
-            #endregion
-
-            //2-6 魔法增幅
-            #region
-            level = prestige_ups["方块增幅"].level;
-            #endregion
-
-            //方块增幅——魔法增幅
-            #region
-            lk = links["方块增幅_魔法增幅"];
-            lk.s = m.转生_main_grid;
-            lk.a = m.转生_升级_方块增幅_grid;
-            lk.b = m.转生_升级_魔法增幅_grid;
-            lk.update_progress(level);
-            if (task1)
-            {
-                links["方块增幅_魔法增幅"].unlock();
-            }
-            task1 = false;
-            if (lk.complete)
-            {
-                prestige_ups["魔法增幅"].unlocked = true;
-                //引出接下来的升级（及链接） 设定vis;
-                m.转生_升级_采矿增幅_grid.Visibility = 0;
-                task1 = true;
-
-                m.转生_升级_转化_grid.Visibility = 0;
-                task2 = true;
-            }
-            #endregion
-
-
-
-            //3-6 采矿增幅
-            #region
-            level = prestige_ups["魔法增幅"].level;
-            #endregion
-
-            //方块增幅——魔法增幅
-            #region
-            lk = links["魔法增幅_采矿增幅"];
-            lk.s = m.转生_main_grid;
-            lk.a = m.转生_升级_魔法增幅_grid;
-            lk.b = m.转生_升级_采矿增幅_grid;
-            lk.update_progress(level);
-            if (task1)
-            {
-                links["魔法增幅_采矿增幅"].unlock();
-            }
-            task1 = false;
-            if (lk.complete)
-            {
-                prestige_ups["采矿增幅"].unlocked = true;
-                //引出接下来的升级（及链接） 设定vis;
-            }
-            #endregion
-
-
-            //2-5 转化
-            #region
-            level = prestige_ups["转化"].level;
-            #endregion
-
-            //魔法增幅——转化
-            #region
-            lk = links["魔法增幅_转化"];
-            lk.s = m.转生_main_grid;
-            lk.a = m.转生_升级_魔法增幅_grid;
-            lk.b = m.转生_升级_转化_grid;
-            lk.update_progress(level);
-            if (task2)
-            {
-                links["魔法增幅_转化"].unlock();
-            }
-            task2 = false;
-            if (lk.complete)
-            {
-                prestige_ups["转化"].unlocked = true;
-                //引出接下来的升级（及链接） 设定vis;
-            }
-            #endregion
-
-
-            //0-6 战斗增幅
-            #region
-            level = prestige_ups["制造"].level;
-            m.转生_升级_战斗增幅_grid.Visibility = 0;
-            #endregion
-
-            //制造——战斗增幅
-            #region
-            lk = links["制造_战斗增幅"];
-            lk.s = m.转生_main_grid;
-            lk.a = m.转生_升级_制造_grid;
-            lk.b = m.转生_升级_战斗增幅_grid;
-            lk.update_progress(level);
-            if (lk.complete)
-            {
-                prestige_ups["战斗增幅"].unlocked = true;
-                //引出接下来的升级（及链接） 设定vis;
-                m.转生_升级_强化等级_grid.Visibility = 0;
-                task1 = true;
-                //links["战斗增幅_强化等级"].unlock();
-            }
-            #endregion
-
-
-
-
-            //0-5 强化等级
-            #region
-            level = prestige_ups["战斗增幅"].level;
-            #endregion
-
-            //战斗增幅——强化等级
-            #region
-            lk = links["战斗增幅_强化等级"];
-            lk.s = m.转生_main_grid;
-            lk.a = m.转生_升级_战斗增幅_grid;
-            lk.b = m.转生_升级_强化等级_grid;
-            lk.update_progress(level);
-            if (task1)
-            {
-                links["战斗增幅_强化等级"].unlock();
-            }
-            task1 = false;
-            if (lk.complete)
-            {
-                prestige_ups["强化等级"].unlocked = true;
-                //引出接下来的升级（及链接） 设定vis;
-                m.转生_升级_战斗探索_grid.Visibility = 0;
-                task1 = true;
-                //links["强化等级_战斗探索"].unlock();
-            }
-            #endregion
-
-            //0-4 战斗探索
-            #region
-            level = prestige_ups["强化等级"].level;
-            #endregion
-
-            //强化等级——战斗探索
-            #region
-            lk = links["强化等级_战斗探索"];
-            lk.s = m.转生_main_grid;
-            lk.a = m.转生_升级_强化等级_grid;
-            lk.b = m.转生_升级_战斗探索_grid;
-            lk.update_progress(level);
-            if (task1)
-            {
-                links["强化等级_战斗探索"].unlock();
-            }
-            task1 = false;
-            if (lk.complete)
-            {
-                prestige_ups["战斗探索"].unlocked = true;
-                //引出接下来的升级（及链接） 设定vis;
-                m.转生_升级_冷静_grid.Visibility = 0;
-                task1 = true;
-                //links["战斗探索_冷静"].unlock();
-            }
-            #endregion
-
-            //0-3 冷静
-            #region
-            level = prestige_ups["战斗探索"].level;
-            #endregion
-
-            //战斗探索——冷静
-            #region
-            lk = links["战斗探索_冷静"];
-            lk.s = m.转生_main_grid;
-            lk.a = m.转生_升级_战斗探索_grid;
-            lk.b = m.转生_升级_冷静_grid;
-            lk.update_progress(level);
-            if (task1)
-            {
-                links["战斗探索_冷静"].unlock();
-            }
-            task1 = false;
-            if (lk.complete)
-            {
-                prestige_ups["冷静"].unlocked = true;
-                //引出接下来的升级（及链接） 设定vis;
-            }
-            #endregion
-
-            //制造——核心
-            #region
-            lk = links["制造_核心"];
-            lk.s = m.转生_main_grid;
-            lk.a = m.转生_升级_制造_grid;
-            lk.b = m.转生_升级_核心_grid;
-            lk.update_progress(level);
-            if (lk.complete)
-            {
-                prestige_ups["核心"].unlocked = true;
-                //引出接下来的升级（及链接） 设定vis;
-            }
-            #endregion
-
-            //5-0 成就加成
-            m.转生_升级_成就加成_grid.Visibility = 0;
-            #endregion
+            visual_init();
 
             //成就
             #region
-            achieve_generate();
 
             total_up_levels = 0;
             foreach (KeyValuePair<int, achievement> kp in achievements_id)
@@ -993,12 +524,12 @@ namespace mix_idle
 
             #endregion
 
-            float_messages = new List<float_message>();
 
             buy_int = true;
             buy_number = 1;
             rectangle_cover_up(m.num_x1, null);
             checkname = "";
+
 
             ticker = new DispatcherTimer();
             stopwatch = new Stopwatch();
@@ -1019,6 +550,10 @@ namespace mix_idle
                 m.offline_grid.Visibility = Visibility.Visible;
                 offline_update();
                 offline_produce();
+            }
+            else
+            {
+                MessageBox.Show("离线收益已被禁用", "提示");
             }
         }
     }
