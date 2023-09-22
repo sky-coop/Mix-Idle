@@ -455,7 +455,7 @@ namespace mix_idle
         }
         #endregion
 
-        public string bin = Environment.CurrentDirectory + "/";
+        public string vm_res = Environment.CurrentDirectory + "/res/";
         public const string vm_res_dir = "IMAGE/VM/";
         public const string vm_res_icon_dir = vm_res_dir + "ICON/";
         public const string vm_res_bg_dir = vm_res_dir + "Background/";
@@ -463,7 +463,7 @@ namespace mix_idle
         {
             try
             {
-                BitmapImage bitmap = new BitmapImage(new Uri(bin + vm_res_icon_dir + name + ".bmp", UriKind.Absolute));
+                BitmapImage bitmap = new BitmapImage(new Uri(vm_res + vm_res_icon_dir + name + ".bmp", UriKind.Absolute));
                 return bitmap;
             }
             catch
@@ -479,7 +479,7 @@ namespace mix_idle
 
         public BitmapFrame vm_bg(string name)
         {
-            return vm_jpg(bin + vm_res_bg_dir + name + ".jpg");
+            return vm_jpg(vm_res + vm_res_bg_dir + name + ".jpg");
         }
 
         public BitmapImage vm_icon_app(VM_APP a)
