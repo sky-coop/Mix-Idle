@@ -75,7 +75,8 @@ namespace mix_idle
                 g.Visibility = (Visibility)1;
             }
 
-
+            visual_create_bp();
+            visual_create_craft();
 
             制造_options = make_group(m.制造_option_grid);
 
@@ -164,6 +165,7 @@ namespace mix_idle
             魔法_options = make_group(m.魔法_option_grid);
             采矿_options = make_group(m.采矿_option_grid);
 
+            vm_elems = new Dictionary<string, FrameworkElement>();
             vm_elem_init();
 
 

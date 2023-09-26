@@ -282,18 +282,21 @@ namespace mix_idle
                                 //制造材料显示
                                 foreach (Grid g1 in g.Children)
                                 {
-                                    string 后缀 = g1.Name.Split('_')[3];
-                                    string base_name = "制造_次_材料_" + 后缀;
-                                    string cover_name = "制造_升级_材料_" + 后缀;
-                                    upgrade u = find_upgrade(后缀);
+                                    string res = g1.Name.Split('_')[3];
+                                    string base_name = "制造_次_材料_" + res;
+                                    string cover_name = "制造_升级_材料_" + res;
+                                    upgrade u = find_upgrade(res);
                                     double2 will_buy = buy_number;
                                     if (!buy_int)
                                     {
                                         will_buy = can_buy_material_num(u);
                                     }
                                     double2 cost = buy_material_cost(u, will_buy);
-                                    ((TextBlock)m.FindName(base_name + "_数量")).Text = "制造: " + number_format(will_buy) + " " + 后缀;
-                                    ((TextBlock)m.FindName(base_name + "_数量")).Foreground = find_resource(后缀).text_color();
+                                    ((TextBlock)m.FindName(base_name + "_text")).Text = res;
+                                    ((TextBlock)m.FindName(base_name + "_text")).Foreground = find_resource(res).text_color();
+
+                                    ((TextBlock)m.FindName(base_name + "_数量")).Text = "制造: " + number_format(will_buy) + " " + res;
+                                    ((TextBlock)m.FindName(base_name + "_数量")).Foreground = find_resource(res).text_color();
 
                                     ((TextBlock)m.FindName(base_name + "_价格")).Text = "花费: " + number_format(cost) + " " + u.cost_table[0][0].Item1;
                                     ((TextBlock)m.FindName(base_name + "_价格")).Foreground = find_resource(u.cost_table[0][0].Item1).text_color();

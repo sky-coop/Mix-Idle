@@ -167,7 +167,6 @@ namespace mix_idle
             bp.set_init_ms2(20, 2, 10);
             bp.set_init_special(1.5);
             bp.unlocked = true;
-            m.方块_白色方块_grid.Visibility = 0;
             block_producters.Add("白色方块", bp);
 
             //泥土方块：p = M * (t / T) ^ 1.35      p' = M / (T ^ 1.35) * (1.35t ^ 0.35)
@@ -184,7 +183,6 @@ namespace mix_idle
             bp.set_init_ms(10, 3, 4.5);
             bp.set_init_special(1.35);
             bp.unlocked = false;
-            m.方块_泥土方块_grid.Visibility = (Visibility)1;
             block_producters.Add("泥土方块", bp);
             //60T LV100
             //T*1.7426 M*60.5M
@@ -207,7 +205,6 @@ namespace mix_idle
             bp.set_init_ms2(50, 1 / 2.0, 1);
             bp.set_init_special(1.25);
             bp.unlocked = false;
-            m.方块_木头方块_grid.Visibility = (Visibility)1;
             block_producters.Add("木头方块", bp);
 
             //糖方块：p = M * (t / T) ^ 1.4      p' = M / (T ^ 1.4) * (1.4t ^ 0.4)
@@ -224,7 +221,6 @@ namespace mix_idle
             bp.set_init_ms(10, 10, 25);
             bp.set_init_special(1.4);
             bp.unlocked = false;
-            m.方块_糖方块_grid.Visibility = (Visibility)1;
             block_producters.Add("糖方块", bp);
 
             //石头方块：p = M * (t / T) ^ 1.35      p' = M / (T ^ 1.35) * (1.35t ^ 0.35)
@@ -243,7 +239,6 @@ namespace mix_idle
             bp.set_init_ms2(25, 2.5, 3.6);
             bp.set_init_special(1.35);
             bp.unlocked = false;
-            m.方块_石头方块_grid.Visibility = (Visibility)1;
             block_producters.Add("石头方块", bp);
             #endregion
 
@@ -265,12 +260,13 @@ namespace mix_idle
             u = new upgrade("白色粉末", "制造", true, true)
             {
                 can_reset = true,
-                unlocked = true
+                unlocked = true,
             };
-            m.制造_次_材料_白色粉末_grid.Visibility = 0;
+            //m.制造_次_材料_白色粉末_grid.Visibility = 0;
             u.set_init_cost(get_auto_cost_table("白色方块"), 0, int.MaxValue);
             u.set_init_special(1.5, 4);
             upgrades.Add("白色粉末", u);
+            position_save("材料", u, new position("材料", 0, 0));
             #endregion
 
             // 材料：糖浆
@@ -287,10 +283,11 @@ namespace mix_idle
                 can_reset = true,
                 unlocked = false
             };
-            m.制造_次_材料_糖浆_grid.Visibility = (Visibility)1;
+            //m.制造_次_材料_糖浆_grid.Visibility = (Visibility)1;
             u.set_init_cost(get_auto_cost_table("糖方块"), 0, int.MaxValue);
             u.set_init_special(2, 100e3);
             upgrades.Add("糖浆", u);
+            position_save("材料", u, new position("材料", 0, 1));
             #endregion
 
             // 材料：植物祭品
@@ -307,10 +304,11 @@ namespace mix_idle
                 can_reset = true,
                 unlocked = false
             };
-            m.制造_次_材料_植物祭品_grid.Visibility = (Visibility)1;
+            //m.制造_次_材料_植物祭品_grid.Visibility = (Visibility)1;
             u.set_init_cost(get_auto_cost_table("烤植物"), 0, int.MaxValue);
             u.set_init_special(1.925, 1);
             upgrades.Add("植物祭品", u);
+            position_save("材料", u, new position("材料", 0, 2));
             #endregion
 
             // 材料：动物祭品
@@ -327,10 +325,11 @@ namespace mix_idle
                 can_reset = true,
                 unlocked = false
             };
-            m.制造_次_材料_动物祭品_grid.Visibility = (Visibility)1;
+            //m.制造_次_材料_动物祭品_grid.Visibility = (Visibility)1;
             u.set_init_cost(get_auto_cost_table("烤动物"), 0, int.MaxValue);
             u.set_init_special(1.596, 1);
             upgrades.Add("动物祭品", u);
+            position_save("材料", u, new position("材料", 0, 3));
             #endregion
 
             // 材料：魔法粉末
@@ -341,10 +340,11 @@ namespace mix_idle
                 can_reset = true,
                 unlocked = false
             };
-            m.制造_次_材料_魔法粉末_grid.Visibility = (Visibility)1;
+            //m.制造_次_材料_魔法粉末_grid.Visibility = (Visibility)1;
             u.set_init_cost(get_auto_cost_table("魔石"), 0, int.MaxValue);
             u.set_init_special(2.865, 1.0 / 5e6);
             upgrades.Add("魔法粉末", u);
+            position_save("材料", u, new position("材料", 1, 0));
             #endregion
 
             // 材料：钻石
@@ -362,10 +362,11 @@ namespace mix_idle
                 can_reset = true,
                 unlocked = false
             };
-            m.制造_次_材料_钻石_grid.Visibility = (Visibility)1;
+            //m.制造_次_材料_钻石_grid.Visibility = (Visibility)1;
             u.set_init_cost(get_auto_cost_table("煤"), 0, int.MaxValue);
             u.set_init_special(1.11111, 100e9);
             upgrades.Add("钻石", u);
+            position_save("材料", u, new position("材料", 1, 1));
             #endregion
 
             // 工具：用于攻击的方块棒
@@ -375,7 +376,6 @@ namespace mix_idle
                 can_reset = true,
                 unlocked = true
             };
-            m.制造_次_工具_方块棒_grid.Visibility = 0;
             ct = new List<List<Tuple<string, double2>>>();
             cost = upgrade_cost_adder(upgrade_cost_adder(null, null),
                 new Tuple<string, double2>("白色方块", 20));
@@ -447,6 +447,7 @@ namespace mix_idle
             u.description.Add("已达到最大等级！\n（目前合计 攻击力 +7500）");
             u.set_init_cost(ct, 0, ct.Count);
             upgrades.Add("方块棒", u);
+            position_save("工具", u, new position("工具", 0, 0));
             #endregion
 
             // 工具：用于攻击的喷雾
@@ -456,7 +457,6 @@ namespace mix_idle
                 can_reset = true,
                 unlocked = false
             };
-            m.制造_次_工具_喷雾_grid.Visibility = (Visibility)1;
             ct = new List<List<Tuple<string, double2>>>();
             cost = upgrade_cost_adder(upgrade_cost_adder(upgrade_cost_adder(null, null),
                 new Tuple<string, double2>("白色方块", 1.2e6)),
@@ -493,6 +493,7 @@ namespace mix_idle
             u.description.Add("已达到最大等级！\n（目前 攻击力 70%，冷却 0.1s）");
             u.set_init_cost(ct, 0, ct.Count);
             upgrades.Add("喷雾", u);
+            position_save("工具", u, new position("工具", 0, 1));
             #endregion
 
             // 铲子
@@ -502,7 +503,6 @@ namespace mix_idle
                 can_reset = true,
                 unlocked = false
             };
-            m.制造_次_工具_铲子_grid.Visibility = (Visibility)1;
             ct = new List<List<Tuple<string, double2>>>();
             cost = upgrade_cost_adder(upgrade_cost_adder(upgrade_cost_adder(null, null),
                 new Tuple<string, double2>("白色方块", 3e10)),
@@ -528,6 +528,7 @@ namespace mix_idle
             u.description.Add("已达到最大等级！\n（目前 " + number_format(1e12) + " 泥土方块）");
             u.set_init_cost(ct, 0, ct.Count);
             upgrades.Add("铲子", u);
+            position_save("工具", u, new position("工具", 0, 2));
             #endregion
 
             // 斧
@@ -537,7 +538,6 @@ namespace mix_idle
                 can_reset = true,
                 unlocked = false
             };
-            m.制造_次_工具_斧_grid.Visibility = (Visibility)1;
             ct = new List<List<Tuple<string, double2>>>();
             cost = upgrade_cost_adder(upgrade_cost_adder(null, null),
                 new Tuple<string, double2>("铜", 1500));
@@ -559,6 +559,7 @@ namespace mix_idle
             u.description.Add("已达到最大等级！\n（目前 木头方块的获取 ×12）");
             u.set_init_cost(ct, 0, ct.Count);
             upgrades.Add("斧", u);
+            position_save("工具", u, new position("工具", 0, 3));
             #endregion
 
             // 剑
@@ -568,7 +569,6 @@ namespace mix_idle
                 can_reset = true,
                 unlocked = false
             };
-            m.制造_次_工具_剑_grid.Visibility = (Visibility)1;
             ct = new List<List<Tuple<string, double2>>>();
             cost = upgrade_cost_adder(upgrade_cost_adder(null, null),
                 new Tuple<string, double2>("木头方块", 5e6));
@@ -597,6 +597,7 @@ namespace mix_idle
             u.description.Add("已达到最大等级！\n（目前 +" + number_format(10e3) + " 攻击，连斩最大伤害200%）");
             u.set_init_cost(ct, 0, ct.Count);
             upgrades.Add("剑", u);
+            position_save("工具", u, new position("工具", 1, 0));
             #endregion
 
             // 镐
@@ -606,7 +607,6 @@ namespace mix_idle
                 can_reset = true,
                 unlocked = false
             };
-            m.制造_次_工具_镐_grid.Visibility = (Visibility)1;
             ct = new List<List<Tuple<string, double2>>>();
             cost = upgrade_cost_adder(upgrade_cost_adder(null, null),
                 new Tuple<string, double2>("石头方块", 3e9));
@@ -650,6 +650,7 @@ namespace mix_idle
             u.description.Add("已达到最大等级！\n（目前 +4 采矿点数，+2000 格子边长，幸运值×2，+10 经验）");
             u.set_init_cost(ct, 0, ct.Count);
             upgrades.Add("镐", u);
+            position_save("工具", u, new position("工具", 1, 1));
             #endregion
 
             // 魔杖
@@ -659,7 +660,6 @@ namespace mix_idle
                 can_reset = true,
                 unlocked = false
             };
-            m.制造_次_工具_魔杖_grid.Visibility = (Visibility)1;
             ct = new List<List<Tuple<string, double2>>>();
             cost = upgrade_cost_adder(upgrade_cost_adder(upgrade_cost_adder(null, null),
                 new Tuple<string, double2>("魔力", 200e6)),
@@ -674,6 +674,7 @@ namespace mix_idle
             u.description.Add("已达到最大等级！\n（目前 +" + number_format(4000) + " 攻击，魔力获取 ×1.5）");
             u.set_init_cost(ct, 0, ct.Count);
             upgrades.Add("魔杖", u);
+            position_save("工具", u, new position("工具", 1, 2));
             #endregion
 
             // 升级器：提升白色方块生产量
@@ -683,7 +684,6 @@ namespace mix_idle
                 can_reset = true,
                 unlocked = true
             };
-            m.制造_次_升级器_白色方块生产_grid.Visibility = 0;
             ct = new List<List<Tuple<string, double2>>>();
             cost = upgrade_cost_adder(upgrade_cost_adder(null, null),
                 new Tuple<string, double2>("白色粉末", 1));
@@ -747,6 +747,7 @@ namespace mix_idle
             u.description.Add("已达到最大等级！\n（目前 T / 500K，M × 2000）");
             u.set_init_cost(ct, 0, ct.Count);
             upgrades.Add("白色方块生产", u);
+            position_save("升级器", u, new position("升级器", 0, 0));
             #endregion
 
             #region
@@ -755,7 +756,6 @@ namespace mix_idle
                 can_reset = true,
                 unlocked = false
             };
-            m.制造_次_升级器_泥土方块生产_grid.Visibility = (Visibility)1;
             ct = new List<List<Tuple<string, double2>>>();
             cost = upgrade_cost_adder(upgrade_cost_adder(null, null),
                 new Tuple<string, double2>("泥土方块", 1e6));
@@ -773,6 +773,7 @@ namespace mix_idle
             u.description.Add("已达到最大等级！\n（目前 T / 3，M × 5）");
             u.set_init_cost(ct, 0, ct.Count);
             upgrades.Add("泥土方块生产", u);
+            position_save("升级器", u, new position("升级器", 0, 1));
             #endregion
 
             #region
@@ -781,7 +782,6 @@ namespace mix_idle
                 can_reset = true,
                 unlocked = false
             };
-            m.制造_次_升级器_药水消耗降低_grid.Visibility = (Visibility)1;
             ct = new List<List<Tuple<string, double2>>>();
             cost = upgrade_cost_adder(upgrade_cost_adder(null, null),
                 new Tuple<string, double2>("糖浆", 1000));
@@ -798,6 +798,7 @@ namespace mix_idle
             u.description.Add("已达到最大等级！\n（目前药水消耗 / 3.6）");
             u.set_init_cost(ct, 0, ct.Count);
             upgrades.Add("药水消耗降低", u);
+            position_save("升级器", u, new position("升级器", 1, 0));
             #endregion
 
             //食物
@@ -809,7 +810,6 @@ namespace mix_idle
                 can_reset = true,
                 unlocked = false
             };
-            m.制造_次_食物_缤纷沙拉_grid.Visibility = (Visibility)1;
             ct = new List<List<Tuple<string, double2>>>();
             cost = upgrade_cost_adder(upgrade_cost_adder(upgrade_cost_adder(null, null),
                 new Tuple<string, double2>("植物原料", 10e6)),
@@ -846,6 +846,7 @@ namespace mix_idle
             u.description.Add("已达到最大等级！");
             u.set_init_cost(ct, 0, ct.Count);
             upgrades.Add("缤纷沙拉", u);
+            position_save("食物", u, new position("食物", 0, 0));
             #endregion
 
             //勇敢生肉套餐
@@ -855,7 +856,6 @@ namespace mix_idle
                 can_reset = true,
                 unlocked = false
             };
-            m.制造_次_食物_勇敢生肉套餐_grid.Visibility = (Visibility)1;
             ct = new List<List<Tuple<string, double2>>>();
             cost = upgrade_cost_adder(upgrade_cost_adder(upgrade_cost_adder(null, null),
                 new Tuple<string, double2>("动物原料", 3e6)),
@@ -881,6 +881,7 @@ namespace mix_idle
             u.description.Add("已达到最大等级！（目前攻击 -2000）");
             u.set_init_cost(ct, 0, ct.Count);
             upgrades.Add("勇敢生肉套餐", u);
+            position_save("食物", u, new position("食物", 0, 1));
             #endregion
 
             //火爆蔬菜烧烤
@@ -890,7 +891,6 @@ namespace mix_idle
                 can_reset = true,
                 unlocked = false
             };
-            m.制造_次_食物_火爆蔬菜烧烤_grid.Visibility = (Visibility)1;
             ct = new List<List<Tuple<string, double2>>>();
             cost = upgrade_cost_adder(upgrade_cost_adder(upgrade_cost_adder(upgrade_cost_adder(null, null),
                 new Tuple<string, double2>("烤植物", 100e6)),
@@ -920,6 +920,7 @@ namespace mix_idle
             u.description.Add("已达到最大等级！（目前减速值下降速度 +20）");
             u.set_init_cost(ct, 0, ct.Count);
             upgrades.Add("火爆蔬菜烧烤", u);
+            position_save("食物", u, new position("食物", 0, 2));
             #endregion
 
             //经典BBQ大餐
@@ -929,7 +930,6 @@ namespace mix_idle
                 can_reset = true,
                 unlocked = false
             };
-            m.制造_次_食物_经典BBQ大餐_grid.Visibility = (Visibility)1;
             ct = new List<List<Tuple<string, double2>>>();
             cost = upgrade_cost_adder(upgrade_cost_adder(upgrade_cost_adder(upgrade_cost_adder(null, null),
                 new Tuple<string, double2>("烤动物", 100e6)),
@@ -953,6 +953,7 @@ namespace mix_idle
             u.description.Add("已达到最大等级！（目前 +200%最大游戏速度）");
             u.set_init_cost(ct, 0, ct.Count);
             upgrades.Add("经典BBQ大餐", u);
+            position_save("食物", u, new position("食物", 0, 3));
             #endregion
 
             //能量饮料
@@ -962,7 +963,6 @@ namespace mix_idle
                 can_reset = true,
                 unlocked = false
             };
-            m.制造_次_食物_能量饮料_grid.Visibility = (Visibility)1;
             ct = new List<List<Tuple<string, double2>>>();
             cost = upgrade_cost_adder(upgrade_cost_adder(upgrade_cost_adder(upgrade_cost_adder(null, null),
                 new Tuple<string, double2>("魔法粉末", 5e6)),
@@ -986,6 +986,7 @@ namespace mix_idle
             u.description.Add("已达到最大等级！");
             u.set_init_cost(ct, 0, ct.Count);
             upgrades.Add("能量饮料", u);
+            position_save("食物", u, new position("食物", 1, 0));
             #endregion
 
             //冰镇果汁
@@ -995,7 +996,6 @@ namespace mix_idle
                 can_reset = true,
                 unlocked = false
             };
-            m.制造_次_食物_冰镇果汁_grid.Visibility = (Visibility)1;
             ct = new List<List<Tuple<string, double2>>>();
             cost = upgrade_cost_adder(upgrade_cost_adder(upgrade_cost_adder(upgrade_cost_adder(null, null),
                 new Tuple<string, double2>("植物原料", 1.8e15)),
@@ -1021,6 +1021,7 @@ namespace mix_idle
             u.description.Add("已达到最大等级！（目前燃料速度值×0.7，能量消耗×0.4）");
             u.set_init_cost(ct, 0, ct.Count);
             upgrades.Add("冰镇果汁", u);
+            position_save("食物", u, new position("食物", 1, 1));
             #endregion
 
             #endregion

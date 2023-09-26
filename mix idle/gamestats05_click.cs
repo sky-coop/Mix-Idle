@@ -15,6 +15,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.Diagnostics;
+using System.Text.RegularExpressions;
 
 namespace mix_idle
 {
@@ -796,12 +797,31 @@ namespace mix_idle
                         all_space = false;
                     }
                 }
-                if (all_space || m.load_name.Text.Length == 0 || m.load_name.Text[0] == '/' || m.load_name.Text[0] == '\\')
+                if (all_space || m.load_name.Text.Length == 0 || m.load_name.Text.Length >= 100 || 
+                    m.load_name.Text.Contains('/') || m.load_name.Text.Contains('\\'))
                 {
-                    MessageBox.Show("未读取成功，存档文件名不能为空或以“/”、“\\”为开头，因为这可能会导致存档文件夹的根目录出现一堆文件", "注意");
+                    MessageBox.Show("未读取成功，存档文件名不能为空或包含“/”、“\\”，长度也不允许达到100", "注意");
                 }
                 else
                 {
+                    if (!File.Exists(m.load_name.Text))
+                    {
+                        FileStream fileStream;
+                        try
+                        {
+                            fileStream = File.Create(m.load_name.Text);
+                        }
+                        catch
+                        {
+                            MessageBox.Show("读取新游戏失败，您输入了Windows文件系统所禁用的字符" +
+                                "（包括“?”、“*”、[\"]、“<”、“>”、“|”、“:”），或是某些特殊的名字（如CON）" +
+                                "请重新输入一个名字", "注意");
+                            return;
+                        }
+                        fileStream.Close();
+                        File.Delete(m.load_name.Text);
+                    }
+
                     string t = "./存档/" + m.load_name.Text + "/" + m.load_name.Text + ".a.mixidle";
                     if (File.Exists(t))
                     {
@@ -812,13 +832,15 @@ namespace mix_idle
                     {
                         if (checkname == m.load_name.Text)
                         {
-                            if (load(checkname))
+                            if (m.save_new(checkname))
                             {
+                                //load(checkname);
+                                GC.Collect();
                                 MessageBox.Show("开始一个新游戏！", "提示");
                             }
                             else
                             {
-                                MessageBox.Show("创建新游戏失败，您输入了Windows文件系统所禁用的字符（包括“?”、“*”、[\"]、“<”、“>”、“|”、“:”），请重新起一个名字", "注意");
+                                MessageBox.Show("已创建新游戏，但因名字不合法，此游戏并未保存，请在需要保存时重新起一个名字", "注意");
                             }
                         }
                         else

@@ -42,7 +42,7 @@ namespace mix_idle
                     case 2:
                         you.item_attack += 5;
                         upgrades["喷雾"].unlocked = true;
-                        m.制造_次_工具_喷雾_grid.Visibility = 0;
+                        ((Grid)(m.FindName("制造_次_工具_喷雾_grid"))).Visibility = 0;
                         break;
                     case 3:
                         you.item_attack += 12;
@@ -526,17 +526,17 @@ namespace mix_idle
                     case 1:
                         block_producters["泥土方块"].unlocked = true;
                         res_table["方块"]["泥土方块"].unlocked = true;
-                        m.方块_泥土方块_grid.Visibility = 0;
+                        ((Grid)(m.FindName("方块_泥土方块_grid"))).Visibility = 0;
 
                         upgrades["铲子"].unlocked = true;
-                        m.制造_次_工具_铲子_grid.Visibility = 0;
+                        ((Grid)(m.FindName("制造_次_工具_铲子_grid"))).Visibility = 0;
 
                         m.战斗_场景_草原_grid.Visibility = 0;
                         break;
                     case 2:
                         block_producters["木头方块"].unlocked = true;
                         res_table["方块"]["木头方块"].unlocked = true;
-                        m.方块_木头方块_grid.Visibility = 0;
+                        ((Grid)(m.FindName("方块_木头方块_grid"))).Visibility = 0;
 
                         m.战斗_场景_死火山_grid.Visibility = 0;
 
@@ -550,7 +550,7 @@ namespace mix_idle
                     case 3:
                         block_producters["石头方块"].unlocked = true;
                         res_table["方块"]["石头方块"].unlocked = true;
-                        m.方块_石头方块_grid.Visibility = 0;
+                        ((Grid)(m.FindName("方块_石头方块_grid"))).Visibility = 0;
 
                         m.采矿.Visibility = 0;
                         minep.unlocked = true;
@@ -558,9 +558,9 @@ namespace mix_idle
                         mine_regenerate();
 
                         upgrades["剑"].unlocked = true;
-                        m.制造_次_工具_剑_grid.Visibility = 0;
+                        ((Grid)(m.FindName("制造_次_工具_剑_grid"))).Visibility = 0;
                         upgrades["镐"].unlocked = true;
-                        m.制造_次_工具_镐_grid.Visibility = 0;
+                        ((Grid)(m.FindName("制造_次_工具_镐_grid"))).Visibility = 0;
 
                         res_table["采矿"]["采矿点数"].unlocked = true;
                         res_table["采矿"]["煤"].unlocked = true;
@@ -575,13 +575,13 @@ namespace mix_idle
                         m.制造_菜单_食物_grid.Visibility = 0;
 
                         upgrades["缤纷沙拉"].unlocked = true;
-                        m.制造_次_食物_缤纷沙拉_grid.Visibility = 0;
+                        ((Grid)(m.FindName("制造_次_食物_缤纷沙拉_grid"))).Visibility = 0;
                         upgrades["勇敢生肉套餐"].unlocked = true;
-                        m.制造_次_食物_勇敢生肉套餐_grid.Visibility = 0;
+                        ((Grid)(m.FindName("制造_次_食物_勇敢生肉套餐_grid"))).Visibility = 0;
                         upgrades["火爆蔬菜烧烤"].unlocked = true;
-                        m.制造_次_食物_火爆蔬菜烧烤_grid.Visibility = 0;
+                        ((Grid)(m.FindName("制造_次_食物_火爆蔬菜烧烤_grid"))).Visibility = 0;
                         upgrades["经典BBQ大餐"].unlocked = true;
-                        m.制造_次_食物_经典BBQ大餐_grid.Visibility = 0;
+                        ((Grid)(m.FindName("制造_次_食物_经典BBQ大餐_grid"))).Visibility = 0;
 
                         m.魔法_次_药水_幸运药水_grid.Visibility = 0;
                         enchants["幸运药水"].unlocked = true;
@@ -837,12 +837,12 @@ namespace mix_idle
                 }
                 else if(p.level == 2)
                 {
-                    m.制造_次_材料_糖浆_grid.Visibility = 0;
+                    ((Grid)(m.FindName("制造_次_材料_糖浆_grid"))).Visibility = 0;
                     res_table["制造"]["糖浆"].unlocked = true;
                     upgrades["糖浆"].unlocked = true;
 
                     upgrades["药水消耗降低"].unlocked = true;
-                    m.制造_次_升级器_药水消耗降低_grid.Visibility = 0;
+                    find_name("制造_次_升级器_药水消耗降低_grid").Visibility = 0;
 
                     if (!enemies["洁白世界"]["糖"].drop.ContainsKey("糖方块"))
                     {
@@ -853,26 +853,26 @@ namespace mix_idle
                 else if (p.level == 3)
                 {
                     upgrades["斧"].unlocked = true;
-                    m.制造_次_工具_斧_grid.Visibility = 0;
+                    ((Grid)(m.FindName("制造_次_工具_斧_grid"))).Visibility = 0;
 
-                    m.制造_次_材料_植物祭品_grid.Visibility = 0;
+                    ((Grid)(m.FindName("制造_次_材料_植物祭品_grid"))).Visibility = 0;
                     res_table["制造"]["植物祭品"].unlocked = true;
                     upgrades["植物祭品"].unlocked = true;
-                    m.制造_次_材料_动物祭品_grid.Visibility = 0;
+                    ((Grid)(m.FindName("制造_次_材料_动物祭品_grid"))).Visibility = 0;
                     res_table["制造"]["动物祭品"].unlocked = true;
                     upgrades["动物祭品"].unlocked = true;
                 }
                 else if (p.level == 4)
                 {
                     upgrades["魔杖"].unlocked = true;
-                    m.制造_次_工具_魔杖_grid.Visibility = 0;
+                    ((Grid)(m.FindName("制造_次_工具_魔杖_grid"))).Visibility = 0;
 
                     upgrades["能量饮料"].unlocked = true;
-                    m.制造_次_食物_能量饮料_grid.Visibility = 0;
+                    find_name("制造_次_食物_能量饮料_grid").Visibility = 0;
                     upgrades["冰镇果汁"].unlocked = true;
-                    m.制造_次_食物_冰镇果汁_grid.Visibility = 0;
+                    find_name("制造_次_食物_冰镇果汁_grid").Visibility = 0;
 
-                    m.制造_次_材料_魔法粉末_grid.Visibility = 0;
+                    ((Grid)(m.FindName("制造_次_材料_魔法粉末_grid"))).Visibility = 0;
                     upgrades["魔法粉末"].unlocked = true;
                 }
 
@@ -926,11 +926,11 @@ namespace mix_idle
                 else if (p.level == 4)
                 {
                     upgrades["泥土方块生产"].unlocked = true;
-                    m.制造_次_升级器_泥土方块生产_grid.Visibility = 0;
+                    find_name("制造_次_升级器_泥土方块生产_grid").Visibility = 0;
 
                     block_producters["糖方块"].unlocked = true;
                     res_table["方块"]["糖方块"].unlocked = true;
-                    m.方块_糖方块_grid.Visibility = 0;
+                    ((Grid)(m.FindName("方块_糖方块_grid"))).Visibility = 0;
                     if (!enemies["洁白世界"]["糖"].drop.ContainsKey("糖方块"))
                     {
                         enemies["洁白世界"]["糖"].drop.Add("糖方块", new Tuple<double2, double2>(0.01, 2.6));

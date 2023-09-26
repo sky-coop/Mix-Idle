@@ -103,6 +103,7 @@ namespace mix_idle
         {
             return new SolidColorBrush(c);
         }
+
         // option
         #region
         object selected = new object(),

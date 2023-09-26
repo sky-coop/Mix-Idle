@@ -65,11 +65,11 @@ namespace mix_idle
             gs.game_init(true);
         }
 
-        public void save_new(string filename)
+        public bool save_new(string filename)
         {
             gs = new gamestats(this);
             gs.game_init();
-            gs.save(filename);
+            return gs.save(filename);
         }
 
         public void change_savefile(gamestats g)

@@ -329,6 +329,11 @@ namespace mix_idle
                         Grid main = (Grid)m.FindName("方块_" + bp.name + "_grid");
                         foreach (FrameworkElement f in main.Children)
                         {
+                            if (f.Name.Contains("等级"))
+                            {
+                                TextBlock t = f as TextBlock;
+                                t.Text = bp.name + " 生产器 等级" + number_format(bp.level);
+                            }
                             if (f.Name.Contains("最大产量"))
                             {
                                 TextBlock t = f as TextBlock;
@@ -478,7 +483,7 @@ namespace mix_idle
 
                 if (af.skilling)
                 {
-                    af.shine_time = af.attack_time / 3.0;
+                    af.shine_time = af.attack_time / 7.0;
 
                     af.attack_progress += double2.Min(af.skill_time_current, time_a_tick_game);
                     double2 xn = af.attack_progress / af.attack_time;
@@ -486,10 +491,7 @@ namespace mix_idle
                     if (fighting)
                     {
                         attack(af, count);
-                        af.shining = true;
                     }
-                    af.attack_progress -= af.attack_time * count;
-
                     if (show)
                     {
                         cover.Tag = disable;
@@ -497,23 +499,20 @@ namespace mix_idle
                         bg2.Fill = getSCB(Color.FromArgb(127, 0, 200, 0));
                         txt.Foreground = getSCB(Color.FromRgb(0, 0, 0));
                     }
+                    af.attack_progress -= af.attack_time * count;
 
-                    if (af.shining)
+                    af.shine_progress += time_a_tick_game;
+                    if (count > 0)
                     {
-                        af.shine_progress += time_a_tick_game;
-
-                        if (af.shine_progress <= af.shine_time)
+                        af.shine_progress = 0;
+                    }
+                    if (af.shine_progress <= af.shine_time)
+                    {
+                        if (show)
                         {
-                            if (show)
-                            {
-                                bg.Fill = getSCB(Color.FromRgb(0, 255, 255));
-                                bg2.Fill = getSCB(Color.FromArgb(127, 0, 255, 0));
-                                txt.Foreground = getSCB(Color.FromRgb(0, 0, 0));
-                            }
-                        }
-                        else
-                        {
-                            af.shining = false;
+                            bg.Fill = getSCB(Color.FromRgb(0, 255, 255));
+                            bg2.Fill = getSCB(Color.FromArgb(127, 0, 255, 0));
+                            txt.Foreground = getSCB(Color.FromRgb(0, 0, 0));
                         }
                     }
 
@@ -525,7 +524,6 @@ namespace mix_idle
 
                         af.attack_progress = 0;
 
-                        af.shining = false;
                         af.shine_progress = 0;
 
                         if (show)

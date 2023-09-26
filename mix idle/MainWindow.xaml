@@ -154,189 +154,8 @@
                         <RowDefinition/>
                         <RowDefinition/>
                     </Grid.RowDefinitions>
-                    <Grid x:Name="方块_白色方块_grid">
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="0.7*"/>
-                            <RowDefinition Height="1.3*"/>
-                            <RowDefinition/>
-                        </Grid.RowDefinitions>
-                        <TextBlock x:Name="方块_白色方块" HorizontalAlignment="Left" TextWrapping="Wrap" Text="白色方块 生产器 等级1" VerticalAlignment="Center" Foreground="White" FontSize="18" Margin="0,3,0,0"/>
-                        <TextBlock x:Name="方块_白色方块_当前产量" HorizontalAlignment="Left" TextWrapping="Wrap" Text="当前产量：0" VerticalAlignment="Bottom" Grid.Row="1" Foreground="White" Margin="15,0,0,15"/>
-                        <TextBlock x:Name="方块_白色方块_当前耗时" HorizontalAlignment="Left" TextWrapping="Wrap" Text="当前耗时：0s" VerticalAlignment="Bottom" Grid.Row="1" Foreground="White" Margin="140,0,0,15"/>
-                        <TextBlock x:Name="方块_白色方块_最大产量" HorizontalAlignment="Left" TextWrapping="Wrap" Text="最大产量：1000" VerticalAlignment="Bottom" Grid.Row="1" Foreground="White" Margin="15,0,0,0"/>
-                        <TextBlock x:Name="方块_白色方块_最大耗时" HorizontalAlignment="Left" TextWrapping="Wrap" Text="最大耗时：1000s" VerticalAlignment="Bottom" Grid.Row="1" Foreground="White" Margin="140,0,0,0"/>
-                        <Rectangle x:Name="方块_白色方块_进度条_底" HorizontalAlignment="Left" Stroke="Black" VerticalAlignment="Top" Grid.Row="1" Height="12" Width="250" Fill="#FF0A0439" RadiusX="6" RadiusY="6" Margin="0,4,0,0"/>
-                        <Rectangle x:Name="方块_白色方块_进度条_顶" HorizontalAlignment="Left" Stroke="Black" VerticalAlignment="Top" Grid.Row="1" Height="12" Width="0" Fill="White" RadiusX="6" RadiusY="6" Margin="0,4,0,0"/>
-                        <Grid x:Name="方块_白色方块_按键_grid" Grid.Row="2">
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition/>
-                                <ColumnDefinition/>
-                                <ColumnDefinition/>
-                            </Grid.ColumnDefinitions>
-                            <Grid x:Name="方块_白色方块_详细信息_grid">
-                                <Rectangle x:Name="方块_白色方块_详细信息_背景" HorizontalAlignment="Center" Stroke="Black" VerticalAlignment="Center" Width="80" Height="24" Fill="White" Margin="0" RadiusX="12" RadiusY="12"/>
-                                <TextBlock x:Name="方块_白色方块_详细信息_文字" HorizontalAlignment="Center" TextWrapping="Wrap" Text="详细信息" VerticalAlignment="Center"/>
-                                <Rectangle x:Name="方块_白色方块_详细信息" Fill="#00000000" HorizontalAlignment="Center" Height="24" Margin="0" RadiusY="12" RadiusX="12" Stroke="Black" VerticalAlignment="Center" Width="80" MouseEnter="rectangle_cover_enter" MouseLeave="rectangle_cover_leave" MouseMove="rectangle_cover_move"/>
-                            </Grid>
-                            <Grid x:Name="方块_白色方块_收集_grid" Grid.Column="1">
-                                <Rectangle x:Name="方块_白色方块_收集_背景" HorizontalAlignment="Center" Stroke="Black" VerticalAlignment="Center" Width="80" Height="24" Fill="White" Margin="0" RadiusX="12" RadiusY="12"/>
-                                <TextBlock x:Name="方块_白色方块_收集_文字" HorizontalAlignment="Center" TextWrapping="Wrap" Text="手动收集" VerticalAlignment="Center" />
-                                <Rectangle x:Name="方块_白色方块_收集" Fill="#00000000" HorizontalAlignment="Center" Height="24" Margin="0" RadiusY="12" RadiusX="12" Stroke="Black" VerticalAlignment="Center" Width="80" MouseEnter="rectangle_cover_enter" MouseLeave="rectangle_cover_leave" MouseLeftButtonDown="rectangle_cover_down" MouseMove="rectangle_cover_move" MouseLeftButtonUp="rectangle_cover_up"/>
-                            </Grid>
-                            <Grid x:Name="方块_白色方块_升级_grid" Grid.Column="2">
-                                <Rectangle x:Name="方块_白色方块_升级_背景" HorizontalAlignment="Center" Stroke="Black" VerticalAlignment="Center" Width="80" Height="24" Fill="White" Margin="0" RadiusX="12" RadiusY="12"/>
-                                <TextBlock x:Name="方块_白色方块_升级_文字" HorizontalAlignment="Center" TextWrapping="Wrap" Text="升级！" VerticalAlignment="Center"/>
-                                <Rectangle x:Name="方块_白色方块_升级" Fill="#00000000" HorizontalAlignment="Center" Height="24" Margin="0" RadiusY="12" RadiusX="12" Stroke="Black" VerticalAlignment="Center" Width="80" MouseEnter="rectangle_cover_enter" MouseLeave="rectangle_cover_leave" MouseMove="rectangle_cover_move" MouseLeftButtonDown="rectangle_cover_down" MouseLeftButtonUp="rectangle_cover_up"/>
-                            </Grid>
-                        </Grid>
-                    </Grid>
-                    <Grid x:Name="方块_泥土方块_grid" Grid.Column="1">
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="0.7*"/>
-                            <RowDefinition Height="1.3*"/>
-                            <RowDefinition/>
-                        </Grid.RowDefinitions>
-                        <TextBlock x:Name="方块_泥土方块" HorizontalAlignment="Left" TextWrapping="Wrap" Text="泥土方块 生产器 等级1" VerticalAlignment="Center" Foreground="#FFFF7F00" FontSize="18" Margin="0,3,0,0"/>
-                        <TextBlock x:Name="方块_泥土方块_当前产量" HorizontalAlignment="Left" TextWrapping="Wrap" Text="当前产量：0" VerticalAlignment="Bottom" Grid.Row="1" Foreground="White" Margin="15,0,0,15"/>
-                        <TextBlock x:Name="方块_泥土方块_当前耗时" HorizontalAlignment="Left" TextWrapping="Wrap" Text="当前耗时：0s" VerticalAlignment="Bottom" Grid.Row="1" Foreground="White" Margin="140,0,0,15"/>
-                        <TextBlock x:Name="方块_泥土方块_最大产量" HorizontalAlignment="Left" TextWrapping="Wrap" Text="最大产量：1000" VerticalAlignment="Bottom" Grid.Row="1" Foreground="White" Margin="15,0,0,0"/>
-                        <TextBlock x:Name="方块_泥土方块_最大耗时" HorizontalAlignment="Left" TextWrapping="Wrap" Text="最大耗时：1000s" VerticalAlignment="Bottom" Grid.Row="1" Foreground="White" Margin="140,0,0,0"/>
-                        <Rectangle x:Name="方块_泥土方块_进度条_底" HorizontalAlignment="Left" Stroke="Black" VerticalAlignment="Top" Grid.Row="1" Height="12" Width="250" Fill="#FF0A0439" RadiusX="6" RadiusY="6" Margin="0,4,0,0"/>
-                        <Rectangle x:Name="方块_泥土方块_进度条_顶" HorizontalAlignment="Left" Stroke="Black" VerticalAlignment="Top" Grid.Row="1" Height="12" Width="0" Fill="#FFFF7F00" RadiusX="6" RadiusY="6" Margin="0,4,0,0"/>
-                        <Grid x:Name="方块_泥土方块_按键_grid" Grid.Row="2">
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition/>
-                                <ColumnDefinition/>
-                                <ColumnDefinition/>
-                            </Grid.ColumnDefinitions>
-                            <Grid x:Name="方块_泥土方块_详细信息_grid">
-                                <Rectangle x:Name="方块_泥土方块_详细信息_背景" HorizontalAlignment="Center" Stroke="Black" VerticalAlignment="Center" Width="80" Height="24" Fill="White" Margin="0" RadiusX="12" RadiusY="12"/>
-                                <TextBlock x:Name="方块_泥土方块_详细信息_文字" HorizontalAlignment="Center" TextWrapping="Wrap" Text="详细信息" VerticalAlignment="Center"/>
-                                <Rectangle x:Name="方块_泥土方块_详细信息" Fill="#00000000" HorizontalAlignment="Center" Height="24" Margin="0" RadiusY="12" RadiusX="12" Stroke="Black" VerticalAlignment="Center" Width="80" MouseEnter="rectangle_cover_enter" MouseLeave="rectangle_cover_leave" MouseMove="rectangle_cover_move"/>
-                            </Grid>
-                            <Grid x:Name="方块_泥土方块_收集_grid" Grid.Column="1">
-                                <Rectangle x:Name="方块_泥土方块_收集_背景" HorizontalAlignment="Center" Stroke="Black" VerticalAlignment="Center" Width="80" Height="24" Fill="White" Margin="0" RadiusX="12" RadiusY="12"/>
-                                <TextBlock x:Name="方块_泥土方块_收集_文字" HorizontalAlignment="Center" TextWrapping="Wrap" Text="手动收集" VerticalAlignment="Center" />
-                                <Rectangle x:Name="方块_泥土方块_收集" Fill="#00000000" HorizontalAlignment="Center" Height="24" Margin="0" RadiusY="12" RadiusX="12" Stroke="Black" VerticalAlignment="Center" Width="80" MouseEnter="rectangle_cover_enter" MouseLeave="rectangle_cover_leave" MouseLeftButtonDown="rectangle_cover_down" MouseMove="rectangle_cover_move" MouseLeftButtonUp="rectangle_cover_up"/>
-                            </Grid>
-                            <Grid x:Name="方块_泥土方块_升级_grid" Grid.Column="2">
-                                <Rectangle x:Name="方块_泥土方块_升级_背景" HorizontalAlignment="Center" Stroke="Black" VerticalAlignment="Center" Width="80" Height="24" Fill="White" Margin="0" RadiusX="12" RadiusY="12"/>
-                                <TextBlock x:Name="方块_泥土方块_升级_文字" HorizontalAlignment="Center" TextWrapping="Wrap" Text="升级！" VerticalAlignment="Center"/>
-                                <Rectangle x:Name="方块_泥土方块_升级" Fill="#00000000" HorizontalAlignment="Center" Height="24" Margin="0" RadiusY="12" RadiusX="12" Stroke="Black" VerticalAlignment="Center" Width="80" MouseEnter="rectangle_cover_enter" MouseLeave="rectangle_cover_leave" MouseMove="rectangle_cover_move" MouseLeftButtonDown="rectangle_cover_down" MouseLeftButtonUp="rectangle_cover_up"/>
-                            </Grid>
-                        </Grid>
-                    </Grid>
-                    <Grid x:Name="方块_木头方块_grid" Grid.Column="2">
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="0.7*"/>
-                            <RowDefinition Height="1.3*"/>
-                            <RowDefinition/>
-                        </Grid.RowDefinitions>
-                        <TextBlock x:Name="方块_木头方块" HorizontalAlignment="Left" TextWrapping="Wrap" Text="木头方块 生产器 等级1" VerticalAlignment="Center" Foreground="#FFE19600" FontSize="18" Margin="0,3,0,0"/>
-                        <TextBlock x:Name="方块_木头方块_当前产量" HorizontalAlignment="Left" TextWrapping="Wrap" Text="当前产量：0" VerticalAlignment="Bottom" Grid.Row="1" Foreground="White" Margin="15,0,0,15"/>
-                        <TextBlock x:Name="方块_木头方块_当前耗时" HorizontalAlignment="Left" TextWrapping="Wrap" Text="当前耗时：0s" VerticalAlignment="Bottom" Grid.Row="1" Foreground="White" Margin="140,0,0,15"/>
-                        <TextBlock x:Name="方块_木头方块_最大产量" HorizontalAlignment="Left" TextWrapping="Wrap" Text="最大产量：1000" VerticalAlignment="Bottom" Grid.Row="1" Foreground="White" Margin="15,0,0,0"/>
-                        <TextBlock x:Name="方块_木头方块_最大耗时" HorizontalAlignment="Left" TextWrapping="Wrap" Text="最大耗时：1000s" VerticalAlignment="Bottom" Grid.Row="1" Foreground="White" Margin="140,0,0,0"/>
-                        <Rectangle x:Name="方块_木头方块_进度条_底" HorizontalAlignment="Left" Stroke="Black" VerticalAlignment="Top" Grid.Row="1" Height="12" Width="250" Fill="#FF0A0439" RadiusX="6" RadiusY="6" Margin="0,4,0,0"/>
-                        <Rectangle x:Name="方块_木头方块_进度条_顶" HorizontalAlignment="Left" Stroke="Black" VerticalAlignment="Top" Grid.Row="1" Height="12" Width="0" Fill="#FFFF7F00" RadiusX="6" RadiusY="6" Margin="0,4,0,0"/>
-                        <Grid x:Name="方块_木头方块_按键_grid" Grid.Row="2">
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition/>
-                                <ColumnDefinition/>
-                                <ColumnDefinition/>
-                            </Grid.ColumnDefinitions>
-                            <Grid x:Name="方块_木头方块_详细信息_grid">
-                                <Rectangle x:Name="方块_木头方块_详细信息_背景" HorizontalAlignment="Center" Stroke="Black" VerticalAlignment="Center" Width="80" Height="24" Fill="White" Margin="0" RadiusX="12" RadiusY="12"/>
-                                <TextBlock x:Name="方块_木头方块_详细信息_文字" HorizontalAlignment="Center" TextWrapping="Wrap" Text="详细信息" VerticalAlignment="Center"/>
-                                <Rectangle x:Name="方块_木头方块_详细信息" Fill="#00000000" HorizontalAlignment="Center" Height="24" Margin="0" RadiusY="12" RadiusX="12" Stroke="Black" VerticalAlignment="Center" Width="80" MouseEnter="rectangle_cover_enter" MouseLeave="rectangle_cover_leave" MouseMove="rectangle_cover_move"/>
-                            </Grid>
-                            <Grid x:Name="方块_木头方块_收集_grid" Grid.Column="1">
-                                <Rectangle x:Name="方块_木头方块_收集_背景" HorizontalAlignment="Center" Stroke="Black" VerticalAlignment="Center" Width="80" Height="24" Fill="White" Margin="0" RadiusX="12" RadiusY="12"/>
-                                <TextBlock x:Name="方块_木头方块_收集_文字" HorizontalAlignment="Center" TextWrapping="Wrap" Text="手动收集" VerticalAlignment="Center" />
-                                <Rectangle x:Name="方块_木头方块_收集" Fill="#00000000" HorizontalAlignment="Center" Height="24" Margin="0" RadiusY="12" RadiusX="12" Stroke="Black" VerticalAlignment="Center" Width="80" MouseEnter="rectangle_cover_enter" MouseLeave="rectangle_cover_leave" MouseLeftButtonDown="rectangle_cover_down" MouseMove="rectangle_cover_move" MouseLeftButtonUp="rectangle_cover_up"/>
-                            </Grid>
-                            <Grid x:Name="方块_木头方块_升级_grid" Grid.Column="2">
-                                <Rectangle x:Name="方块_木头方块_升级_背景" HorizontalAlignment="Center" Stroke="Black" VerticalAlignment="Center" Width="80" Height="24" Fill="White" Margin="0" RadiusX="12" RadiusY="12"/>
-                                <TextBlock x:Name="方块_木头方块_升级_文字" HorizontalAlignment="Center" TextWrapping="Wrap" Text="升级！" VerticalAlignment="Center"/>
-                                <Rectangle x:Name="方块_木头方块_升级" Fill="#00000000" HorizontalAlignment="Center" Height="24" Margin="0" RadiusY="12" RadiusX="12" Stroke="Black" VerticalAlignment="Center" Width="80" MouseEnter="rectangle_cover_enter" MouseLeave="rectangle_cover_leave" MouseMove="rectangle_cover_move" MouseLeftButtonDown="rectangle_cover_down" MouseLeftButtonUp="rectangle_cover_up"/>
-                            </Grid>
-                        </Grid>
-                    </Grid>
-                    <Grid x:Name="方块_糖方块_grid" Grid.Row="1">
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="0.7*"/>
-                            <RowDefinition Height="1.3*"/>
-                            <RowDefinition/>
-                        </Grid.RowDefinitions>
-                        <TextBlock x:Name="方块_糖方块" HorizontalAlignment="Left" TextWrapping="Wrap" Text="糖方块 生产器 等级1" VerticalAlignment="Center" Foreground="Cyan" FontSize="18" Margin="0,3,0,0"/>
-                        <TextBlock x:Name="方块_糖方块_当前产量" HorizontalAlignment="Left" TextWrapping="Wrap" Text="当前产量：0" VerticalAlignment="Bottom" Grid.Row="1" Foreground="White" Margin="15,0,0,15"/>
-                        <TextBlock x:Name="方块_糖方块_当前耗时" HorizontalAlignment="Left" TextWrapping="Wrap" Text="当前耗时：0s" VerticalAlignment="Bottom" Grid.Row="1" Foreground="White" Margin="140,0,0,15"/>
-                        <TextBlock x:Name="方块_糖方块_最大产量" HorizontalAlignment="Left" TextWrapping="Wrap" Text="最大产量：1000" VerticalAlignment="Bottom" Grid.Row="1" Foreground="White" Margin="15,0,0,0"/>
-                        <TextBlock x:Name="方块_糖方块_最大耗时" HorizontalAlignment="Left" TextWrapping="Wrap" Text="最大耗时：1000s" VerticalAlignment="Bottom" Grid.Row="1" Foreground="White" Margin="140,0,0,0"/>
-                        <Rectangle x:Name="方块_糖方块_进度条_底" HorizontalAlignment="Left" Stroke="Black" VerticalAlignment="Top" Grid.Row="1" Height="12" Width="250" Fill="#FF0A0439" RadiusX="6" RadiusY="6" Margin="0,4,0,0"/>
-                        <Rectangle x:Name="方块_糖方块_进度条_顶" HorizontalAlignment="Left" Stroke="Black" VerticalAlignment="Top" Grid.Row="1" Height="12" Width="0" Fill="#FFFF7F00" RadiusX="6" RadiusY="6" Margin="0,4,0,0"/>
-                        <Grid x:Name="方块_糖方块_按键_grid" Grid.Row="2">
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition/>
-                                <ColumnDefinition/>
-                                <ColumnDefinition/>
-                            </Grid.ColumnDefinitions>
-                            <Grid x:Name="方块_糖方块_详细信息_grid">
-                                <Rectangle x:Name="方块_糖方块_详细信息_背景" HorizontalAlignment="Center" Stroke="Black" VerticalAlignment="Center" Width="80" Height="24" Fill="White" Margin="0" RadiusX="12" RadiusY="12"/>
-                                <TextBlock x:Name="方块_糖方块_详细信息_文字" HorizontalAlignment="Center" TextWrapping="Wrap" Text="详细信息" VerticalAlignment="Center"/>
-                                <Rectangle x:Name="方块_糖方块_详细信息" Fill="#00000000" HorizontalAlignment="Center" Height="24" Margin="0" RadiusY="12" RadiusX="12" Stroke="Black" VerticalAlignment="Center" Width="80" MouseEnter="rectangle_cover_enter" MouseLeave="rectangle_cover_leave" MouseMove="rectangle_cover_move"/>
-                            </Grid>
-                            <Grid x:Name="方块_糖方块_收集_grid" Grid.Column="1">
-                                <Rectangle x:Name="方块_糖方块_收集_背景" HorizontalAlignment="Center" Stroke="Black" VerticalAlignment="Center" Width="80" Height="24" Fill="White" Margin="0" RadiusX="12" RadiusY="12"/>
-                                <TextBlock x:Name="方块_糖方块_收集_文字" HorizontalAlignment="Center" TextWrapping="Wrap" Text="手动收集" VerticalAlignment="Center" />
-                                <Rectangle x:Name="方块_糖方块_收集" Fill="#00000000" HorizontalAlignment="Center" Height="24" Margin="0" RadiusY="12" RadiusX="12" Stroke="Black" VerticalAlignment="Center" Width="80" MouseEnter="rectangle_cover_enter" MouseLeave="rectangle_cover_leave" MouseLeftButtonDown="rectangle_cover_down" MouseMove="rectangle_cover_move" MouseLeftButtonUp="rectangle_cover_up"/>
-                            </Grid>
-                            <Grid x:Name="方块_糖方块_升级_grid" Grid.Column="2">
-                                <Rectangle x:Name="方块_糖方块_升级_背景" HorizontalAlignment="Center" Stroke="Black" VerticalAlignment="Center" Width="80" Height="24" Fill="White" Margin="0" RadiusX="12" RadiusY="12"/>
-                                <TextBlock x:Name="方块_糖方块_升级_文字" HorizontalAlignment="Center" TextWrapping="Wrap" Text="升级！" VerticalAlignment="Center"/>
-                                <Rectangle x:Name="方块_糖方块_升级" Fill="#00000000" HorizontalAlignment="Center" Height="24" Margin="0" RadiusY="12" RadiusX="12" Stroke="Black" VerticalAlignment="Center" Width="80" MouseEnter="rectangle_cover_enter" MouseLeave="rectangle_cover_leave" MouseMove="rectangle_cover_move" MouseLeftButtonDown="rectangle_cover_down" MouseLeftButtonUp="rectangle_cover_up"/>
-                            </Grid>
-                        </Grid>
-                    </Grid>
-
-                    <Grid x:Name="方块_石头方块_grid" Grid.Row="1" Grid.Column="1">
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="0.7*"/>
-                            <RowDefinition Height="1.3*"/>
-                            <RowDefinition/>
-                        </Grid.RowDefinitions>
-                        <TextBlock x:Name="方块_石头方块" HorizontalAlignment="Left" TextWrapping="Wrap" Text="石头方块 生产器 等级1" VerticalAlignment="Center" Foreground="#FFAFAFAF" FontSize="18"/>
-                        <TextBlock x:Name="方块_石头方块_当前产量" HorizontalAlignment="Left" TextWrapping="Wrap" Text="当前产量：0" VerticalAlignment="Bottom" Grid.Row="1" Foreground="White" Margin="15,0,0,15"/>
-                        <TextBlock x:Name="方块_石头方块_当前耗时" HorizontalAlignment="Left" TextWrapping="Wrap" Text="当前耗时：0s" VerticalAlignment="Bottom" Grid.Row="1" Foreground="White" Margin="140,0,0,15"/>
-                        <TextBlock x:Name="方块_石头方块_最大产量" HorizontalAlignment="Left" TextWrapping="Wrap" Text="最大产量：1000" VerticalAlignment="Bottom" Grid.Row="1" Foreground="White" Margin="15,0,0,0"/>
-                        <TextBlock x:Name="方块_石头方块_最大耗时" HorizontalAlignment="Left" TextWrapping="Wrap" Text="最大耗时：1000s" VerticalAlignment="Bottom" Grid.Row="1" Foreground="White" Margin="140,0,0,0"/>
-                        <Rectangle x:Name="方块_石头方块_进度条_底" HorizontalAlignment="Left" Stroke="Black" VerticalAlignment="Top" Grid.Row="1" Height="12" Width="250" Fill="#FF0A0439" RadiusX="6" RadiusY="6" Margin="0,4,0,0"/>
-                        <Rectangle x:Name="方块_石头方块_进度条_顶" HorizontalAlignment="Left" Stroke="Black" VerticalAlignment="Top" Grid.Row="1" Height="12" Width="0" Fill="#FFFF7F00" RadiusX="6" RadiusY="6" Margin="0,4,0,0"/>
-                        <Grid x:Name="方块_石头方块_按键_grid" Grid.Row="2">
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition/>
-                                <ColumnDefinition/>
-                                <ColumnDefinition/>
-                            </Grid.ColumnDefinitions>
-                            <Grid x:Name="方块_石头方块_详细信息_grid">
-                                <Rectangle x:Name="方块_石头方块_详细信息_背景" HorizontalAlignment="Center" Stroke="Black" VerticalAlignment="Center" Width="80" Height="24" Fill="White" Margin="0" RadiusX="12" RadiusY="12"/>
-                                <TextBlock x:Name="方块_石头方块_详细信息_文字" HorizontalAlignment="Center" TextWrapping="Wrap" Text="详细信息" VerticalAlignment="Center"/>
-                                <Rectangle x:Name="方块_石头方块_详细信息" Fill="#00000000" HorizontalAlignment="Center" Height="24" Margin="0" RadiusY="12" RadiusX="12" Stroke="Black" VerticalAlignment="Center" Width="80" MouseEnter="rectangle_cover_enter" MouseLeave="rectangle_cover_leave" MouseMove="rectangle_cover_move"/>
-                            </Grid>
-                            <Grid x:Name="方块_石头方块_收集_grid" Grid.Column="1">
-                                <Rectangle x:Name="方块_石头方块_收集_背景" HorizontalAlignment="Center" Stroke="Black" VerticalAlignment="Center" Width="80" Height="24" Fill="White" Margin="0" RadiusX="12" RadiusY="12"/>
-                                <TextBlock x:Name="方块_石头方块_收集_文字" HorizontalAlignment="Center" TextWrapping="Wrap" Text="手动收集" VerticalAlignment="Center" />
-                                <Rectangle x:Name="方块_石头方块_收集" Fill="#00000000" HorizontalAlignment="Center" Height="24" Margin="0" RadiusY="12" RadiusX="12" Stroke="Black" VerticalAlignment="Center" Width="80" MouseEnter="rectangle_cover_enter" MouseLeave="rectangle_cover_leave" MouseLeftButtonDown="rectangle_cover_down" MouseMove="rectangle_cover_move" MouseLeftButtonUp="rectangle_cover_up"/>
-                            </Grid>
-                            <Grid x:Name="方块_石头方块_升级_grid" Grid.Column="2">
-                                <Rectangle x:Name="方块_石头方块_升级_背景" HorizontalAlignment="Center" Stroke="Black" VerticalAlignment="Center" Width="80" Height="24" Fill="White" Margin="0" RadiusX="12" RadiusY="12"/>
-                                <TextBlock x:Name="方块_石头方块_升级_文字" HorizontalAlignment="Center" TextWrapping="Wrap" Text="升级！" VerticalAlignment="Center"/>
-                                <Rectangle x:Name="方块_石头方块_升级" Fill="#00000000" HorizontalAlignment="Center" Height="24" Margin="0" RadiusY="12" RadiusX="12" Stroke="Black" VerticalAlignment="Center" Width="80" MouseEnter="rectangle_cover_enter" MouseLeave="rectangle_cover_leave" MouseMove="rectangle_cover_move" MouseLeftButtonDown="rectangle_cover_down" MouseLeftButtonUp="rectangle_cover_up"/>
-                            </Grid>
-                        </Grid>
-                    </Grid>
                 </Grid>
-                <Grid x:Name="制造_grid" d:IsHidden="True">
+                <Grid x:Name="制造_grid">
                     <Grid.RowDefinitions>
                         <RowDefinition Height="50"/>
                         <RowDefinition/>
@@ -371,7 +190,7 @@
                         </Grid>
                     </Grid>
                     <Grid x:Name="制造_主_grid" Grid.Row="1">
-                        <Grid x:Name="制造_菜单_材料_target_grid">
+                        <Grid x:Name="制造_菜单_材料_target_grid" d:IsHidden="True">
                             <Grid.RowDefinitions>
                                 <RowDefinition/>
                                 <RowDefinition/>
@@ -384,73 +203,6 @@
                                 <ColumnDefinition/>
                                 <ColumnDefinition/>
                             </Grid.ColumnDefinitions>
-                            <Grid x:Name="制造_次_材料_白色粉末_grid" Background="#3F000000">
-                                <TextBlock x:Name="制造_次_材料_白色粉末_text" HorizontalAlignment="Center" TextWrapping="Wrap" Text="白色粉末" VerticalAlignment="Top" Foreground="White" FontSize="20" Margin="0,10,0,0"/>
-                                <TextBlock x:Name="制造_次_材料_白色粉末_数量" HorizontalAlignment="Center" TextWrapping="Wrap" Text="制作: 100 白色粉末" VerticalAlignment="Top" Foreground="White" FontSize="14" Margin="0,60,0,0"/>
-                                <TextBlock x:Name="制造_次_材料_白色粉末_价格" HorizontalAlignment="Center" TextWrapping="Wrap" Text="花费: 4000 白色方块" VerticalAlignment="Top" Foreground="White" FontSize="14" Margin="0,40,0,0"/>
-                                <TextBlock x:Name="制造_次_材料_白色粉末_公式" HorizontalAlignment="Center" TextWrapping="Wrap" Text="C(n) = 4 * n ^ 1.5" VerticalAlignment="Top" Foreground="White" FontSize="14" Margin="0,80,0,0"/>
-                                <Grid x:Name="制造_升级_材料_白色粉末_grid" Height="25" VerticalAlignment="Bottom">
-                                    <Rectangle x:Name="制造_升级_材料_白色粉末_背景" HorizontalAlignment="Center" Stroke="Black" VerticalAlignment="Center" Width="80" Height="24" Fill="White" Margin="0" RadiusX="12" RadiusY="12"/>
-                                    <TextBlock x:Name="制造_升级_材料_白色粉末_文字" HorizontalAlignment="Center" TextWrapping="Wrap" Text="制造" VerticalAlignment="Center"/>
-                                    <Rectangle x:Name="制造_升级_材料_白色粉末" Fill="#00000000" HorizontalAlignment="Center" Height="24" Margin="0" RadiusY="12" RadiusX="12" Stroke="Black" VerticalAlignment="Center" Width="80" MouseEnter="rectangle_cover_enter" MouseLeave="rectangle_cover_leave" MouseMove="rectangle_cover_move" MouseLeftButtonDown="rectangle_cover_down" MouseLeftButtonUp="rectangle_cover_up"/>
-                                </Grid>
-                            </Grid>
-                            <Grid x:Name="制造_次_材料_糖浆_grid" Background="#7F000000" Grid.Column="1">
-                                <TextBlock x:Name="制造_次_材料_糖浆_text" HorizontalAlignment="Center" TextWrapping="Wrap" Text="糖浆" VerticalAlignment="Top" Foreground="White" FontSize="20" Margin="0,10,0,0"/>
-                                <TextBlock x:Name="制造_次_材料_糖浆_数量" HorizontalAlignment="Center" TextWrapping="Wrap" Text="制作: 100 糖浆" VerticalAlignment="Top" Foreground="White" FontSize="14" Margin="0,60,0,0"/>
-                                <TextBlock x:Name="制造_次_材料_糖浆_价格" HorizontalAlignment="Center" TextWrapping="Wrap" Text="花费: 4000 白色方块" VerticalAlignment="Top" Foreground="White" FontSize="14" Margin="0,40,0,0"/>
-                                <TextBlock x:Name="制造_次_材料_糖浆_公式" HorizontalAlignment="Center" TextWrapping="Wrap" Text="C(n) = 4 * n ^ 1.5" VerticalAlignment="Top" Foreground="White" FontSize="14" Margin="0,80,0,0"/>
-                                <Grid x:Name="制造_升级_材料_糖浆_grid" Height="25" VerticalAlignment="Bottom">
-                                    <Rectangle x:Name="制造_升级_材料_糖浆_背景" HorizontalAlignment="Center" Stroke="Black" VerticalAlignment="Center" Width="80" Height="24" Fill="White" Margin="0" RadiusX="12" RadiusY="12"/>
-                                    <TextBlock x:Name="制造_升级_材料_糖浆_文字" HorizontalAlignment="Center" TextWrapping="Wrap" Text="制造" VerticalAlignment="Center"/>
-                                    <Rectangle x:Name="制造_升级_材料_糖浆" Fill="#00000000" HorizontalAlignment="Center" Height="24" Margin="0" RadiusY="12" RadiusX="12" Stroke="Black" VerticalAlignment="Center" Width="80" MouseEnter="rectangle_cover_enter" MouseLeave="rectangle_cover_leave" MouseMove="rectangle_cover_move" MouseLeftButtonDown="rectangle_cover_down" MouseLeftButtonUp="rectangle_cover_up"/>
-                                </Grid>
-                            </Grid>
-
-                            <Grid x:Name="制造_次_材料_植物祭品_grid" Background="#3F000000" Grid.Column="2">
-                                <TextBlock x:Name="制造_次_材料_植物祭品_text" HorizontalAlignment="Center" TextWrapping="Wrap" Text="植物祭品" VerticalAlignment="Top" Foreground="White" FontSize="20" Margin="0,10,0,0"/>
-                                <TextBlock x:Name="制造_次_材料_植物祭品_数量" HorizontalAlignment="Center" TextWrapping="Wrap" Text="制作: 100 植物祭品" VerticalAlignment="Top" Foreground="White" FontSize="14" Margin="0,60,0,0"/>
-                                <TextBlock x:Name="制造_次_材料_植物祭品_价格" HorizontalAlignment="Center" TextWrapping="Wrap" Text="花费: 4000 白色方块" VerticalAlignment="Top" Foreground="White" FontSize="14" Margin="0,40,0,0"/>
-                                <TextBlock x:Name="制造_次_材料_植物祭品_公式" HorizontalAlignment="Center" TextWrapping="Wrap" Text="C(n) = 4 * n ^ 1.5" VerticalAlignment="Top" Foreground="White" FontSize="14" Margin="0,80,0,0"/>
-                                <Grid x:Name="制造_升级_材料_植物祭品_grid" Height="25" VerticalAlignment="Bottom">
-                                    <Rectangle x:Name="制造_升级_材料_植物祭品_背景" HorizontalAlignment="Center" Stroke="Black" VerticalAlignment="Center" Width="80" Height="24" Fill="White" Margin="0" RadiusX="12" RadiusY="12"/>
-                                    <TextBlock x:Name="制造_升级_材料_植物祭品_文字" HorizontalAlignment="Center" TextWrapping="Wrap" Text="制造" VerticalAlignment="Center"/>
-                                    <Rectangle x:Name="制造_升级_材料_植物祭品" Fill="#00000000" HorizontalAlignment="Center" Height="24" Margin="0" RadiusY="12" RadiusX="12" Stroke="Black" VerticalAlignment="Center" Width="80" MouseEnter="rectangle_cover_enter" MouseLeave="rectangle_cover_leave" MouseMove="rectangle_cover_move" MouseLeftButtonDown="rectangle_cover_down" MouseLeftButtonUp="rectangle_cover_up"/>
-                                </Grid>
-                            </Grid>
-                            <Grid x:Name="制造_次_材料_动物祭品_grid" Background="#7F000000" Grid.Column="3">
-                                <TextBlock x:Name="制造_次_材料_动物祭品_text" HorizontalAlignment="Center" TextWrapping="Wrap" Text="动物祭品" VerticalAlignment="Top" Foreground="White" FontSize="20" Margin="0,10,0,0"/>
-                                <TextBlock x:Name="制造_次_材料_动物祭品_数量" HorizontalAlignment="Center" TextWrapping="Wrap" Text="制作: 100 动物祭品" VerticalAlignment="Top" Foreground="White" FontSize="14" Margin="0,60,0,0"/>
-                                <TextBlock x:Name="制造_次_材料_动物祭品_价格" HorizontalAlignment="Center" TextWrapping="Wrap" Text="花费: 4000 白色方块" VerticalAlignment="Top" Foreground="White" FontSize="14" Margin="0,40,0,0"/>
-                                <TextBlock x:Name="制造_次_材料_动物祭品_公式" HorizontalAlignment="Center" TextWrapping="Wrap" Text="C(n) = 4 * n ^ 1.5" VerticalAlignment="Top" Foreground="White" FontSize="14" Margin="0,80,0,0"/>
-                                <Grid x:Name="制造_升级_材料_动物祭品_grid" Height="25" VerticalAlignment="Bottom">
-                                    <Rectangle x:Name="制造_升级_材料_动物祭品_背景" HorizontalAlignment="Center" Stroke="Black" VerticalAlignment="Center" Width="80" Height="24" Fill="White" Margin="0" RadiusX="12" RadiusY="12"/>
-                                    <TextBlock x:Name="制造_升级_材料_动物祭品_文字" HorizontalAlignment="Center" TextWrapping="Wrap" Text="制造" VerticalAlignment="Center"/>
-                                    <Rectangle x:Name="制造_升级_材料_动物祭品" Fill="#00000000" HorizontalAlignment="Center" Height="24" Margin="0" RadiusY="12" RadiusX="12" Stroke="Black" VerticalAlignment="Center" Width="80" MouseEnter="rectangle_cover_enter" MouseLeave="rectangle_cover_leave" MouseMove="rectangle_cover_move" MouseLeftButtonDown="rectangle_cover_down" MouseLeftButtonUp="rectangle_cover_up"/>
-                                </Grid>
-                            </Grid>
-                            <Grid x:Name="制造_次_材料_魔法粉末_grid" Background="#7F000000" Grid.Row="1">
-                                <TextBlock x:Name="制造_次_材料_魔法粉末_text" HorizontalAlignment="Center" TextWrapping="Wrap" Text="魔法粉末" VerticalAlignment="Top" Foreground="White" FontSize="20" Margin="0,10,0,0"/>
-                                <TextBlock x:Name="制造_次_材料_魔法粉末_数量" HorizontalAlignment="Center" TextWrapping="Wrap" Text="制作: 100 魔法粉末" VerticalAlignment="Top" Foreground="White" FontSize="14" Margin="0,60,0,0"/>
-                                <TextBlock x:Name="制造_次_材料_魔法粉末_价格" HorizontalAlignment="Center" TextWrapping="Wrap" Text="花费: 4000 白色方块" VerticalAlignment="Top" Foreground="White" FontSize="14" Margin="0,40,0,0"/>
-                                <TextBlock x:Name="制造_次_材料_魔法粉末_公式" HorizontalAlignment="Center" TextWrapping="Wrap" Text="C(n) = 4 * n ^ 1.5" VerticalAlignment="Top" Foreground="White" FontSize="14" Margin="0,80,0,0"/>
-                                <Grid x:Name="制造_升级_材料_魔法粉末_grid" Height="25" VerticalAlignment="Bottom">
-                                    <Rectangle x:Name="制造_升级_材料_魔法粉末_背景" HorizontalAlignment="Center" Stroke="Black" VerticalAlignment="Center" Width="80" Height="24" Fill="White" Margin="0" RadiusX="12" RadiusY="12"/>
-                                    <TextBlock x:Name="制造_升级_材料_魔法粉末_文字" HorizontalAlignment="Center" TextWrapping="Wrap" Text="制造" VerticalAlignment="Center"/>
-                                    <Rectangle x:Name="制造_升级_材料_魔法粉末" Fill="#00000000" HorizontalAlignment="Center" Height="24" Margin="0" RadiusY="12" RadiusX="12" Stroke="Black" VerticalAlignment="Center" Width="80" MouseEnter="rectangle_cover_enter" MouseLeave="rectangle_cover_leave" MouseMove="rectangle_cover_move" MouseLeftButtonDown="rectangle_cover_down" MouseLeftButtonUp="rectangle_cover_up"/>
-                                </Grid>
-                            </Grid>
-                            <Grid x:Name="制造_次_材料_钻石_grid" Background="#3F000000" Grid.Row="1" Grid.Column="1">
-                                <TextBlock x:Name="制造_次_材料_钻石_text" HorizontalAlignment="Center" TextWrapping="Wrap" Text="钻石" VerticalAlignment="Top" Foreground="White" FontSize="20" Margin="0,10,0,0"/>
-                                <TextBlock x:Name="制造_次_材料_钻石_数量" HorizontalAlignment="Center" TextWrapping="Wrap" Text="制作: 100 钻石" VerticalAlignment="Top" Foreground="White" FontSize="14" Margin="0,60,0,0"/>
-                                <TextBlock x:Name="制造_次_材料_钻石_价格" HorizontalAlignment="Center" TextWrapping="Wrap" Text="花费: 4000 白色方块" VerticalAlignment="Top" Foreground="White" FontSize="14" Margin="0,40,0,0"/>
-                                <TextBlock x:Name="制造_次_材料_钻石_公式" HorizontalAlignment="Center" TextWrapping="Wrap" Text="C(n) = 4 * n ^ 1.5" VerticalAlignment="Top" Foreground="White" FontSize="14" Margin="0,80,0,0"/>
-                                <Grid x:Name="制造_升级_材料_钻石_grid" Height="25" VerticalAlignment="Bottom">
-                                    <Rectangle x:Name="制造_升级_材料_钻石_背景" HorizontalAlignment="Center" Stroke="Black" VerticalAlignment="Center" Width="80" Height="24" Fill="White" Margin="0" RadiusX="12" RadiusY="12"/>
-                                    <TextBlock x:Name="制造_升级_材料_钻石_文字" HorizontalAlignment="Center" TextWrapping="Wrap" Text="制造" VerticalAlignment="Center"/>
-                                    <Rectangle x:Name="制造_升级_材料_钻石" Fill="#00000000" HorizontalAlignment="Center" Height="24" Margin="0" RadiusY="12" RadiusX="12" Stroke="Black" VerticalAlignment="Center" Width="80" MouseEnter="rectangle_cover_enter" MouseLeave="rectangle_cover_leave" MouseMove="rectangle_cover_move" MouseLeftButtonDown="rectangle_cover_down" MouseLeftButtonUp="rectangle_cover_up"/>
-                                </Grid>
-                            </Grid>
                         </Grid>
                         <Grid x:Name="制造_菜单_工具_target_grid" d:IsHidden="True">
                             <Grid.RowDefinitions>
@@ -465,108 +217,6 @@
                                 <ColumnDefinition/>
                                 <ColumnDefinition/>
                             </Grid.ColumnDefinitions>
-                            <Grid x:Name="制造_次_工具_方块棒_grid" Background="#3F000000">
-
-                                <TextBlock x:Name="制造_次_工具_方块棒_text" HorizontalAlignment="Left" TextWrapping="Wrap" Text="方块棒" VerticalAlignment="Top" Foreground="White" FontSize="14" Margin="10,6,0,0"/>
-                                <TextBlock x:Name="制造_次_工具_方块棒_等级" HorizontalAlignment="Right" TextWrapping="Wrap" Text="等级 10 / 200" VerticalAlignment="Top" Foreground="White" Margin="0,8,15,0"/>
-                                <TextBlock x:Name="制造_次_工具_方块棒_描述" HorizontalAlignment="Left" TextWrapping="Wrap" Text="攻击力 +5（下一级+6）" VerticalAlignment="Top" Foreground="White" Margin="10,25,0,0"/>
-                                <TextBlock x:Name="制造_次_工具_方块棒_价格_title" HorizontalAlignment="Left" TextWrapping="Wrap" Text="价格: " VerticalAlignment="Top" Foreground="White" Margin="10,80,0,0"/>
-                                <TextBlock x:Name="制造_次_工具_方块棒_价格_1" HorizontalAlignment="Left" TextWrapping="Wrap" Text="100 白色方块" VerticalAlignment="Top" Foreground="White" Margin="40,80,0,0"/>
-                                <TextBlock x:Name="制造_次_工具_方块棒_价格_2" HorizontalAlignment="Left" TextWrapping="Wrap" Text="100 白色方块" VerticalAlignment="Top" Foreground="White" Margin="40,95,0,0"/>
-                                <TextBlock x:Name="制造_次_工具_方块棒_价格_3" HorizontalAlignment="Left" TextWrapping="Wrap" Text="100 白色方块" VerticalAlignment="Top" Foreground="White" Margin="40,110,0,0"/>
-                                <Grid x:Name="制造_升级_工具_方块棒_grid" VerticalAlignment="Bottom" HorizontalAlignment="Right">
-                                    <Rectangle x:Name="制造_升级_工具_方块棒_背景" HorizontalAlignment="Center" Stroke="Black" VerticalAlignment="Center" Width="50" Height="20" Fill="White" Margin="0" RadiusX="10" RadiusY="10"/>
-                                    <TextBlock x:Name="制造_升级_工具_方块棒_文字" HorizontalAlignment="Center" TextWrapping="Wrap" Text="制造" VerticalAlignment="Center"/>
-                                    <Rectangle x:Name="制造_升级_工具_方块棒" Fill="#00000000" HorizontalAlignment="Center" Height="20" Margin="0" RadiusY="10" RadiusX="10" Stroke="Black" VerticalAlignment="Center" Width="50" MouseEnter="rectangle_cover_enter" MouseLeave="rectangle_cover_leave" MouseMove="rectangle_cover_move" MouseLeftButtonDown="rectangle_cover_down" MouseLeftButtonUp="rectangle_cover_up"/>
-                                </Grid>
-                            </Grid>
-
-                            <Grid x:Name="制造_次_工具_剑_grid" Background="#7F000000" Grid.Row="1">
-                                <TextBlock x:Name="制造_次_工具_剑_text" HorizontalAlignment="Left" TextWrapping="Wrap" Text="剑" VerticalAlignment="Top" Foreground="White" FontSize="14" Margin="10,6,0,0"/>
-                                <TextBlock x:Name="制造_次_工具_剑_等级" HorizontalAlignment="Right" TextWrapping="Wrap" Text="等级 10 / 200" VerticalAlignment="Top" Foreground="White" Margin="0,8,15,0"/>
-                                <TextBlock x:Name="制造_次_工具_剑_描述" HorizontalAlignment="Left" TextWrapping="Wrap" Text="攻击力 +5（下一级+6）" VerticalAlignment="Top" Foreground="White" Margin="10,25,0,0"/>
-                                <TextBlock x:Name="制造_次_工具_剑_价格_title" HorizontalAlignment="Left" TextWrapping="Wrap" Text="价格: " VerticalAlignment="Top" Foreground="White" Margin="10,80,0,0"/>
-                                <TextBlock x:Name="制造_次_工具_剑_价格_1" HorizontalAlignment="Left" TextWrapping="Wrap" Text="100 白色方块" VerticalAlignment="Top" Foreground="White" Margin="40,80,0,0"/>
-                                <TextBlock x:Name="制造_次_工具_剑_价格_2" HorizontalAlignment="Left" TextWrapping="Wrap" Text="100 白色方块" VerticalAlignment="Top" Foreground="White" Margin="40,95,0,0"/>
-                                <TextBlock x:Name="制造_次_工具_剑_价格_3" HorizontalAlignment="Left" TextWrapping="Wrap" Text="100 白色方块" VerticalAlignment="Top" Foreground="White" Margin="40,110,0,0"/>
-                                <Grid x:Name="制造_升级_工具_剑_grid" VerticalAlignment="Bottom" HorizontalAlignment="Right">
-                                    <Rectangle x:Name="制造_升级_工具_剑_背景" HorizontalAlignment="Center" Stroke="Black" VerticalAlignment="Center" Width="50" Height="20" Fill="White" Margin="0" RadiusX="10" RadiusY="10"/>
-                                    <TextBlock x:Name="制造_升级_工具_剑_文字" HorizontalAlignment="Center" TextWrapping="Wrap" Text="制造" VerticalAlignment="Center"/>
-                                    <Rectangle x:Name="制造_升级_工具_剑" Fill="#00000000" HorizontalAlignment="Center" Height="20" Margin="0" RadiusY="10" RadiusX="10" Stroke="Black" VerticalAlignment="Center" Width="50" MouseEnter="rectangle_cover_enter" MouseLeave="rectangle_cover_leave" MouseMove="rectangle_cover_move" MouseLeftButtonDown="rectangle_cover_down" MouseLeftButtonUp="rectangle_cover_up"/>
-                                </Grid>
-                            </Grid>
-
-                            <Grid x:Name="制造_次_工具_镐_grid" Background="#3F000000" Grid.Row="1" Grid.Column="1">
-                                <TextBlock x:Name="制造_次_工具_镐_text" HorizontalAlignment="Left" TextWrapping="Wrap" Text="镐" VerticalAlignment="Top" Foreground="White" FontSize="14" Margin="10,6,0,0"/>
-                                <TextBlock x:Name="制造_次_工具_镐_等级" HorizontalAlignment="Right" TextWrapping="Wrap" Text="等级 10 / 200" VerticalAlignment="Top" Foreground="White" Margin="0,8,15,0"/>
-                                <TextBlock x:Name="制造_次_工具_镐_描述" HorizontalAlignment="Left" TextWrapping="Wrap" Text="攻击力 +5（下一级+6）" VerticalAlignment="Top" Foreground="White" Margin="10,25,0,0"/>
-                                <TextBlock x:Name="制造_次_工具_镐_价格_title" HorizontalAlignment="Left" TextWrapping="Wrap" Text="价格: " VerticalAlignment="Top" Foreground="White" Margin="10,80,0,0"/>
-                                <TextBlock x:Name="制造_次_工具_镐_价格_1" HorizontalAlignment="Left" TextWrapping="Wrap" Text="100 白色方块" VerticalAlignment="Top" Foreground="White" Margin="40,80,0,0"/>
-                                <TextBlock x:Name="制造_次_工具_镐_价格_2" HorizontalAlignment="Left" TextWrapping="Wrap" Text="100 白色方块" VerticalAlignment="Top" Foreground="White" Margin="40,95,0,0"/>
-                                <TextBlock x:Name="制造_次_工具_镐_价格_3" HorizontalAlignment="Left" TextWrapping="Wrap" Text="100 白色方块" VerticalAlignment="Top" Foreground="White" Margin="40,110,0,0"/>
-                                <Grid x:Name="制造_升级_工具_镐_grid" VerticalAlignment="Bottom" HorizontalAlignment="Right">
-                                    <Rectangle x:Name="制造_升级_工具_镐_背景" HorizontalAlignment="Center" Stroke="Black" VerticalAlignment="Center" Width="50" Height="20" Fill="White" Margin="0" RadiusX="10" RadiusY="10"/>
-                                    <TextBlock x:Name="制造_升级_工具_镐_文字" HorizontalAlignment="Center" TextWrapping="Wrap" Text="制造" VerticalAlignment="Center"/>
-                                    <Rectangle x:Name="制造_升级_工具_镐" Fill="#00000000" HorizontalAlignment="Center" Height="20" Margin="0" RadiusY="10" RadiusX="10" Stroke="Black" VerticalAlignment="Center" Width="50" MouseEnter="rectangle_cover_enter" MouseLeave="rectangle_cover_leave" MouseMove="rectangle_cover_move" MouseLeftButtonDown="rectangle_cover_down" MouseLeftButtonUp="rectangle_cover_up"/>
-                                </Grid>
-                            </Grid>
-                            <Grid x:Name="制造_次_工具_喷雾_grid" Background="#7F000000" Grid.Column="1">
-                                <TextBlock x:Name="制造_次_工具_喷雾_text" HorizontalAlignment="Left" TextWrapping="Wrap" Text="方块棒" VerticalAlignment="Top" Foreground="White" FontSize="14" Margin="10,6,0,0"/>
-                                <TextBlock x:Name="制造_次_工具_喷雾_等级" HorizontalAlignment="Right" TextWrapping="Wrap" Text="等级 10 / 200" VerticalAlignment="Top" Foreground="White" Margin="0,8,15,0"/>
-                                <TextBlock x:Name="制造_次_工具_喷雾_描述" HorizontalAlignment="Left" TextWrapping="Wrap" Text="攻击力 +5（下一级+6）" VerticalAlignment="Top" Foreground="White" Margin="10,25,0,0"/>
-                                <TextBlock x:Name="制造_次_工具_喷雾_价格_title" HorizontalAlignment="Left" TextWrapping="Wrap" Text="价格: " VerticalAlignment="Top" Foreground="White" Margin="10,80,0,0"/>
-                                <TextBlock x:Name="制造_次_工具_喷雾_价格_1" HorizontalAlignment="Left" TextWrapping="Wrap" Text="100 白色方块" VerticalAlignment="Top" Foreground="White" Margin="40,80,0,0"/>
-                                <TextBlock x:Name="制造_次_工具_喷雾_价格_2" HorizontalAlignment="Left" TextWrapping="Wrap" Text="100 白色方块" VerticalAlignment="Top" Foreground="White" Margin="40,95,0,0"/>
-                                <TextBlock x:Name="制造_次_工具_喷雾_价格_3" HorizontalAlignment="Left" TextWrapping="Wrap" Text="100 白色方块" VerticalAlignment="Top" Foreground="White" Margin="40,110,0,0"/>
-                                <Grid x:Name="制造_升级_工具_喷雾_grid" VerticalAlignment="Bottom" HorizontalAlignment="Right">
-                                    <Rectangle x:Name="制造_升级_工具_喷雾_背景" HorizontalAlignment="Center" Stroke="Black" VerticalAlignment="Center" Width="50" Height="20" Fill="White" Margin="0" RadiusX="10" RadiusY="10"/>
-                                    <TextBlock x:Name="制造_升级_工具_喷雾_文字" HorizontalAlignment="Center" TextWrapping="Wrap" Text="制造" VerticalAlignment="Center"/>
-                                    <Rectangle x:Name="制造_升级_工具_喷雾" Fill="#00000000" HorizontalAlignment="Center" Height="20" Margin="0" RadiusY="10" RadiusX="10" Stroke="Black" VerticalAlignment="Center" Width="50" MouseEnter="rectangle_cover_enter" MouseLeave="rectangle_cover_leave" MouseMove="rectangle_cover_move" MouseLeftButtonDown="rectangle_cover_down" MouseLeftButtonUp="rectangle_cover_up"/>
-                                </Grid>
-                            </Grid>
-                            <Grid x:Name="制造_次_工具_铲子_grid" Background="#3F000000" Grid.Column="2">
-                                <TextBlock x:Name="制造_次_工具_铲子_text" HorizontalAlignment="Left" TextWrapping="Wrap" Text="方块棒" VerticalAlignment="Top" Foreground="White" FontSize="14" Margin="10,6,0,0"/>
-                                <TextBlock x:Name="制造_次_工具_铲子_等级" HorizontalAlignment="Right" TextWrapping="Wrap" Text="等级 10 / 200" VerticalAlignment="Top" Foreground="White" Margin="0,8,15,0"/>
-                                <TextBlock x:Name="制造_次_工具_铲子_描述" HorizontalAlignment="Left" TextWrapping="Wrap" Text="攻击力 +5（下一级+6）" VerticalAlignment="Top" Foreground="White" Margin="10,25,0,0"/>
-                                <TextBlock x:Name="制造_次_工具_铲子_价格_title" HorizontalAlignment="Left" TextWrapping="Wrap" Text="价格: " VerticalAlignment="Top" Foreground="White" Margin="10,80,0,0"/>
-                                <TextBlock x:Name="制造_次_工具_铲子_价格_1" HorizontalAlignment="Left" TextWrapping="Wrap" Text="100 白色方块" VerticalAlignment="Top" Foreground="White" Margin="40,80,0,0"/>
-                                <TextBlock x:Name="制造_次_工具_铲子_价格_2" HorizontalAlignment="Left" TextWrapping="Wrap" Text="100 白色方块" VerticalAlignment="Top" Foreground="White" Margin="40,95,0,0"/>
-                                <TextBlock x:Name="制造_次_工具_铲子_价格_3" HorizontalAlignment="Left" TextWrapping="Wrap" Text="100 白色方块" VerticalAlignment="Top" Foreground="White" Margin="40,110,0,0"/>
-                                <Grid x:Name="制造_升级_工具_铲子_grid" VerticalAlignment="Bottom" HorizontalAlignment="Right">
-                                    <Rectangle x:Name="制造_升级_工具_铲子_背景" HorizontalAlignment="Center" Stroke="Black" VerticalAlignment="Center" Width="50" Height="20" Fill="White" Margin="0" RadiusX="10" RadiusY="10"/>
-                                    <TextBlock x:Name="制造_升级_工具_铲子_文字" HorizontalAlignment="Center" TextWrapping="Wrap" Text="制造" VerticalAlignment="Center"/>
-                                    <Rectangle x:Name="制造_升级_工具_铲子" Fill="#00000000" HorizontalAlignment="Center" Height="20" Margin="0" RadiusY="10" RadiusX="10" Stroke="Black" VerticalAlignment="Center" Width="50" MouseEnter="rectangle_cover_enter" MouseLeave="rectangle_cover_leave" MouseMove="rectangle_cover_move" MouseLeftButtonDown="rectangle_cover_down" MouseLeftButtonUp="rectangle_cover_up"/>
-                                </Grid>
-                            </Grid>
-
-                            <Grid x:Name="制造_次_工具_斧_grid" Background="#7F000000" Grid.Column="3">
-                                <TextBlock x:Name="制造_次_工具_斧_text" HorizontalAlignment="Left" TextWrapping="Wrap" Text="方块棒" VerticalAlignment="Top" Foreground="White" FontSize="14" Margin="10,6,0,0"/>
-                                <TextBlock x:Name="制造_次_工具_斧_等级" HorizontalAlignment="Right" TextWrapping="Wrap" Text="等级 10 / 200" VerticalAlignment="Top" Foreground="White" Margin="0,8,15,0"/>
-                                <TextBlock x:Name="制造_次_工具_斧_描述" HorizontalAlignment="Left" TextWrapping="Wrap" Text="攻击力 +5（下一级+6）" VerticalAlignment="Top" Foreground="White" Margin="10,25,0,0"/>
-                                <TextBlock x:Name="制造_次_工具_斧_价格_title" HorizontalAlignment="Left" TextWrapping="Wrap" Text="价格: " VerticalAlignment="Top" Foreground="White" Margin="10,80,0,0"/>
-                                <TextBlock x:Name="制造_次_工具_斧_价格_1" HorizontalAlignment="Left" TextWrapping="Wrap" Text="100 白色方块" VerticalAlignment="Top" Foreground="White" Margin="40,80,0,0"/>
-                                <TextBlock x:Name="制造_次_工具_斧_价格_2" HorizontalAlignment="Left" TextWrapping="Wrap" Text="100 白色方块" VerticalAlignment="Top" Foreground="White" Margin="40,95,0,0"/>
-                                <TextBlock x:Name="制造_次_工具_斧_价格_3" HorizontalAlignment="Left" TextWrapping="Wrap" Text="100 白色方块" VerticalAlignment="Top" Foreground="White" Margin="40,110,0,0"/>
-                                <Grid x:Name="制造_升级_工具_斧_grid" VerticalAlignment="Bottom" HorizontalAlignment="Right">
-                                    <Rectangle x:Name="制造_升级_工具_斧_背景" HorizontalAlignment="Center" Stroke="Black" VerticalAlignment="Center" Width="50" Height="20" Fill="White" Margin="0" RadiusX="10" RadiusY="10"/>
-                                    <TextBlock x:Name="制造_升级_工具_斧_文字" HorizontalAlignment="Center" TextWrapping="Wrap" Text="制造" VerticalAlignment="Center"/>
-                                    <Rectangle x:Name="制造_升级_工具_斧" Fill="#00000000" HorizontalAlignment="Center" Height="20" Margin="0" RadiusY="10" RadiusX="10" Stroke="Black" VerticalAlignment="Center" Width="50" MouseEnter="rectangle_cover_enter" MouseLeave="rectangle_cover_leave" MouseMove="rectangle_cover_move" MouseLeftButtonDown="rectangle_cover_down" MouseLeftButtonUp="rectangle_cover_up"/>
-                                </Grid>
-                            </Grid>
-                            <Grid x:Name="制造_次_工具_魔杖_grid" Background="#7F000000" Grid.Column="2" Grid.Row="1">
-                                <TextBlock x:Name="制造_次_工具_魔杖_text" HorizontalAlignment="Left" TextWrapping="Wrap" Text="方块棒" VerticalAlignment="Top" Foreground="White" FontSize="14" Margin="10,6,0,0"/>
-                                <TextBlock x:Name="制造_次_工具_魔杖_等级" HorizontalAlignment="Right" TextWrapping="Wrap" Text="等级 10 / 200" VerticalAlignment="Top" Foreground="White" Margin="0,8,15,0"/>
-                                <TextBlock x:Name="制造_次_工具_魔杖_描述" HorizontalAlignment="Left" TextWrapping="Wrap" Text="攻击力 +5（下一级+6）" VerticalAlignment="Top" Foreground="White" Margin="10,25,0,0"/>
-                                <TextBlock x:Name="制造_次_工具_魔杖_价格_title" HorizontalAlignment="Left" TextWrapping="Wrap" Text="价格: " VerticalAlignment="Top" Foreground="White" Margin="10,80,0,0"/>
-                                <TextBlock x:Name="制造_次_工具_魔杖_价格_1" HorizontalAlignment="Left" TextWrapping="Wrap" Text="100 白色方块" VerticalAlignment="Top" Foreground="White" Margin="40,80,0,0"/>
-                                <TextBlock x:Name="制造_次_工具_魔杖_价格_2" HorizontalAlignment="Left" TextWrapping="Wrap" Text="100 白色方块" VerticalAlignment="Top" Foreground="White" Margin="40,95,0,0"/>
-                                <TextBlock x:Name="制造_次_工具_魔杖_价格_3" HorizontalAlignment="Left" TextWrapping="Wrap" Text="100 白色方块" VerticalAlignment="Top" Foreground="White" Margin="40,110,0,0"/>
-                                <Grid x:Name="制造_升级_工具_魔杖_grid" VerticalAlignment="Bottom" HorizontalAlignment="Right">
-                                    <Rectangle x:Name="制造_升级_工具_魔杖_背景" HorizontalAlignment="Center" Stroke="Black" VerticalAlignment="Center" Width="50" Height="20" Fill="White" Margin="0" RadiusX="10" RadiusY="10"/>
-                                    <TextBlock x:Name="制造_升级_工具_魔杖_文字" HorizontalAlignment="Center" TextWrapping="Wrap" Text="制造" VerticalAlignment="Center"/>
-                                    <Rectangle x:Name="制造_升级_工具_魔杖" Fill="#00000000" HorizontalAlignment="Center" Height="20" Margin="0" RadiusY="10" RadiusX="10" Stroke="Black" VerticalAlignment="Center" Width="50" MouseEnter="rectangle_cover_enter" MouseLeave="rectangle_cover_leave" MouseMove="rectangle_cover_move" MouseLeftButtonDown="rectangle_cover_down" MouseLeftButtonUp="rectangle_cover_up"/>
-                                </Grid>
-                            </Grid>
                         </Grid>
                         <Grid x:Name="制造_菜单_升级器_target_grid" d:IsHidden="True" >
                             <Grid.RowDefinitions>
@@ -581,53 +231,8 @@
                                 <ColumnDefinition/>
                                 <ColumnDefinition/>
                             </Grid.ColumnDefinitions>
-                            <Grid x:Name="制造_次_升级器_白色方块生产_grid" Background="#3F000000">
-
-                                <TextBlock x:Name="制造_次_升级器_白色方块生产_text" HorizontalAlignment="Left" TextWrapping="Wrap" Text="白色方块生产" VerticalAlignment="Top" Foreground="White" FontSize="14" Margin="10,6,0,0"/>
-                                <TextBlock x:Name="制造_次_升级器_白色方块生产_等级" HorizontalAlignment="Right" TextWrapping="Wrap" Text="等级 10 / 200" VerticalAlignment="Top" Foreground="White" Margin="0,8,15,0"/>
-                                <TextBlock x:Name="制造_次_升级器_白色方块生产_描述" HorizontalAlignment="Left" TextWrapping="Wrap" Text="攻击力 +5（下一级+6）" VerticalAlignment="Top" Foreground="White" Margin="10,25,0,0"/>
-                                <TextBlock x:Name="制造_次_升级器_白色方块生产_价格_title" HorizontalAlignment="Left" TextWrapping="Wrap" Text="价格: " VerticalAlignment="Top" Foreground="White" Margin="10,80,0,0"/>
-                                <TextBlock x:Name="制造_次_升级器_白色方块生产_价格_1" HorizontalAlignment="Left" TextWrapping="Wrap" Text="35.55Qad 白色方块" VerticalAlignment="Top" Foreground="White" Margin="40,80,0,0"/>
-                                <TextBlock x:Name="制造_次_升级器_白色方块生产_价格_2" HorizontalAlignment="Left" TextWrapping="Wrap" Text="100 白色方块" VerticalAlignment="Top" Foreground="White" Margin="40,95,0,0"/>
-                                <TextBlock x:Name="制造_次_升级器_白色方块生产_价格_3" HorizontalAlignment="Left" TextWrapping="Wrap" Text="100 白色方块" VerticalAlignment="Top" Foreground="White" Margin="40,110,0,0"/>
-                                <Grid x:Name="制造_升级_升级器_白色方块生产_grid" VerticalAlignment="Bottom" HorizontalAlignment="Right">
-                                    <Rectangle x:Name="制造_升级_升级器_白色方块生产_背景" HorizontalAlignment="Center" Stroke="Black" VerticalAlignment="Center" Width="50" Height="20" Fill="White" Margin="0" RadiusX="10" RadiusY="10"/>
-                                    <TextBlock x:Name="制造_升级_升级器_白色方块生产_文字" HorizontalAlignment="Center" TextWrapping="Wrap" Text="制造" VerticalAlignment="Center"/>
-                                    <Rectangle x:Name="制造_升级_升级器_白色方块生产" Fill="#00000000" HorizontalAlignment="Center" Height="20" Margin="0" RadiusY="10" RadiusX="10" Stroke="Black" VerticalAlignment="Center" Width="50" MouseEnter="rectangle_cover_enter" MouseLeave="rectangle_cover_leave" MouseMove="rectangle_cover_move" MouseLeftButtonDown="rectangle_cover_down" MouseLeftButtonUp="rectangle_cover_up"/>
-                                </Grid>
-                            </Grid>
-
-                            <Grid x:Name="制造_次_升级器_泥土方块生产_grid" Background="#7F000000" Grid.Column="1">
-
-                                <TextBlock x:Name="制造_次_升级器_泥土方块生产_text" HorizontalAlignment="Left" TextWrapping="Wrap" Text="泥土方块生产" VerticalAlignment="Top" Foreground="White" FontSize="14" Margin="10,6,0,0"/>
-                                <TextBlock x:Name="制造_次_升级器_泥土方块生产_等级" HorizontalAlignment="Right" TextWrapping="Wrap" Text="等级 10 / 200" VerticalAlignment="Top" Foreground="White" Margin="0,8,15,0"/>
-                                <TextBlock x:Name="制造_次_升级器_泥土方块生产_描述" HorizontalAlignment="Left" TextWrapping="Wrap" Text="攻击力 +5（下一级+6）" VerticalAlignment="Top" Foreground="White" Margin="10,25,0,0"/>
-                                <TextBlock x:Name="制造_次_升级器_泥土方块生产_价格_title" HorizontalAlignment="Left" TextWrapping="Wrap" Text="价格: " VerticalAlignment="Top" Foreground="White" Margin="10,80,0,0"/>
-                                <TextBlock x:Name="制造_次_升级器_泥土方块生产_价格_1" HorizontalAlignment="Left" TextWrapping="Wrap" Text="35.55Qad 泥土方块" VerticalAlignment="Top" Foreground="White" Margin="40,80,0,0"/>
-                                <TextBlock x:Name="制造_次_升级器_泥土方块生产_价格_2" HorizontalAlignment="Left" TextWrapping="Wrap" Text="100 泥土方块" VerticalAlignment="Top" Foreground="White" Margin="40,95,0,0"/>
-                                <TextBlock x:Name="制造_次_升级器_泥土方块生产_价格_3" HorizontalAlignment="Left" TextWrapping="Wrap" Text="100 泥土方块" VerticalAlignment="Top" Foreground="White" Margin="40,110,0,0"/>
-                                <Grid x:Name="制造_升级_升级器_泥土方块生产_grid" VerticalAlignment="Bottom" HorizontalAlignment="Right">
-                                    <Rectangle x:Name="制造_升级_升级器_泥土方块生产_背景" HorizontalAlignment="Center" Stroke="Black" VerticalAlignment="Center" Width="50" Height="20" Fill="White" Margin="0" RadiusX="10" RadiusY="10"/>
-                                    <TextBlock x:Name="制造_升级_升级器_泥土方块生产_文字" HorizontalAlignment="Center" TextWrapping="Wrap" Text="制造" VerticalAlignment="Center"/>
-                                    <Rectangle x:Name="制造_升级_升级器_泥土方块生产" Fill="#00000000" HorizontalAlignment="Center" Height="20" Margin="0" RadiusY="10" RadiusX="10" Stroke="Black" VerticalAlignment="Center" Width="50" MouseEnter="rectangle_cover_enter" MouseLeave="rectangle_cover_leave" MouseMove="rectangle_cover_move" MouseLeftButtonDown="rectangle_cover_down" MouseLeftButtonUp="rectangle_cover_up"/>
-                                </Grid>
-                            </Grid>
-                            <Grid x:Name="制造_次_升级器_药水消耗降低_grid" Background="#7F000000" Grid.Row="1">
-                                <TextBlock x:Name="制造_次_升级器_药水消耗降低_text" HorizontalAlignment="Left" TextWrapping="Wrap" Text="药水消耗降低" VerticalAlignment="Top" Foreground="White" FontSize="14" Margin="10,6,0,0"/>
-                                <TextBlock x:Name="制造_次_升级器_药水消耗降低_等级" HorizontalAlignment="Right" TextWrapping="Wrap" Text="等级 10 / 200" VerticalAlignment="Top" Foreground="White" Margin="0,8,15,0"/>
-                                <TextBlock x:Name="制造_次_升级器_药水消耗降低_描述" HorizontalAlignment="Left" TextWrapping="Wrap" Text="攻击力 +5（下一级+6）" VerticalAlignment="Top" Foreground="White" Margin="10,25,0,0"/>
-                                <TextBlock x:Name="制造_次_升级器_药水消耗降低_价格_title" HorizontalAlignment="Left" TextWrapping="Wrap" Text="价格: " VerticalAlignment="Top" Foreground="White" Margin="10,80,0,0"/>
-                                <TextBlock x:Name="制造_次_升级器_药水消耗降低_价格_1" HorizontalAlignment="Left" TextWrapping="Wrap" Text="35.55Qad 泥土方块" VerticalAlignment="Top" Foreground="White" Margin="40,80,0,0"/>
-                                <TextBlock x:Name="制造_次_升级器_药水消耗降低_价格_2" HorizontalAlignment="Left" TextWrapping="Wrap" Text="100 泥土方块" VerticalAlignment="Top" Foreground="White" Margin="40,95,0,0"/>
-                                <TextBlock x:Name="制造_次_升级器_药水消耗降低_价格_3" HorizontalAlignment="Left" TextWrapping="Wrap" Text="100 泥土方块" VerticalAlignment="Top" Foreground="White" Margin="40,110,0,0"/>
-                                <Grid x:Name="制造_升级_升级器_药水消耗降低_grid" VerticalAlignment="Bottom" HorizontalAlignment="Right">
-                                    <Rectangle x:Name="制造_升级_升级器_药水消耗降低_背景" HorizontalAlignment="Center" Stroke="Black" VerticalAlignment="Center" Width="50" Height="20" Fill="White" Margin="0" RadiusX="10" RadiusY="10"/>
-                                    <TextBlock x:Name="制造_升级_升级器_药水消耗降低_文字" HorizontalAlignment="Center" TextWrapping="Wrap" Text="制造" VerticalAlignment="Center"/>
-                                    <Rectangle x:Name="制造_升级_升级器_药水消耗降低" Fill="#00000000" HorizontalAlignment="Center" Height="20" Margin="0" RadiusY="10" RadiusX="10" Stroke="Black" VerticalAlignment="Center" Width="50" MouseEnter="rectangle_cover_enter" MouseLeave="rectangle_cover_leave" MouseMove="rectangle_cover_move" MouseLeftButtonDown="rectangle_cover_down" MouseLeftButtonUp="rectangle_cover_up"/>
-                                </Grid>
-                            </Grid>
                         </Grid>
-                        <Grid x:Name="制造_菜单_食物_target_grid" d:IsHidden="True">
+                        <Grid x:Name="制造_菜单_食物_target_grid">
                             <Grid.RowDefinitions>
                                 <RowDefinition/>
                                 <RowDefinition/>
@@ -640,94 +245,8 @@
                                 <ColumnDefinition/>
                                 <ColumnDefinition/>
                             </Grid.ColumnDefinitions>
-                            <Grid x:Name="制造_次_食物_缤纷沙拉_grid" Background="#3F000000">
-                                <TextBlock x:Name="制造_次_食物_缤纷沙拉_text" HorizontalAlignment="Left" TextWrapping="Wrap" Text="缤纷沙拉" VerticalAlignment="Top" Foreground="White" FontSize="14" Margin="10,6,0,0"/>
-                                <TextBlock x:Name="制造_次_食物_缤纷沙拉_等级" HorizontalAlignment="Right" TextWrapping="Wrap" Text="等级 10 / 200" VerticalAlignment="Top" Foreground="White" Margin="0,8,15,0"/>
-                                <TextBlock x:Name="制造_次_食物_缤纷沙拉_描述" HorizontalAlignment="Left" TextWrapping="Wrap" Text="攻击力 +5（下一级+6）" VerticalAlignment="Top" Foreground="White" Margin="10,25,0,0"/>
-                                <TextBlock x:Name="制造_次_食物_缤纷沙拉_价格_title" HorizontalAlignment="Left" TextWrapping="Wrap" Text="价格: " VerticalAlignment="Top" Foreground="White" Margin="10,80,0,0"/>
-                                <TextBlock x:Name="制造_次_食物_缤纷沙拉_价格_1" HorizontalAlignment="Left" TextWrapping="Wrap" Text="100 白色方块" VerticalAlignment="Top" Foreground="White" Margin="40,80,0,0"/>
-                                <TextBlock x:Name="制造_次_食物_缤纷沙拉_价格_2" HorizontalAlignment="Left" TextWrapping="Wrap" Text="100 白色方块" VerticalAlignment="Top" Foreground="White" Margin="40,95,0,0"/>
-                                <TextBlock x:Name="制造_次_食物_缤纷沙拉_价格_3" HorizontalAlignment="Left" TextWrapping="Wrap" Text="100 白色方块" VerticalAlignment="Top" Foreground="White" Margin="40,110,0,0"/>
-                                <Grid x:Name="制造_升级_食物_缤纷沙拉_grid" VerticalAlignment="Bottom" HorizontalAlignment="Right">
-                                    <Rectangle x:Name="制造_升级_食物_缤纷沙拉_背景" HorizontalAlignment="Center" Stroke="Black" VerticalAlignment="Center" Width="50" Height="20" Fill="White" Margin="0" RadiusX="10" RadiusY="10"/>
-                                    <TextBlock x:Name="制造_升级_食物_缤纷沙拉_文字" HorizontalAlignment="Center" TextWrapping="Wrap" Text="制造" VerticalAlignment="Center"/>
-                                    <Rectangle x:Name="制造_升级_食物_缤纷沙拉" Fill="#00000000" HorizontalAlignment="Center" Height="20" Margin="0" RadiusY="10" RadiusX="10" Stroke="Black" VerticalAlignment="Center" Width="50" MouseEnter="rectangle_cover_enter" MouseLeave="rectangle_cover_leave" MouseMove="rectangle_cover_move" MouseLeftButtonDown="rectangle_cover_down" MouseLeftButtonUp="rectangle_cover_up"/>
-                                </Grid>
-                            </Grid>
-                            <Grid x:Name="制造_次_食物_勇敢生肉套餐_grid" Background="#7F000000" Grid.Column="1">
-
-                                <TextBlock x:Name="制造_次_食物_勇敢生肉套餐_text" HorizontalAlignment="Left" TextWrapping="Wrap" Text="勇敢生肉套餐" VerticalAlignment="Top" Foreground="White" FontSize="14" Margin="10,6,0,0"/>
-                                <TextBlock x:Name="制造_次_食物_勇敢生肉套餐_等级" HorizontalAlignment="Right" TextWrapping="Wrap" Text="等级 10 / 200" VerticalAlignment="Top" Foreground="White" Margin="0,8,15,0"/>
-                                <TextBlock x:Name="制造_次_食物_勇敢生肉套餐_描述" HorizontalAlignment="Left" TextWrapping="Wrap" Text="攻击力 +5（下一级+6）" VerticalAlignment="Top" Foreground="White" Margin="10,25,0,0"/>
-                                <TextBlock x:Name="制造_次_食物_勇敢生肉套餐_价格_title" HorizontalAlignment="Left" TextWrapping="Wrap" Text="价格: " VerticalAlignment="Top" Foreground="White" Margin="10,80,0,0"/>
-                                <TextBlock x:Name="制造_次_食物_勇敢生肉套餐_价格_1" HorizontalAlignment="Left" TextWrapping="Wrap" Text="100 白色方块" VerticalAlignment="Top" Foreground="White" Margin="40,80,0,0"/>
-                                <TextBlock x:Name="制造_次_食物_勇敢生肉套餐_价格_2" HorizontalAlignment="Left" TextWrapping="Wrap" Text="100 白色方块" VerticalAlignment="Top" Foreground="White" Margin="40,95,0,0"/>
-                                <TextBlock x:Name="制造_次_食物_勇敢生肉套餐_价格_3" HorizontalAlignment="Left" TextWrapping="Wrap" Text="100 白色方块" VerticalAlignment="Top" Foreground="White" Margin="40,110,0,0"/>
-                                <Grid x:Name="制造_升级_食物_勇敢生肉套餐_grid" VerticalAlignment="Bottom" HorizontalAlignment="Right">
-                                    <Rectangle x:Name="制造_升级_食物_勇敢生肉套餐_背景" HorizontalAlignment="Center" Stroke="Black" VerticalAlignment="Center" Width="50" Height="20" Fill="White" Margin="0" RadiusX="10" RadiusY="10"/>
-                                    <TextBlock x:Name="制造_升级_食物_勇敢生肉套餐_文字" HorizontalAlignment="Center" TextWrapping="Wrap" Text="制造" VerticalAlignment="Center"/>
-                                    <Rectangle x:Name="制造_升级_食物_勇敢生肉套餐" Fill="#00000000" HorizontalAlignment="Center" Height="20" Margin="0" RadiusY="10" RadiusX="10" Stroke="Black" VerticalAlignment="Center" Width="50" MouseEnter="rectangle_cover_enter" MouseLeave="rectangle_cover_leave" MouseMove="rectangle_cover_move" MouseLeftButtonDown="rectangle_cover_down" MouseLeftButtonUp="rectangle_cover_up"/>
-                                </Grid>
-                            </Grid>
-                            <Grid x:Name="制造_次_食物_火爆蔬菜烧烤_grid" Background="#3F000000" Grid.Column="2">
-
-                                <TextBlock x:Name="制造_次_食物_火爆蔬菜烧烤_text" HorizontalAlignment="Left" TextWrapping="Wrap" Text="火爆蔬菜烧烤" VerticalAlignment="Top" Foreground="White" FontSize="14" Margin="10,6,0,0"/>
-                                <TextBlock x:Name="制造_次_食物_火爆蔬菜烧烤_等级" HorizontalAlignment="Right" TextWrapping="Wrap" Text="等级 10 / 200" VerticalAlignment="Top" Foreground="White" Margin="0,8,15,0"/>
-                                <TextBlock x:Name="制造_次_食物_火爆蔬菜烧烤_描述" HorizontalAlignment="Left" TextWrapping="Wrap" Text="攻击力 +5（下一级+6）" VerticalAlignment="Top" Foreground="White" Margin="10,25,0,0"/>
-                                <TextBlock x:Name="制造_次_食物_火爆蔬菜烧烤_价格_title" HorizontalAlignment="Left" TextWrapping="Wrap" Text="价格: " VerticalAlignment="Top" Foreground="White" Margin="10,80,0,0"/>
-                                <TextBlock x:Name="制造_次_食物_火爆蔬菜烧烤_价格_1" HorizontalAlignment="Left" TextWrapping="Wrap" Text="100 白色方块" VerticalAlignment="Top" Foreground="White" Margin="40,80,0,0"/>
-                                <TextBlock x:Name="制造_次_食物_火爆蔬菜烧烤_价格_2" HorizontalAlignment="Left" TextWrapping="Wrap" Text="100 白色方块" VerticalAlignment="Top" Foreground="White" Margin="40,95,0,0"/>
-                                <TextBlock x:Name="制造_次_食物_火爆蔬菜烧烤_价格_3" HorizontalAlignment="Left" TextWrapping="Wrap" Text="100 白色方块" VerticalAlignment="Top" Foreground="White" Margin="40,110,0,0"/>
-                                <Grid x:Name="制造_升级_食物_火爆蔬菜烧烤_grid" VerticalAlignment="Bottom" HorizontalAlignment="Right">
-                                    <Rectangle x:Name="制造_升级_食物_火爆蔬菜烧烤_背景" HorizontalAlignment="Center" Stroke="Black" VerticalAlignment="Center" Width="50" Height="20" Fill="White" Margin="0" RadiusX="10" RadiusY="10"/>
-                                    <TextBlock x:Name="制造_升级_食物_火爆蔬菜烧烤_文字" HorizontalAlignment="Center" TextWrapping="Wrap" Text="制造" VerticalAlignment="Center"/>
-                                    <Rectangle x:Name="制造_升级_食物_火爆蔬菜烧烤" Fill="#00000000" HorizontalAlignment="Center" Height="20" Margin="0" RadiusY="10" RadiusX="10" Stroke="Black" VerticalAlignment="Center" Width="50" MouseEnter="rectangle_cover_enter" MouseLeave="rectangle_cover_leave" MouseMove="rectangle_cover_move" MouseLeftButtonDown="rectangle_cover_down" MouseLeftButtonUp="rectangle_cover_up"/>
-                                </Grid>
-                            </Grid>
-                            <Grid x:Name="制造_次_食物_经典BBQ大餐_grid" Background="#7F000000" Grid.Column="3">
-                                <TextBlock x:Name="制造_次_食物_经典BBQ大餐_text" HorizontalAlignment="Left" TextWrapping="Wrap" Text="经典BBQ大餐" VerticalAlignment="Top" Foreground="White" FontSize="14" Margin="10,6,0,0"/>
-                                <TextBlock x:Name="制造_次_食物_经典BBQ大餐_等级" HorizontalAlignment="Right" TextWrapping="Wrap" Text="等级 10 / 200" VerticalAlignment="Top" Foreground="White" Margin="0,8,15,0"/>
-                                <TextBlock x:Name="制造_次_食物_经典BBQ大餐_描述" HorizontalAlignment="Left" TextWrapping="Wrap" Text="攻击力 +5（下一级+6）" VerticalAlignment="Top" Foreground="White" Margin="10,25,0,0"/>
-                                <TextBlock x:Name="制造_次_食物_经典BBQ大餐_价格_title" HorizontalAlignment="Left" TextWrapping="Wrap" Text="价格: " VerticalAlignment="Top" Foreground="White" Margin="10,80,0,0"/>
-                                <TextBlock x:Name="制造_次_食物_经典BBQ大餐_价格_1" HorizontalAlignment="Left" TextWrapping="Wrap" Text="100 白色方块" VerticalAlignment="Top" Foreground="White" Margin="40,80,0,0"/>
-                                <TextBlock x:Name="制造_次_食物_经典BBQ大餐_价格_2" HorizontalAlignment="Left" TextWrapping="Wrap" Text="100 白色方块" VerticalAlignment="Top" Foreground="White" Margin="40,95,0,0"/>
-                                <TextBlock x:Name="制造_次_食物_经典BBQ大餐_价格_3" HorizontalAlignment="Left" TextWrapping="Wrap" Text="100 白色方块" VerticalAlignment="Top" Foreground="White" Margin="40,110,0,0"/>
-                                <Grid x:Name="制造_升级_食物_经典BBQ大餐_grid" VerticalAlignment="Bottom" HorizontalAlignment="Right">
-                                    <Rectangle x:Name="制造_升级_食物_经典BBQ大餐_背景" HorizontalAlignment="Center" Stroke="Black" VerticalAlignment="Center" Width="50" Height="20" Fill="White" Margin="0" RadiusX="10" RadiusY="10"/>
-                                    <TextBlock x:Name="制造_升级_食物_经典BBQ大餐_文字" HorizontalAlignment="Center" TextWrapping="Wrap" Text="制造" VerticalAlignment="Center"/>
-                                    <Rectangle x:Name="制造_升级_食物_经典BBQ大餐" Fill="#00000000" HorizontalAlignment="Center" Height="20" Margin="0" RadiusY="10" RadiusX="10" Stroke="Black" VerticalAlignment="Center" Width="50" MouseEnter="rectangle_cover_enter" MouseLeave="rectangle_cover_leave" MouseMove="rectangle_cover_move" MouseLeftButtonDown="rectangle_cover_down" MouseLeftButtonUp="rectangle_cover_up"/>
-                                </Grid>
-                            </Grid>
-                            <Grid x:Name="制造_次_食物_能量饮料_grid" Background="#7F000000" Grid.Row="1">
-                                <TextBlock x:Name="制造_次_食物_能量饮料_text" HorizontalAlignment="Left" TextWrapping="Wrap" Text="能量饮料" VerticalAlignment="Top" Foreground="White" FontSize="14" Margin="10,6,0,0"/>
-                                <TextBlock x:Name="制造_次_食物_能量饮料_等级" HorizontalAlignment="Right" TextWrapping="Wrap" Text="等级 10 / 200" VerticalAlignment="Top" Foreground="White" Margin="0,8,15,0"/>
-                                <TextBlock x:Name="制造_次_食物_能量饮料_描述" HorizontalAlignment="Left" TextWrapping="Wrap" Text="攻击力 +5（下一级+6）" VerticalAlignment="Top" Foreground="White" Margin="10,25,0,0"/>
-                                <TextBlock x:Name="制造_次_食物_能量饮料_价格_title" HorizontalAlignment="Left" TextWrapping="Wrap" Text="价格: " VerticalAlignment="Top" Foreground="White" Margin="10,80,0,0"/>
-                                <TextBlock x:Name="制造_次_食物_能量饮料_价格_1" HorizontalAlignment="Left" TextWrapping="Wrap" Text="100 白色方块" VerticalAlignment="Top" Foreground="White" Margin="40,80,0,0"/>
-                                <TextBlock x:Name="制造_次_食物_能量饮料_价格_2" HorizontalAlignment="Left" TextWrapping="Wrap" Text="100 白色方块" VerticalAlignment="Top" Foreground="White" Margin="40,95,0,0"/>
-                                <TextBlock x:Name="制造_次_食物_能量饮料_价格_3" HorizontalAlignment="Left" TextWrapping="Wrap" Text="100 白色方块" VerticalAlignment="Top" Foreground="White" Margin="40,110,0,0"/>
-                                <Grid x:Name="制造_升级_食物_能量饮料_grid" VerticalAlignment="Bottom" HorizontalAlignment="Right">
-                                    <Rectangle x:Name="制造_升级_食物_能量饮料_背景" HorizontalAlignment="Center" Stroke="Black" VerticalAlignment="Center" Width="50" Height="20" Fill="White" Margin="0" RadiusX="10" RadiusY="10"/>
-                                    <TextBlock x:Name="制造_升级_食物_能量饮料_文字" HorizontalAlignment="Center" TextWrapping="Wrap" Text="制造" VerticalAlignment="Center"/>
-                                    <Rectangle x:Name="制造_升级_食物_能量饮料" Fill="#00000000" HorizontalAlignment="Center" Height="20" Margin="0" RadiusY="10" RadiusX="10" Stroke="Black" VerticalAlignment="Center" Width="50" MouseEnter="rectangle_cover_enter" MouseLeave="rectangle_cover_leave" MouseMove="rectangle_cover_move" MouseLeftButtonDown="rectangle_cover_down" MouseLeftButtonUp="rectangle_cover_up"/>
-                                </Grid>
-                            </Grid>
-                            <Grid x:Name="制造_次_食物_冰镇果汁_grid" Background="#3F000000" Grid.Row="1" Grid.Column="1">
-                                <TextBlock x:Name="制造_次_食物_冰镇果汁_text" HorizontalAlignment="Left" TextWrapping="Wrap" Text="冰镇果汁" VerticalAlignment="Top" Foreground="White" FontSize="14" Margin="10,6,0,0"/>
-                                <TextBlock x:Name="制造_次_食物_冰镇果汁_等级" HorizontalAlignment="Right" TextWrapping="Wrap" Text="等级 10 / 200" VerticalAlignment="Top" Foreground="White" Margin="0,8,15,0"/>
-                                <TextBlock x:Name="制造_次_食物_冰镇果汁_描述" HorizontalAlignment="Left" TextWrapping="Wrap" Text="攻击力 +5（下一级+6）" VerticalAlignment="Top" Foreground="White" Margin="10,25,0,0"/>
-                                <TextBlock x:Name="制造_次_食物_冰镇果汁_价格_title" HorizontalAlignment="Left" TextWrapping="Wrap" Text="价格: " VerticalAlignment="Top" Foreground="White" Margin="10,80,0,0"/>
-                                <TextBlock x:Name="制造_次_食物_冰镇果汁_价格_1" HorizontalAlignment="Left" TextWrapping="Wrap" Text="100 白色方块" VerticalAlignment="Top" Foreground="White" Margin="40,80,0,0"/>
-                                <TextBlock x:Name="制造_次_食物_冰镇果汁_价格_2" HorizontalAlignment="Left" TextWrapping="Wrap" Text="100 白色方块" VerticalAlignment="Top" Foreground="White" Margin="40,95,0,0"/>
-                                <TextBlock x:Name="制造_次_食物_冰镇果汁_价格_3" HorizontalAlignment="Left" TextWrapping="Wrap" Text="100 白色方块" VerticalAlignment="Top" Foreground="White" Margin="40,110,0,0"/>
-                                <Grid x:Name="制造_升级_食物_冰镇果汁_grid" VerticalAlignment="Bottom" HorizontalAlignment="Right">
-                                    <Rectangle x:Name="制造_升级_食物_冰镇果汁_背景" HorizontalAlignment="Center" Stroke="Black" VerticalAlignment="Center" Width="50" Height="20" Fill="White" Margin="0" RadiusX="10" RadiusY="10"/>
-                                    <TextBlock x:Name="制造_升级_食物_冰镇果汁_文字" HorizontalAlignment="Center" TextWrapping="Wrap" Text="制造" VerticalAlignment="Center"/>
-                                    <Rectangle x:Name="制造_升级_食物_冰镇果汁" Fill="#00000000" HorizontalAlignment="Center" Height="20" Margin="0" RadiusY="10" RadiusX="10" Stroke="Black" VerticalAlignment="Center" Width="50" MouseEnter="rectangle_cover_enter" MouseLeave="rectangle_cover_leave" MouseMove="rectangle_cover_move" MouseLeftButtonDown="rectangle_cover_down" MouseLeftButtonUp="rectangle_cover_up"/>
-                                </Grid>
-                            </Grid>
                         </Grid>
-                        <Grid x:Name="制造_次_材料_grid_Copy3" Visibility="Hidden" d:IsHidden="True">
+                        <Grid x:Name="制造_次_名称_target_grid备用" Visibility="Hidden" d:IsHidden="True">
                             <Grid.RowDefinitions>
                                 <RowDefinition/>
                                 <RowDefinition/>
@@ -743,7 +262,7 @@
                         </Grid>
                     </Grid>
                 </Grid>
-                <Grid x:Name="战斗_grid">
+                <Grid x:Name="战斗_grid" d:IsHidden="True">
                     <Grid.RowDefinitions>
                         <RowDefinition Height="100"/>
                         <RowDefinition/>
@@ -1110,11 +629,11 @@
                                 <TextBlock x:Name="战斗_玩家_减速属性_4" HorizontalAlignment="Left" TextWrapping="Wrap" Text="强化: ×1" VerticalAlignment="Center" Margin="0" Foreground="#FFC8FF64" Grid.Row="4"/>
                                 <TextBlock x:Name="战斗_玩家_减速属性_5" HorizontalAlignment="Left" TextWrapping="Wrap" Text="攻击风格: ×1" VerticalAlignment="Center" Margin="0" Foreground="#FFFF64C8" Grid.Row="5"/>
                             </Grid>
-                            <TextBlock x:Name="战斗_玩家_每秒伤害" HorizontalAlignment="Left" TextWrapping="Wrap" Text="伤害: 1.15/s" VerticalAlignment="Top" Margin="270,227,0,0" Foreground="#FF64FF64"/>
+                            <TextBlock x:Name="战斗_玩家_每秒伤害" HorizontalAlignment="Left" TextWrapping="Wrap" Text="伤害: 1.15/s" VerticalAlignment="Top" Margin="268,227,0,0" Foreground="#FF64FF64"/>
                             <TextBlock x:Name="战斗_玩家_每秒敌人受损" HorizontalAlignment="Left" TextWrapping="Wrap" Text="敌人受损: 0.15/s" VerticalAlignment="Top" Margin="246,245,0,0" Foreground="#FF64FF64"/>
-                            <TextBlock x:Name="战斗_玩家_攻击重数" HorizontalAlignment="Left" TextWrapping="Wrap" Text="攻击重数：1" VerticalAlignment="Top" Margin="248.5,272,0,0" Foreground="#FFFFAFAF"/>
-                            <TextBlock x:Name="战斗_玩家_前一击敌人死亡数" HorizontalAlignment="Left" TextWrapping="Wrap" Text="前一击敌人死亡数：2" VerticalAlignment="Top" Margin="200,290,0,0" Foreground="#FFFFFFAF"/>
-                            <TextBlock x:Name="战斗_玩家_前10秒敌人死亡数" HorizontalAlignment="Left" TextWrapping="Wrap" Text="前 60 秒敌人死亡数：0.15/s" VerticalAlignment="Top" Margin="200,308,0,0" Foreground="#FFFFFFAF"/>
+                            <TextBlock x:Name="战斗_玩家_攻击重数" HorizontalAlignment="Left" TextWrapping="Wrap" Text="攻击重数：1" VerticalAlignment="Top" Margin="245,272,0,0" Foreground="#FFFFAFAF"/>
+                            <TextBlock x:Name="战斗_玩家_前一击敌人死亡数" HorizontalAlignment="Left" TextWrapping="Wrap" Text="前一击敌人死亡数：2" VerticalAlignment="Top" Margin="201,290,0,0" Foreground="#FFFFFFAF"/>
+                            <TextBlock x:Name="战斗_玩家_前10秒敌人死亡数" HorizontalAlignment="Left" TextWrapping="Wrap" Text="前 60 秒敌人死亡数：0.15/s" VerticalAlignment="Top" Margin="192.5,308,0,0" Foreground="#FFFFFFAF"/>
                             <Grid x:Name="战斗_玩家_攻击风格_grid" Height="60" VerticalAlignment="Top" Margin="0,340,0,0">
                                 <Grid.RowDefinitions>
                                     <RowDefinition/>
@@ -1209,7 +728,7 @@
                         </Grid>
                     </Grid>
                     <Grid x:Name="魔法_主_grid" Grid.Row="1">
-                        <Grid x:Name="魔法_菜单_祭坛_target_grid" d:IsHidden="True">
+                        <Grid x:Name="魔法_菜单_祭坛_target_grid">
                             <Grid x:Name="魔法_祭坛_grid" HorizontalAlignment="Center" Height="150" VerticalAlignment="Center" Width="150">
                                 <Rectangle x:Name="魔法_祭坛_背景" RadiusY="75" RadiusX="75" Stroke="Black">
                                     <Rectangle.Fill>
@@ -1480,7 +999,7 @@
                                 <Rectangle x:Name="魔法_附魔_魔法糖浆_进度条_顶" HorizontalAlignment="Right" Height="10" VerticalAlignment="Top" Width="100" RadiusX="5" RadiusY="5" Margin="0,90,15,0" Fill="#BF000000"/>
                             </Grid>
                         </Grid>
-                        <Grid x:Name="魔法_菜单_法术_target_grid">
+                        <Grid x:Name="魔法_菜单_法术_target_grid" d:IsHidden="True">
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition/>
                                 <ColumnDefinition/>

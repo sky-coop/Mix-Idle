@@ -22,6 +22,7 @@ namespace mix_idle
         public void game_load()
         {
             data_init();
+            visual_init();
             framework_elements = new Dictionary<string, FrameworkElement>();
 
             number_mode = unlocks.number_mode;
@@ -39,7 +40,10 @@ namespace mix_idle
             option_select(m.方块);
 
 
-            fps_container = new List<double2>();
+            if (fps_container == null)
+            {
+                fps_container = new List<double2>();
+            }
 
             #region
             int i = 0;
@@ -80,59 +84,24 @@ namespace mix_idle
             //no.1 方块:
             #region
 
-            block_producter bp = block_producters["白色方块"];
-            ((TextBlock)(m.FindName("方块_" + bp.name))).Text = bp.name + " 生产器 等级" + number_format(bp.level);
-            if (bp.unlocked)
+            foreach(Grid g in m.方块_grid.Children)
             {
-                m.方块_白色方块_grid.Visibility = 0;
-            }
-            else
-            {
-                m.方块_白色方块_grid.Visibility = (Visibility)1;
-            }
+                string bp_name = g.Name.Split('_')[1];
 
-            bp = block_producters["泥土方块"];
-            ((TextBlock)(m.FindName("方块_" + bp.name))).Text = bp.name + " 生产器 等级" + number_format(bp.level);
-            if (bp.unlocked)
-            {
-                m.方块_泥土方块_grid.Visibility = 0;
-            }
-            else
-            {
-                m.方块_泥土方块_grid.Visibility = (Visibility)1;
-            }
-
-            bp = block_producters["木头方块"];
-            ((TextBlock)(m.FindName("方块_" + bp.name))).Text = bp.name + " 生产器 等级" + number_format(bp.level);
-            if (bp.unlocked)
-            {
-                m.方块_木头方块_grid.Visibility = 0;
-            }
-            else
-            {
-                m.方块_木头方块_grid.Visibility = (Visibility)1;
-            }
-
-            bp = block_producters["糖方块"];
-            ((TextBlock)(m.FindName("方块_" + bp.name))).Text = bp.name + " 生产器 等级" + number_format(bp.level);
-            if (bp.unlocked)
-            {
-                m.方块_糖方块_grid.Visibility = 0;
-            }
-            else
-            {
-                m.方块_糖方块_grid.Visibility = (Visibility)1;
-            }
-
-            bp = block_producters["石头方块"];
-            ((TextBlock)(m.FindName("方块_" + bp.name))).Text = bp.name + " 生产器 等级" + number_format(bp.level);
-            if (bp.unlocked)
-            {
-                m.方块_石头方块_grid.Visibility = 0;
-            }
-            else
-            {
-                m.方块_石头方块_grid.Visibility = (Visibility)1;
+                if (!block_producters.ContainsKey(bp_name))
+                {
+                    continue;
+                }
+                block_producter bp = block_producters[bp_name];
+                Grid bp_grid = (Grid)m.FindName("方块_" + bp.name + "_grid");
+                if (bp.unlocked)
+                {
+                    bp_grid.Visibility = 0;
+                }
+                else
+                {
+                    bp_grid.Visibility = (Visibility)1;
+                }
             }
             #endregion
 
@@ -218,33 +187,38 @@ namespace mix_idle
 
             //no.4 魔法：
             #region
-            
-
             LinearGradientBrush lgb = get_lgb();
 
 
             foreach (Grid g in m.魔法_祭坛_祭品_grid.Children)
             {
                 g.Visibility = (Visibility)1;
+
+                string sa_name = g.Name.Split('_')[3];
+                resource r = find_resource(sa_name);
+                if (r.unlocked)
+                {
+                    g.Visibility = 0;
+                }
             }
 
-            if (res_table["战斗"]["白色粒子"].unlocked)
-            {
-                m.魔法_祭坛_祭品_白色粒子_grid.Visibility = 0;
-            }
-            if (res_table["战斗"]["绿色粒子"].unlocked)
-            {
-                m.魔法_祭坛_祭品_绿色粒子_grid.Visibility = 0;
-            }
-            if (res_table["战斗"]["红色粒子"].unlocked)
-            {
-                m.魔法_祭坛_祭品_红色粒子_grid.Visibility = 0;
-            }
+            //if (res_table["战斗"]["白色粒子"].unlocked)
+            //{
+            //    m.魔法_祭坛_祭品_白色粒子_grid.Visibility = 0;
+            //}
+            //if (res_table["战斗"]["绿色粒子"].unlocked)
+            //{
+            //    m.魔法_祭坛_祭品_绿色粒子_grid.Visibility = 0;
+            //}
+            //if (res_table["战斗"]["红色粒子"].unlocked)
+            //{
+            //    m.魔法_祭坛_祭品_红色粒子_grid.Visibility = 0;
+            //}
 
-            if (res_table["战斗"]["无色粒子"].unlocked)
-            {
-                m.魔法_祭坛_祭品_无色粒子_grid.Visibility = 0;
-            }
+            //if (res_table["战斗"]["无色粒子"].unlocked)
+            //{
+            //    m.魔法_祭坛_祭品_无色粒子_grid.Visibility = 0;
+            //}
 
 
             #region
@@ -420,7 +394,6 @@ namespace mix_idle
 
             //no.7 娱乐：
             #region
-            vm_elems = new Dictionary<string, FrameworkElement>();
             if (vm.opened)
             {
                 m.vm_main_grid.Visibility = Visibility.Visible;
@@ -497,7 +470,6 @@ namespace mix_idle
             }
             #endregion
 
-            visual_init();
 
             //成就
             #region

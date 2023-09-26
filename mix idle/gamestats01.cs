@@ -688,6 +688,8 @@ namespace mix_idle
 
             public upgrade reseter;
 
+            public position pos;
+
             public upgrade(string NAME, string TYPE, bool MATERIAL = false, bool AUTO_COST = false)
             {
                 name = NAME;
@@ -1155,7 +1157,6 @@ namespace mix_idle
             public double2 skill_time_current = 0;
             public double2 attack_progress = 0;
             public double2 attack_time = 0;
-            public bool shining = false;
             public double2 shine_progress = 0;
             public double2 shine_time = 0.1;
 
@@ -1218,7 +1219,6 @@ namespace mix_idle
                     skill_time_current = 0;
                     attack_progress = 0;
                     shine_progress = 0;
-                    shining = false;
                     attack_time = reseter.attack_time;
                  }
                 if (!lock__)
@@ -1275,7 +1275,6 @@ namespace mix_idle
             public Dictionary<string, multiplier> exp_gain_multipliers = new Dictionary<string, multiplier>();
 
             public player reseter;
-            static public bool have_player = false;
 
             public double2 get_exp_mul()
             {
@@ -1363,14 +1362,13 @@ namespace mix_idle
                 }
             }
 
-            public player()
+            public player(bool first)
             {
-                if (have_player)
+                if (!first)
                 {
                     return;
                 }
-                have_player = true;
-                reseter = new player();
+                reseter = new player(false);
             }
 
             public double2 get_attack()
@@ -1423,7 +1421,7 @@ namespace mix_idle
                 exp_exponent_increment = reseter.exp_exponent_increment;
             }
         }
-        player you = new player();
+        player you = new player(true);
 
         [Serializable]
         public class enemy
@@ -2706,8 +2704,6 @@ namespace mix_idle
                 bp.max_time *= double2.Pow(bp.milestone_effect_time_factor2, reach_ms);
                 bp.max_value *= double2.Pow(bp.milestone_effect_production_factor2, reach_ms);
             }
-
-            ((TextBlock)(m.FindName("方块_" + bp.name))).Text = bp.name + " 生产器 等级" + number_format(bp.level);
         }
         private void 方块生产器收集(block_producter bp)
         {
@@ -3797,7 +3793,6 @@ namespace mix_idle
             foreach (Grid g in m.方块_grid.Children)
             {
                 string[] strs = g.Name.Split('_');
-                ((TextBlock)(m.FindName("方块_" + strs[1]))).Text = strs[1] + " 生产器 等级" + number_format(block_producters[strs[1]].level);
             }
             #endregion
 
