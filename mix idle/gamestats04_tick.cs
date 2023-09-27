@@ -696,21 +696,18 @@ namespace mix_idle
         private void spell_produce()
         {
             spell_cast_protection = new Dictionary<string, double2>();
-            foreach (KeyValuePair<string, upgrade> kp in upgrades)
+            foreach (KeyValuePair<string, spell> kp in spells)
             {
-                if(kp.Value is spell)
+                spell s = kp.Value;
+                if (s.cast_active && s.cost_table_active[s.current_active_lv] != null)
                 {
-                    spell s = (spell)kp.Value;
-                    if (s.cast_active && s.cost_table_active[s.current_active_lv] != null)
+                    foreach (Tuple<string, double2> tuple in s.cost_table_active[s.current_active_lv])
                     {
-                        foreach (Tuple<string, double2> tuple in s.cost_table_active[s.current_active_lv])
+                        if (!spell_cast_protection.ContainsKey(tuple.Item1))
                         {
-                            if (!spell_cast_protection.ContainsKey(tuple.Item1))
-                            {
-                                spell_cast_protection.Add(tuple.Item1, 0);
-                            }
-                            spell_cast_protection[tuple.Item1] += tuple.Item2 * gamespeed();
+                            spell_cast_protection.Add(tuple.Item1, 0);
                         }
+                        spell_cast_protection[tuple.Item1] += tuple.Item2 * gamespeed();
                     }
                 }
             }
@@ -1022,13 +1019,10 @@ namespace mix_idle
                 {
                     minep.exp_multi[2].Add("绿色魔法", new multiplier(true, 1));
                 }
-                foreach (KeyValuePair<string, upgrade> kp in upgrades)
+                foreach (KeyValuePair<string, spell> kp in spells)
                 {
-                    if (kp.Value is spell)
-                    {
-                        spell sp = (spell)(kp.Value);
-                        sp.add_time_mul("绿色魔法", 1, true);
-                    }
+                    spell sp = kp.Value;
+                    sp.add_time_mul("绿色魔法", 1, true);
                 }
                 if (!res_table["转生"]["转生点数"].multipliers.ContainsKey("绿色魔法"))
                 {
@@ -1039,57 +1033,42 @@ namespace mix_idle
                 {
                     case 1:
                         you.exp_gain_multipliers["绿色魔法"].value = 2;
-                        foreach (KeyValuePair<string, upgrade> kp in upgrades)
+                        foreach (KeyValuePair<string, spell> kp in spells)
                         {
-                            if (kp.Value is spell)
-                            {
-                                spell sp = (spell)(kp.Value);
-                                sp.add_time_mul("绿色魔法", 3, true);
-                            }
+                            spell sp = kp.Value;
+                            sp.add_time_mul("绿色魔法", 3, true);
                         }
                         break;
                     case 2:
                         you.exp_gain_multipliers["绿色魔法"].value = 4;
-                        foreach (KeyValuePair<string, upgrade> kp in upgrades)
+                        foreach (KeyValuePair<string, spell> kp in spells)
                         {
-                            if (kp.Value is spell)
-                            {
-                                spell sp = (spell)(kp.Value);
-                                sp.add_time_mul("绿色魔法", 7.5, true);
-                            }
+                            spell sp = kp.Value;
+                            sp.add_time_mul("绿色魔法", 7.5, true);
                         }
                         break;
                     case 3:
                         you.exp_gain_multipliers["绿色魔法"].value = 9;
-                        foreach (KeyValuePair<string, upgrade> kp in upgrades)
+                        foreach (KeyValuePair<string, spell> kp in spells)
                         {
-                            if (kp.Value is spell)
-                            {
-                                spell sp = (spell)(kp.Value);
-                                sp.add_time_mul("绿色魔法", 20, true);
-                            }
+                            spell sp = kp.Value;
+                            sp.add_time_mul("绿色魔法", 20, true);
                         }
                         break;
                     case 4:
                         you.exp_gain_multipliers["绿色魔法"].value = 30;
-                        foreach (KeyValuePair<string, upgrade> kp in upgrades)
+                        foreach (KeyValuePair<string, spell> kp in spells)
                         {
-                            if (kp.Value is spell)
-                            {
-                                spell sp = (spell)(kp.Value);
-                                sp.add_time_mul("绿色魔法", 80, true);
-                            }
+                            spell sp = kp.Value;
+                            sp.add_time_mul("绿色魔法", 80, true);
                         }
                         break;
                     case 5:
                         you.exp_gain_multipliers["绿色魔法"].value = 75;
-                        foreach (KeyValuePair<string, upgrade> kp in upgrades)
+                        foreach (KeyValuePair<string, spell> kp in spells)
                         {
-                            if (kp.Value is spell)
-                            {
-                                spell sp = (spell)(kp.Value);
-                                sp.add_time_mul("绿色魔法", 400, true);
-                            }
+                            spell sp = kp.Value;
+                            sp.add_time_mul("绿色魔法", 400, true);
                         }
                         minep.exp_multi[2]["绿色魔法"].value = 1.5;
                         break;
@@ -1101,15 +1080,12 @@ namespace mix_idle
                     {
                         you.exp_gain_multipliers["绿色魔法"].value =
                             1 + (you.exp_gain_multipliers["绿色魔法"].value - 1) * uncast_effect;
-                        foreach (KeyValuePair<string, upgrade> kp in upgrades)
+                        foreach (KeyValuePair<string, spell> kp in spells)
                         {
-                            if (kp.Value is spell)
-                            {
-                                spell sp = (spell)(kp.Value);
-                                sp.speed_ups["绿色魔法"].value =
-                                    1 + (sp.speed_ups["绿色魔法"].value - 1) * uncast_effect;
-                                sp.current_time /= uncast_effect;
-                            }
+                            spell sp = kp.Value;
+                            sp.speed_ups["绿色魔法"].value =
+                                1 + (sp.speed_ups["绿色魔法"].value - 1) * uncast_effect;
+                            sp.current_time /= uncast_effect;
                         }
                         minep.exp_multi[2]["绿色魔法"].value =
                             1 + (minep.exp_multi[2]["绿色魔法"].value - 1) * uncast_effect;
@@ -1117,13 +1093,10 @@ namespace mix_idle
                     else
                     {
                         you.exp_gain_multipliers["绿色魔法"].value = 1;
-                        foreach (KeyValuePair<string, upgrade> kp in upgrades)
+                        foreach (KeyValuePair<string, spell> kp in spells)
                         {
-                            if (kp.Value is spell)
-                            {
-                                spell sp = (spell)(kp.Value);
-                                sp.add_time_mul("绿色魔法", 1, true);
-                            }
+                            spell sp = (spell)(kp.Value);
+                            sp.add_time_mul("绿色魔法", 1, true);
                         }
                         minep.exp_multi[2]["绿色魔法"].value = 1;
                     }

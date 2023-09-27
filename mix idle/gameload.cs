@@ -202,24 +202,6 @@ namespace mix_idle
                 }
             }
 
-            //if (res_table["战斗"]["白色粒子"].unlocked)
-            //{
-            //    m.魔法_祭坛_祭品_白色粒子_grid.Visibility = 0;
-            //}
-            //if (res_table["战斗"]["绿色粒子"].unlocked)
-            //{
-            //    m.魔法_祭坛_祭品_绿色粒子_grid.Visibility = 0;
-            //}
-            //if (res_table["战斗"]["红色粒子"].unlocked)
-            //{
-            //    m.魔法_祭坛_祭品_红色粒子_grid.Visibility = 0;
-            //}
-
-            //if (res_table["战斗"]["无色粒子"].unlocked)
-            //{
-            //    m.魔法_祭坛_祭品_无色粒子_grid.Visibility = 0;
-            //}
-
 
             #region
             if (upgrades["祭坛升级"].unlocked)
@@ -247,33 +229,16 @@ namespace mix_idle
                 }
 
                 Grid g = (Grid)m.FindName(name_of_grid);
-                if (e.unlocked)
-                {
-                    g.Visibility = 0;
-                }
-                else
-                {
-                    g.Visibility = Visibility.Hidden;
-                }
+                visibility_transfer(g, e.unlocked);
             }
             
 
-            foreach(KeyValuePair<string, upgrade> kp in upgrades) 
+            foreach(KeyValuePair<string, spell> kp in spells) 
             {
-                upgrade u = kp.Value;
+                spell u = kp.Value;
                 string name = kp.Key;
-                if(u is spell)
-                {
-                    Grid g = ((Grid)(m.FindName("魔法_法术_" + name + "_grid")));
-                    if (u.unlocked)
-                    {
-                        g.Visibility = 0;
-                    }
-                    else
-                    {
-                        g.Visibility = (Visibility)1;
-                    }
-                }
+                Grid g = ((Grid)(m.FindName("魔法_法术_" + name + "_grid")));
+                visibility_transfer(g, u.unlocked);
             }
 
             #region
@@ -285,14 +250,7 @@ namespace mix_idle
                 {
                     e.LinearGradientBrush = get_lgb();
                     Grid g = ((Grid)(m.FindName("魔法_次_药水_" + name + "_grid")));
-                    if (e.unlocked)
-                    {
-                        g.Visibility = 0;
-                    }
-                    else
-                    {
-                        g.Visibility = (Visibility)1;
-                    }
+                    visibility_transfer(g, e.unlocked);
                 }
             }
 
@@ -326,51 +284,47 @@ namespace mix_idle
             }
 
             //魔法_法术_白色魔法_施法
-            foreach (KeyValuePair<string, upgrade> kp in upgrades)
+            foreach (KeyValuePair<string, spell> kp in spells)
             {
-                upgrade u = kp.Value;
+                spell s = kp.Value;
                 string name = kp.Key;
-                
-                if (u is spell)
+
+                string cover_name = "魔法_法术_" + name + "_学习";
+                string bg_name = cover_name + "_背景";
+                string text_name = cover_name + "_文字";
+                Rectangle r = ((Rectangle)(m.FindName(bg_name)));
+                TextBlock t = ((TextBlock)(m.FindName(text_name)));
+
+
+                if (s.studying)
                 {
-                    spell s = (spell)u;
-                    string cover_name = "魔法_法术_" + name + "_学习";
-                    string bg_name = cover_name + "_背景";
-                    string text_name = cover_name + "_文字";
-                    Rectangle r = ((Rectangle)(m.FindName(bg_name)));
-                    TextBlock t = ((TextBlock)(m.FindName(text_name)));
-
-
-                    if (s.studying)
-                    {
-                        r.Fill = getSCB(Color.FromRgb(0, 255, 255));
-                    }
-                    else
-                    {
-                        r.Fill = getSCB(Color.FromRgb(255, 255, 255));
-                    }
-                    t.Foreground = getSCB(Color.FromRgb(0, 0, 0));
-
-                    if (name == "探索魔法" || name == "法术创作")
-                    {
-                        continue;
-                    }
-
-                    cover_name = "魔法_法术_" + name + "_施法";
-                    bg_name = cover_name + "_背景";
-                    text_name = cover_name + "_文字";
-                    r = ((Rectangle)(m.FindName(bg_name)));
-                    t = ((TextBlock)(m.FindName(text_name)));
-                    if (s.casting)
-                    {
-                        r.Fill = getSCB(Color.FromRgb(0, 255, 255));
-                    }
-                    else
-                    {
-                        r.Fill = getSCB(Color.FromRgb(255, 255, 255));
-                    }
-                    t.Foreground = getSCB(Color.FromRgb(0, 0, 0));
+                    r.Fill = getSCB(Color.FromRgb(0, 255, 255));
                 }
+                else
+                {
+                    r.Fill = getSCB(Color.FromRgb(255, 255, 255));
+                }
+                t.Foreground = getSCB(Color.FromRgb(0, 0, 0));
+
+                if (name == "探索魔法" || name == "法术创作")
+                {
+                    continue;
+                }
+
+                cover_name = "魔法_法术_" + name + "_施法";
+                bg_name = cover_name + "_背景";
+                text_name = cover_name + "_文字";
+                r = ((Rectangle)(m.FindName(bg_name)));
+                t = ((TextBlock)(m.FindName(text_name)));
+                if (s.casting)
+                {
+                    r.Fill = getSCB(Color.FromRgb(0, 255, 255));
+                }
+                else
+                {
+                    r.Fill = getSCB(Color.FromRgb(255, 255, 255));
+                }
+                t.Foreground = getSCB(Color.FromRgb(0, 0, 0));
             }
             #endregion
 

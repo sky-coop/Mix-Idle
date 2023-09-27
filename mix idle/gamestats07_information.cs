@@ -743,12 +743,9 @@ namespace mix_idle
             {
                 level += kp.Value.level / 10;
             }
-            foreach (KeyValuePair<string, upgrade> kp in upgrades)
+            foreach (KeyValuePair<string, spell> kp in spells)
             {
-                if (kp.Value is spell)
-                {
-                    level += kp.Value.level;
-                }
+                level += kp.Value.level;
             }
             return double2.Min(1 - double2.Pow(0.99, level), 0.75);
         }

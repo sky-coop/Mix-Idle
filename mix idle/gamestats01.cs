@@ -907,6 +907,8 @@ namespace mix_idle
             public LinearGradientBrush LinearGradientBrush;
             public bool can_buy = true;
 
+            public position p;
+
             public double2 get_effect_mul()
             {
                 double2 x = 1;
@@ -1059,6 +1061,8 @@ namespace mix_idle
             public double2 mana_exponent = 0.5;
             public double2 mana_factor = 1;
 
+            public Dictionary<string, position> positions = new Dictionary<string, position>();
+
             public double2 get_power_mul()
             {
                 double2 x = 1;
@@ -1078,10 +1082,11 @@ namespace mix_idle
                 return x;
             }
 
-            public void add(string res_name, double2 effect)
+            public void add(string res_name, double2 effect, position p)
             {
                 power_table_base.Add(res_name, effect);
                 power_table.Add(res_name, effect);
+                positions.Add(res_name, p);
             }
 
             public void eat(string res_name, double2 n)
@@ -1458,6 +1463,8 @@ namespace mix_idle
             public double2 slow;
             public double2 defense;
             public double2 regen;
+
+            public position p;
 
             public byte r;
             public byte g;
@@ -2527,6 +2534,7 @@ namespace mix_idle
             new Dictionary<string, block_producter>();
 
         Dictionary<string, upgrade> upgrades = new Dictionary<string, upgrade>();
+        Dictionary<string, spell> spells = new Dictionary<string, spell>();
         Dictionary<string, link> links = new Dictionary<string, link>();
 
         Dictionary<string, Dictionary<string, enemy>> enemies = new Dictionary<string, Dictionary<string, enemy>>();
@@ -3544,12 +3552,35 @@ namespace mix_idle
             return ret;
         }
 
+        //p.i 行数   p.j 页数
+        public void spell_add(spell s, position p)
+        {
+            upgrades.Add(s.name, s);
+            spells.Add(s.name, s);
+            if (p != null)
+            {
+                s.pos = p;
+                spell_all_page_update(p.j);
+            }
+        }
+
         int spell_page = 1;
         int spell_max_page = 1;
-        int spell_all_page = 2;
+        int spell_all_page = 1;
         private void spell_page_update(int x)
         {
             spell_max_page = Math.Max(spell_max_page, x);
+        }
+        private void spell_unlock(string name)
+        {
+            spell s = spells[name];
+            s.unlocked = true;
+            visual_unlock("魔法_法术_" + name + "_grid");
+            spell_page_update(s.pos.j);
+        }
+        private void spell_all_page_update(int x)
+        {
+            spell_all_page = Math.Max(spell_all_page, x);
         }
         private void spell_page_show()
         {
@@ -3863,18 +3894,15 @@ namespace mix_idle
                 ((Rectangle)m.FindName(cover_name + "_背景")).Fill = getSCB(Color.FromRgb(0, 255, 195));
                 ((TextBlock)m.FindName(cover_name + "_文字")).Foreground = getSCB(Color.FromRgb(0, 0, 0));
             }
-            foreach (KeyValuePair<string, upgrade> kp1 in upgrades)
+            foreach (KeyValuePair<string, spell> kp1 in spells)
             {
-                if(kp1.Value is spell)
+                foreach (KeyValuePair<string, multiplier> kp2 in ((spell)kp1.Value).cost_downs)
                 {
-                    foreach (KeyValuePair<string, multiplier> kp2 in ((spell)kp1.Value).cost_downs)
-                    {
-                        kp2.Value.reset();
-                    }
-                    foreach (KeyValuePair<string, multiplier> kp2 in ((spell)kp1.Value).speed_ups)
-                    {
-                        kp2.Value.reset();
-                    }
+                    kp2.Value.reset();
+                }
+                foreach (KeyValuePair<string, multiplier> kp2 in ((spell)kp1.Value).speed_ups)
+                {
+                    kp2.Value.reset();
                 }
             }
 

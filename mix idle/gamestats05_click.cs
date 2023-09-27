@@ -363,7 +363,6 @@ namespace mix_idle
             }
             #endregion
 
-
             //no.2 制造
             #region
             if (strs[0] == "制造")

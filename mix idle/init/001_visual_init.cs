@@ -34,14 +34,7 @@ namespace mix_idle
             i = 0;
             foreach (Grid g in m.战斗_option_grid.Children)
             {
-                if (unlocks.fight_unlock[i])
-                {
-                    g.Visibility = 0;
-                }
-                else
-                {
-                    g.Visibility = (Visibility)1;
-                }
+                visibility_transfer(g, unlocks.fight_unlock[i]);
                 i++;
             }
 
@@ -59,14 +52,7 @@ namespace mix_idle
             {
                 g.Visibility = (Visibility)1;
             }
-            if (unlocks.potion)
-            {
-                m.魔法_菜单_药水_grid.Visibility = 0;
-            }
-            else
-            {
-                m.魔法_菜单_药水_grid.Visibility = (Visibility)1;
-            }
+            visibility_transfer(m.魔法_菜单_药水_grid, unlocks.potion);
             #endregion 魔法
 
 
@@ -77,20 +63,22 @@ namespace mix_idle
 
             visual_create_bp();
             visual_create_craft();
+            visual_create_enemies();
+            visual_create_magic();
 
             制造_options = make_group(m.制造_option_grid);
 
             战斗_options = make_group(m.战斗_option_grid);
             战斗_enemies = new List<List<Rectangle>>();
-            战斗_洁白世界_enemies = make_group(m.战斗_场景_洁白世界_enemy_grid);
+            战斗_洁白世界_enemies = make_group(find_grid("战斗_场景_洁白世界_enemy_grid"));
             战斗_enemies.Add(战斗_洁白世界_enemies);
-            战斗_草原_enemies = make_group(m.战斗_场景_草原_enemy_grid);
+            战斗_草原_enemies = make_group(find_grid("战斗_场景_草原_enemy_grid"));
             战斗_enemies.Add(战斗_草原_enemies);
-            战斗_死火山_enemies = make_group(m.战斗_场景_死火山_enemy_grid);
+            战斗_死火山_enemies = make_group(find_grid("战斗_场景_死火山_enemy_grid"));
             战斗_enemies.Add(战斗_死火山_enemies);
-            战斗_机关屋_enemies = make_group(m.战斗_场景_机关屋_enemy_grid);
+            战斗_机关屋_enemies = make_group(find_grid("战斗_场景_机关屋_enemy_grid"));
             战斗_enemies.Add(战斗_机关屋_enemies);
-            战斗_魔境_enemies = make_group(m.战斗_场景_魔境_enemy_grid);
+            战斗_魔境_enemies = make_group(find_grid("战斗_场景_魔境_enemy_grid"));
             战斗_enemies.Add(战斗_魔境_enemies);
 
             战斗_自动攻击风格 = make_group(m.战斗_玩家_攻击风格_自动_grid);
@@ -116,16 +104,17 @@ namespace mix_idle
             {
                 group_process(战斗_options, ((Rectangle)m.FindName("战斗_场景_" + enemy.curr_field)), true);
 
-                Grid field_grid = (Grid)(m.FindName("战斗_场景_" + enemy.curr_field + "_target_grid"));
+                Grid field_grid = (Grid)(m.FindName("战斗_场景_" + enemy.curr_field + "_grid"));
                 Grid enemy_grid = (Grid)(m.FindName("战斗_场景_" + enemy.curr_field + "_enemy_grid"));
                 int count = 0;
-                foreach (Grid g in m.战斗_场景_grid.Children)
+                foreach (Grid g in m.战斗_option_grid.Children)
                 {
                     if (g.Equals(field_grid))
                     {
+                        count = Grid.GetRow(g) * m.战斗_option_grid.ColumnDefinitions.Count + 
+                                Grid.GetColumn(g);
                         break;
                     }
-                    count++;
                 }
 
                 foreach (FrameworkElement f in enemy_grid.Children)

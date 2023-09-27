@@ -531,20 +531,22 @@ namespace mix_idle
                         upgrades["铲子"].unlocked = true;
                         ((Grid)(m.FindName("制造_次_工具_铲子_grid"))).Visibility = 0;
 
-                        m.战斗_场景_草原_grid.Visibility = 0;
+                        unlocks.fight_unlock[1] = true;
+                        find_name("战斗_场景_草原_grid").Visibility = 0;
                         break;
                     case 2:
                         block_producters["木头方块"].unlocked = true;
                         res_table["方块"]["木头方块"].unlocked = true;
                         ((Grid)(m.FindName("方块_木头方块_grid"))).Visibility = 0;
 
-                        m.战斗_场景_死火山_grid.Visibility = 0;
+                        unlocks.fight_unlock[2] = true;
+                        find_name("战斗_场景_死火山_grid").Visibility = 0;
 
-                        m.魔法_次_附魔_烈焰粉末_grid.Visibility = 0;
+                        visual_unlock("魔法_次_附魔_烈焰粉末_grid");
                         res_table["魔法"]["烈焰粉末"].unlocked = true;
                         enchants["烈焰粉末"].unlocked = true;
 
-                        m.魔法_次_药水_烈焰药水_grid.Visibility = 0;
+                        visual_unlock("魔法_次_药水_烈焰药水_grid");
                         enchants["烈焰药水"].unlocked = true;
                         break;
                     case 3:
@@ -583,12 +585,14 @@ namespace mix_idle
                         upgrades["经典BBQ大餐"].unlocked = true;
                         ((Grid)(m.FindName("制造_次_食物_经典BBQ大餐_grid"))).Visibility = 0;
 
-                        m.魔法_次_药水_幸运药水_grid.Visibility = 0;
+                        visual_unlock("魔法_次_药水_幸运药水_grid");
                         enchants["幸运药水"].unlocked = true;
                         break;
                     case 4:
-                        m.战斗_场景_机关屋_grid.Visibility = 0;
-                        m.战斗_场景_魔境_grid.Visibility = 0;
+                        unlocks.fight_unlock[3] = true;
+                        find_name("战斗_场景_机关屋_grid").Visibility = 0;
+                        unlocks.fight_unlock[4] = true;
+                        find_name("战斗_场景_魔境_grid").Visibility = 0;
                         break;
                 }
                 if (prestige_ups["战斗探索"].level >= 1)
@@ -620,38 +624,31 @@ namespace mix_idle
                 switch (level)
                 {
                     case 1:
-                        upgrades["白色魔法"].unlocked = true;
-                        m.魔法_法术_白色魔法_grid.Visibility = 0;
+                        spell_unlock("白色魔法");
                         break;
                     case 2:
                         unlocks.potion = true;
                         m.魔法_菜单_药水_grid.Visibility = 0;
                         break;
                     case 3:
-                        upgrades["绿色魔法"].unlocked = true;
-                        m.魔法_法术_绿色魔法_grid.Visibility = 0;
+                        spell_unlock("绿色魔法");
                         break;
                     case 4:
-                        upgrades["红色魔法"].unlocked = true;
-                        m.魔法_法术_红色魔法_grid.Visibility = 0;
+                        spell_unlock("红色魔法");
                         break;
                     case 5:
-                        m.魔法_次_附魔_魔法糖浆_grid.Visibility = 0;
+                        visual_unlock("魔法_次_附魔_魔法糖浆_grid");
                         res_table["魔法"]["魔法糖浆"].unlocked = true;
                         enchants["魔法糖浆"].unlocked = true;
                         break;
                     case 6:
-                        upgrades["橙色魔法"].unlocked = true;
-                        m.魔法_法术_橙色魔法_grid.Visibility = 0;
-                        spell_max_page = 2;
+                        spell_unlock("橙色魔法");
                         break;
                     case 7:
-                        upgrades["蓝色魔法"].unlocked = true;
-                        m.魔法_法术_蓝色魔法_grid.Visibility = 0;
+                        spell_unlock("蓝色魔法");
                         break;
                     case 8:
-                        upgrades["无色魔法"].unlocked = true;
-                        m.魔法_法术_无色魔法_grid.Visibility = 0;
+                        spell_unlock("无色魔法");
                         //挖掘魔法
                         break;
                 }
@@ -813,10 +810,10 @@ namespace mix_idle
                         方块生产器升级(bp, target - bp.level);
                     }
 
-                    foreach (KeyValuePair<string, upgrade> kp in upgrades)
+                    foreach (KeyValuePair<string, spell> kp in spells)
                     {
-                        upgrade u = kp.Value;
-                        if (u is spell && u.can_reset)
+                        spell u = kp.Value;
+                        if (u.can_reset)
                         {
                             u.reseter.level = u.best;
                             buy_upgrade_no_cost(u, u.reseter.level);
@@ -976,19 +973,15 @@ namespace mix_idle
             {
                 if (p.level == 1)
                 {
-                    foreach (KeyValuePair<string, upgrade> kp in upgrades)
+                    foreach (KeyValuePair<string, spell> kp in spells)
                     {
-                        upgrade u = kp.Value;
-                        if (u is spell)
+                        spell s = kp.Value;
+                        if (!s.cost_downs.ContainsKey("魔法增幅"))
                         {
-                            spell s = (spell)u;
-                            if (!s.cost_downs.ContainsKey("魔法增幅"))
-                            {
-                                s.cost_downs.Add("魔法增幅", new multiplier(false, 1));
-                            }
-                            s.cost_downs["魔法增幅"].value = 1.5;
-                            s.add_time_mul("魔法增幅", 1.5, false);
+                            s.cost_downs.Add("魔法增幅", new multiplier(false, 1));
                         }
+                        s.cost_downs["魔法增幅"].value = 1.5;
+                        s.add_time_mul("魔法增幅", 1.5, false);
                     }
                 }
                 else if (p.level == 2)
@@ -1008,19 +1001,15 @@ namespace mix_idle
                 }
                 else if (p.level == 3)
                 {
-                    foreach (KeyValuePair<string, upgrade> kp in upgrades)
+                    foreach (KeyValuePair<string, spell> kp in spells)
                     {
-                        upgrade u = kp.Value;
-                        if (u is spell)
+                        spell s = kp.Value;
+                        if (!s.cost_downs.ContainsKey("魔法增幅"))
                         {
-                            spell s = (spell)u;
-                            if (!s.cost_downs.ContainsKey("魔法增幅"))
-                            {
-                                s.cost_downs.Add("魔法增幅", new multiplier(false, 1));
-                            }
-                            s.cost_downs["魔法增幅"].value = 3;
-                            s.add_time_mul("魔法增幅", 3, false);
+                            s.cost_downs.Add("魔法增幅", new multiplier(false, 1));
                         }
+                        s.cost_downs["魔法增幅"].value = 3;
+                        s.add_time_mul("魔法增幅", 3, false);
                     }
                     foreach (KeyValuePair<string, enchant> kp in enchants)
                     {

@@ -971,36 +971,29 @@ namespace mix_idle
                         ((TextBlock)m.FindName(cover_name + "_价格" + make_text(n) + "s")).Text = "";
                     }
 
-                    ((TextBlock)m.FindName(cover_name + "_数量")).Foreground = getSCB(Color.FromRgb(255, 255, 255));
                     string produce = "";
                     if (ec.name == "战斗经验药水")
                     {
                         produce = number_format(ec.get_effect_mul() * 1.5e6 * double2.Pow(30, ec.level) * you.get_exp_mul()) + " 战斗经验";
-                        ((TextBlock)m.FindName(cover_name + "_数量")).Foreground = getSCB(Color.FromRgb(0, 255, 0));
                     }
                     if (ec.name == "攻击药水")
                     {
                         produce = number_format(ec.get_effect_mul() * double2.Pow(1.5 + 0.1 * (double2)ec.level, 2)) + " 物品攻击";
-                        ((TextBlock)m.FindName(cover_name + "_数量")).Foreground = getSCB(Color.FromRgb(255, 0, 0));
                     }
                     if (ec.name == "魔力药水")
                     {
                         produce = number_format(ec.get_effect_mul() * 1200 * double2.Pow(11, ec.level) * find_resource("魔力").get_mul()) + " 魔力";
-                        ((TextBlock)m.FindName(cover_name + "_数量")).Foreground = find_resource("魔力").text_color();
                     }
                     if (ec.name == "烈焰药水")
                     {
                         produce = number_format(ec.get_effect_mul() * double2.Pow(0.2 + 0.01 * (double2)ec.level, 2)) + " 减速值下降速度";
-                        ((TextBlock)m.FindName(cover_name + "_数量")).Foreground = getSCB(Color.FromRgb(100, 200, 255));
                     }
                     if (ec.name == "幸运药水")
                     {
                         produce = number_format(ec.get_effect_mul() * double2.Pow(0.03 + 0.0025 * (double2)ec.level, 1.5)) + " 基础幸运值";
-                        ((TextBlock)m.FindName(cover_name + "_数量")).Foreground = getSCB(Color.FromRgb(255, 200, 255));
                     }
-
-
-                   ((TextBlock)m.FindName(cover_name + "_数量")).Text = produce;
+                    ((TextBlock)m.FindName(cover_name + "_数量")).Foreground = potion_colors[ec.name].toBrush();
+                    ((TextBlock)m.FindName(cover_name + "_数量")).Text = produce;
 
                     ((TextBlock)m.FindName(cover_name + "_时间")).Text = "时间: " + number_format(ec.current_time) + " / " + number_format(ec.get_time());
                     

@@ -11,6 +11,7 @@ namespace mix_idle
     {
         public void game_init(bool load_auto = false)
         {
+            string str;
             ex.reseter = new energy
             {
                 cost_mul = 1
@@ -51,8 +52,6 @@ namespace mix_idle
 
 
             m.制造_菜单_食物_grid.Visibility = (Visibility)1;
-
-            m.战斗_场景_洁白世界_grid.Visibility = 0;
 
 
 
@@ -1093,6 +1092,7 @@ namespace mix_idle
             #region
             enemy e;
             Dictionary<string, Tuple<double2, double2>> e_loot;
+            int enemy_i;
             //洁白世界
             #region
             {
@@ -1107,9 +1107,13 @@ namespace mix_idle
 
                 Dictionary<string, enemy> enemy_洁白世界 = new Dictionary<string, enemy>();
                 enemies.Add("洁白世界", enemy_洁白世界);
+                enemy_i = 0;
+                unlocks.fight_unlock[0] = true;
+                enemies_group_positions.Add("洁白世界", new position("", 0, 0));
 
                 #region
                 //洁白世界::白花
+                enemy_i++;
                 e_loot = new Dictionary<string, Tuple<double2, double2>>
                 {
                     { "白色方块", new Tuple<double2, double2>(3500, 2.55) }
@@ -1119,10 +1123,12 @@ namespace mix_idle
                     des = "一朵白花，由很多小小的白色方块组成。"
                 };
                 enemy_洁白世界.Add("白花", e);
+                e.p = new position("", enemy_i, 0);
                 #endregion
 
                 #region
                 //洁白世界::雪
+                enemy_i++;
                 e_loot = new Dictionary<string, Tuple<double2, double2>>
                 {
                     { "白色粉末", new Tuple<double2, double2>(300, 1.867) }
@@ -1132,10 +1138,12 @@ namespace mix_idle
                 e.set_special_exponent(0.1, 0, 0);
                 e.des = "美丽的雪，但你从中感受到寒冷。因此攻击它之后，攻击时间会暂时延长。";
                 enemy_洁白世界.Add("雪", e);
+                e.p = new position("", enemy_i, 0);
                 #endregion
 
                 #region
                 //洁白世界::白砖
+                enemy_i++;
                 e_loot = new Dictionary<string, Tuple<double2, double2>>
                 {
                     { "白色方块", new Tuple<double2, double2>(84000, 2.55) }
@@ -1145,10 +1153,12 @@ namespace mix_idle
                 e.set_special_exponent(0, 2.1, 0);
                 e.des = "一个很大的白色方块，很坚硬。攻击它时的伤害会减少。";
                 enemy_洁白世界.Add("白砖", e);
+                e.p = new position("", enemy_i, 0);
                 #endregion
 
                 #region
                 //洁白世界::糖
+                enemy_i++;
                 e_loot = new Dictionary<string, Tuple<double2, double2>>
                 {
                     { "白色粉末", new Tuple<double2, double2>(1800, 2.364) }
@@ -1158,10 +1168,12 @@ namespace mix_idle
                 e.set_special_exponent(0, 0, 2.75);
                 e.des = "很甜的白色颗粒，会随着时间恢复血量。";
                 enemy_洁白世界.Add("糖", e);
+                e.p = new position("", enemy_i, 0);
                 #endregion
 
                 #region
                 //洁白世界::白墙
+                enemy_i++;
                 e_loot = new Dictionary<string, Tuple<double2, double2>>
                 {
                     { "白色方块", new Tuple<double2, double2>(1.6e6, 3.54) }
@@ -1171,10 +1183,12 @@ namespace mix_idle
                 e.set_special_exponent(0, 2.5, 2.5);
                 e.des = "一堵巨大的白色墙，在很坚硬的同时还有神奇的恢复功能。";
                 enemy_洁白世界.Add("白墙", e);
+                e.p = new position("", enemy_i, 0);
                 #endregion
 
                 #region
                 //洁白世界::白色粒子
+                enemy_i++;
                 e_loot = new Dictionary<string, Tuple<double2, double2>>
                 {
                     { "白色粒子", new Tuple<double2, double2>(1, 1.5) }
@@ -1184,6 +1198,7 @@ namespace mix_idle
                 e.set_special_exponent(0.3, 0, 2.4);
                 e.des = "极其活跃的白色粒子，具有魔法的力量。击败它以永久解锁“魔法”面板。";
                 enemy_洁白世界.Add("白色粒子", e);
+                e.p = new position("", enemy_i, 0);
                 #endregion
             }
             #endregion
@@ -1224,9 +1239,12 @@ namespace mix_idle
 
                 Dictionary<string, enemy> enemy_草原 = new Dictionary<string, enemy>();
                 enemies.Add("草原", enemy_草原);
+                enemy_i = 0;
+                enemies_group_positions.Add("草原", new position("", 0, 1));
 
                 //草原::草
                 #region
+                enemy_i++;
                 e_loot = new Dictionary<string, Tuple<double2, double2>>
                 {
                     { "植物原料", new Tuple<double2, double2>(15, 1.442) }
@@ -1236,10 +1254,12 @@ namespace mix_idle
                 e.set_special_exponent(0, 0, 1.5);
                 e.des = "随处可见的草，拥有一点点恢复能力。";
                 enemy_草原.Add("草", e);
+                e.p = new position("", enemy_i, 0);
                 #endregion
 
                 //草原::虫子
                 #region
+                enemy_i++;
                 e_loot = new Dictionary<string, Tuple<double2, double2>>
                 {
                     { "动物原料", new Tuple<double2, double2>(4, 1.3) }
@@ -1249,10 +1269,12 @@ namespace mix_idle
                 e.set_special_exponent(0, 1.4, 1.5);
                 e.des = "某些人最讨厌的东西。";
                 enemy_草原.Add("虫子", e);
+                e.p = new position("", enemy_i, 0);
                 #endregion
 
                 //草原::微风
                 #region
+                enemy_i++;
                 e_loot = new Dictionary<string, Tuple<double2, double2>>
                 {
                     { "无色粒子", new Tuple<double2, double2>(0.007, 1.23) }
@@ -1262,10 +1284,12 @@ namespace mix_idle
                 e.set_special_exponent(0.5, 0, 0);
                 e.des = "对不够强大的人来说它其实是有力的风。";
                 enemy_草原.Add("微风", e);
+                e.p = new position("", enemy_i, 0);
                 #endregion
 
                 //草原::羊
                 #region
+                enemy_i++;
                 e_loot = new Dictionary<string, Tuple<double2, double2>>
                 {
                     { "动物原料", new Tuple<double2, double2>(45, 1.454) }
@@ -1275,10 +1299,12 @@ namespace mix_idle
                 e.set_special_exponent(0, 1.7, 1.7);
                 e.des = "有时候你可以提前看一看接下来的敌人，它们不一定都比上一个强很多。";
                 enemy_草原.Add("羊", e);
+                e.p = new position("", enemy_i, 0);
                 #endregion
 
                 //草原::绿色粒子
                 #region
+                enemy_i++;
                 e_loot = new Dictionary<string, Tuple<double2, double2>>
                 {
                     { "绿色粒子", new Tuple<double2, double2>(1, 1.389) }
@@ -1288,10 +1314,12 @@ namespace mix_idle
                 e.set_special_exponent(0.25, 0, 2.25);
                 e.des = "这可能是生命的源头。";
                 enemy_草原.Add("绿色粒子", e);
+                e.p = new position("", enemy_i, 0);
                 #endregion
 
                 //草原::土丘
                 #region
+                enemy_i++;
                 e_loot = new Dictionary<string, Tuple<double2, double2>>
                 {
                     { "泥土方块", new Tuple<double2, double2>(60e3, 1.917) }
@@ -1301,10 +1329,10 @@ namespace mix_idle
                 e.set_special_exponent(0, 1.85, 0);
                 e.des = "这么多泥土方块有什么用？击败它以永久解锁魔法祭坛的强化选项。";
                 enemy_草原.Add("土丘", e);
+                e.p = new position("", enemy_i, 0);
                 #endregion
             }
             #endregion
-
             //死火山
             #region
             {
@@ -1318,9 +1346,12 @@ namespace mix_idle
 
                 Dictionary<string, enemy> enemy_死火山 = new Dictionary<string, enemy>();
                 enemies.Add("死火山", enemy_死火山);
+                enemy_i = 0;
+                enemies_group_positions.Add("死火山", new position("", 0, 2));
 
                 //死火山::大树     经验 ^ 0.7306 植物原料
                 #region
+                enemy_i++;
                 e_loot = new Dictionary<string, Tuple<double2, double2>>
                 {
                     { "植物原料", new Tuple<double2, double2>(18e3, 1.7) },
@@ -1331,10 +1362,12 @@ namespace mix_idle
                 e.set_special_exponent(0, 0, 1.8);
                 e.des = "非常大的树。";
                 enemy_死火山.Add("大树", e);
+                e.p = new position("", enemy_i, 0);
                 #endregion
 
                 //死火山::魔法果
                 #region
+                enemy_i++;
                 e_loot = new Dictionary<string, Tuple<double2, double2>>
                 {
                     { "植物原料", new Tuple<double2, double2>(90e3, 1.528) },
@@ -1345,10 +1378,12 @@ namespace mix_idle
                 e.set_special_exponent(0.6, 0, 1.6);
                 e.des = "魔法植物是指拥有魔力的植物，比如魔法果。吃掉魔法果可以得到一些魔力。";
                 enemy_死火山.Add("魔法果", e);
+                e.p = new position("", enemy_i, 0);
                 #endregion
 
                 //死火山::野猪
                 #region
+                enemy_i++;
                 e_loot = new Dictionary<string, Tuple<double2, double2>>
                 {
                     { "动物原料", new Tuple<double2, double2>(6300, 1.331) }
@@ -1358,10 +1393,12 @@ namespace mix_idle
                 e.set_special_exponent(0.1, 1.5, 1.6);
                 e.des = "战斗力强的野猪。";
                 enemy_死火山.Add("野猪", e);
+                e.p = new position("", enemy_i, 0);
                 #endregion
 
                 //死火山::云
                 #region
+                enemy_i++;
                 e_loot = new Dictionary<string, Tuple<double2, double2>>
                 {
                     { "白色方块", new Tuple<double2, double2>(30e15, 2.55) },
@@ -1373,10 +1410,12 @@ namespace mix_idle
                 e.set_special_exponent(5, 0, 0);
                 e.des = "这座山的高度足以让你触碰到云。";
                 enemy_死火山.Add("云", e);
+                e.p = new position("", enemy_i, 0);
                 #endregion
 
                 //死火山::红色粒子
                 #region
+                enemy_i++;
                 e_loot = new Dictionary<string, Tuple<double2, double2>>
                 {
                     { "红色粒子", new Tuple<double2, double2>(44, 1.281) }
@@ -1386,10 +1425,12 @@ namespace mix_idle
                 e.set_special_exponent(0, 0, 0);
                 e.des = "从这座死火山的顶端冒出来的红色粒子，为什么会有这么多生命值？";
                 enemy_死火山.Add("红色粒子", e);
+                e.p = new position("", enemy_i, 0);
                 #endregion
 
                 //死火山::陨石
                 #region
+                enemy_i++;
                 e_loot = new Dictionary<string, Tuple<double2, double2>>
                 {
                     { "石头方块", new Tuple<double2, double2>(135e6, 1.834) },
@@ -1401,10 +1442,10 @@ namespace mix_idle
                 e.set_special_exponent(0, 1.8, 0);
                 e.des = "你发现了陨石！若要获得战利品，必须先做一把镐子。";
                 enemy_死火山.Add("陨石", e);
+                e.p = new position("", enemy_i, 0);
                 #endregion
             }
             #endregion
-
             //机关屋
             #region
             {
@@ -1418,10 +1459,13 @@ namespace mix_idle
 
                 Dictionary<string, enemy> enemy_机关屋 = new Dictionary<string, enemy>();
                 enemies.Add("机关屋", enemy_机关屋);
+                enemy_i = 0;
+                enemies_group_positions.Add("机关屋", new position("", 0, 3));
 
                 //   经验 ^ 0.7306 植物原料
                 //机关屋::土锤 
                 #region
+                enemy_i++;
                 e_loot = new Dictionary<string, Tuple<double2, double2>>
                 {
                     { "泥土方块", new Tuple<double2, double2>(600e6, 1.418) }
@@ -1431,10 +1475,12 @@ namespace mix_idle
                 e.set_special_exponent(4, 1.5, 0);
                 e.des = "如果是比草原上的土丘还大的锤子，一锤敲下来大概谁都会死。（幸好您没有血条）";
                 enemy_机关屋.Add("土锤", e);
+                e.p = new position("", enemy_i, 0);
                 #endregion
 
                 //机关屋::煤球 
                 #region
+                enemy_i++;
                 e_loot = new Dictionary<string, Tuple<double2, double2>>
                 {
                     { "煤", new Tuple<double2, double2>(90, 1.452) }
@@ -1445,10 +1491,12 @@ namespace mix_idle
                 e.set_special_exponent(1.5, 1.73, 0);
                 e.des = "这个很小的煤球滚得飞快。";
                 enemy_机关屋.Add("煤球", e);
+                e.p = new position("", enemy_i, 0);
                 #endregion
 
                 //机关屋::橙色粒子 
                 #region
+                enemy_i++;
                 e_loot = new Dictionary<string, Tuple<double2, double2>>
                 {
                     { "橙色粒子", new Tuple<double2, double2>(120, 1.357) }
@@ -1459,10 +1507,12 @@ namespace mix_idle
                 e.set_special_exponent(0, 2, 0);
                 e.des = "听说这是唯一一种有防御力的粒子，请不要对它进行任何有降低防御力或无视防御力效果的攻击，否则你将获得大量经验。";
                 enemy_机关屋.Add("橙色粒子", e);
+                e.p = new position("", enemy_i, 0);
                 #endregion
 
                 //机关屋::铁气球 
                 #region
+                enemy_i++;
                 e_loot = new Dictionary<string, Tuple<double2, double2>>
                 {
                     { "铁", new Tuple<double2, double2>(280, 1.85) },
@@ -1474,10 +1524,12 @@ namespace mix_idle
                 e.set_special_exponent(0, 1.85, 0);
                 e.des = "铁皮的气球居然能够飞起来。";
                 enemy_机关屋.Add("铁气球", e);
+                e.p = new position("", enemy_i, 0);
                 #endregion
 
                 //机关屋::铜风扇 
                 #region
+                enemy_i++;
                 e_loot = new Dictionary<string, Tuple<double2, double2>>
                 {
                     { "铜", new Tuple<double2, double2>(80e3, 1.7) }
@@ -1488,10 +1540,12 @@ namespace mix_idle
                 e.set_special_exponent(25, 1.7, 0);
                 e.des = "超强风力的铜风扇，最好离它远一些。";
                 enemy_机关屋.Add("铜风扇", e);
+                e.p = new position("", enemy_i, 0);
                 #endregion
 
                 //机关屋::钢弹 
                 #region
+                enemy_i++;
                 e_loot = new Dictionary<string, Tuple<double2, double2>>
                 {
                     { "钢", new Tuple<double2, double2>(15, 1.75) }
@@ -1502,11 +1556,10 @@ namespace mix_idle
                 e.set_special_exponent(5, 1.75, 0);
                 e.des = "小小的一颗钢弹，蕴含超大的能量。";
                 enemy_机关屋.Add("钢弹", e);
+                e.p = new position("", enemy_i, 0);
                 #endregion
             }
             #endregion
-
-
             //魔境
             #region
             {
@@ -1541,11 +1594,13 @@ namespace mix_idle
 
                 Dictionary<string, enemy> enemy_魔境 = new Dictionary<string, enemy>();
                 enemies.Add("魔境", enemy_魔境);
+                enemies_group_positions.Add("魔境", new position("", 0, 4));
 
                 //   经验 ^ 0.7306 植物原料
 
                 //魔境::飞行白鲸 
                 #region
+                enemy_i++;
                 e_loot = new Dictionary<string, Tuple<double2, double2>>
                 {
                     { "动物原料", new Tuple<double2, double2>(650e3, 1.63) },
@@ -1557,10 +1612,12 @@ namespace mix_idle
                 e.set_special_exponent(0, 2, 2);
                 e.des = "可爱肥美还会飞的白鲸。";
                 enemy_魔境.Add("飞行白鲸", e);
+                e.p = new position("", enemy_i, 0);
                 #endregion
 
                 //魔境::治疗场 
                 #region
+                enemy_i++;
                 e_loot = new Dictionary<string, Tuple<double2, double2>>
                 {
                     { "空间精华", new Tuple<double2, double2>(1, 1.1) },
@@ -1572,11 +1629,13 @@ namespace mix_idle
                 e.set_special_exponent(0, 0, 1.8);
                 e.des = "治疗场在严格意义上不是一种场，它只是一堆治疗法阵构建的一片特殊区域。攻击它而非法阵仅仅是为了可持续发展。";
                 enemy_魔境.Add("治疗场", e);
+                e.p = new position("", enemy_i, 0);
                 #endregion
 
 
                 //魔境::火球 
                 #region
+                enemy_i++;
                 e_loot = new Dictionary<string, Tuple<double2, double2>>
                 {
                     { "石油", new Tuple<double2, double2>(0.05, 1.424) },
@@ -1588,10 +1647,12 @@ namespace mix_idle
                 e.set_special_exponent(0, 0, 0);
                 e.des = "火球……似乎是很常见的东西，但是掉落物是石油的火球常见吗？";
                 enemy_魔境.Add("火球", e);
+                e.p = new position("", enemy_i, 0);
                 #endregion
 
                 //魔境::石头树人 
                 #region
+                enemy_i++;
                 e_loot = new Dictionary<string, Tuple<double2, double2>>
                 {
                     { "魔石", new Tuple<double2, double2>(800, 1.65) },  //800魔石 = 2.4M魔力
@@ -1604,10 +1665,12 @@ namespace mix_idle
                 e.set_special_exponent(0, 1.8, 1.8);
                 e.des = "石头人身上长了很多树。";
                 enemy_魔境.Add("石头树人", e);
+                e.p = new position("", enemy_i, 0);
                 #endregion
 
                 //魔境::蓝色粒子 
                 #region
+                enemy_i++;
                 e_loot = new Dictionary<string, Tuple<double2, double2>>
                 {
                     { "蓝色粒子", new Tuple<double2, double2>(1800, 1.161) }
@@ -1618,11 +1681,13 @@ namespace mix_idle
                 e.set_special_exponent(300, 0, 0);
                 e.des = "与温度无关，变得寒冷的只有精神。";
                 enemy_魔境.Add("蓝色粒子", e);
+                e.p = new position("", enemy_i, 0);
                 #endregion
 
 
                 //魔境::核心碎片 
                 #region
+                enemy_i++;
                 e_loot = new Dictionary<string, Tuple<double2, double2>>
                 {
                     { "核心碎片", new Tuple<double2, double2>(1, 3) },
@@ -1634,6 +1699,7 @@ namespace mix_idle
                 e.set_special_exponent(150, 10, 10);
                 e.des = "核心不是随处可见的东西，随处可见的是它的碎片（至少在这里）。";
                 enemy_魔境.Add("核心碎片", e);
+                e.p = new position("", enemy_i, 0);
                 #endregion
             }
             #endregion
@@ -1642,12 +1708,11 @@ namespace mix_idle
 
 
             //敌人结束
-            #endregion
-            //战斗结束
-            #endregion
+            #endregion 敌人
+            #endregion 战斗
 
             //no.4 魔法：
-            #region
+            #region 魔法
             魔法_options = make_group(m.魔法_option_grid);
             LinearGradientBrush lgb = get_lgb();
 
@@ -1686,18 +1751,18 @@ namespace mix_idle
             {
                 g.Visibility = (Visibility)1;
             }
-            m.魔法_祭坛_祭品_白色粒子_grid.Visibility = 0;
+            //m.魔法_祭坛_祭品_白色粒子_grid.Visibility = 0;
 
-            magic_altar.add("白色粒子", 10);
-            magic_altar.add("绿色粒子", 100);
-            magic_altar.add("红色粒子", 500);
-            magic_altar.add("橙色粒子", 2000);
-            magic_altar.add("蓝色粒子", 5000);
-            magic_altar.add("无色粒子", 10000);
+            magic_altar.add("白色粒子", 10, new position("", 0, 0));
+            magic_altar.add("绿色粒子", 100, new position("", 0, 1));
+            magic_altar.add("红色粒子", 500, new position("", 0, 2));
+            magic_altar.add("橙色粒子", 2000, new position("", 0, 3));
+            magic_altar.add("蓝色粒子", 5000, new position("", 0, 4));
+            magic_altar.add("无色粒子", 10000, new position("", 0, 5));
 
-            magic_altar.add("植物祭品", 80);
-            magic_altar.add("动物祭品", 400);
-            magic_altar.add("魔法糖浆", 4000);
+            magic_altar.add("植物祭品", 80, new position("", 1, 0));
+            magic_altar.add("动物祭品", 400, new position("", 1, 1));
+            magic_altar.add("魔法糖浆", 4000, new position("", 1, 2));
 
 
             #region
@@ -1753,12 +1818,12 @@ namespace mix_idle
             enchant ec;
             List<Tuple<string, double2, double2>> ec_cost;
 
+            #region 魔法粉末
             ec = new enchant("魔法粉末", lgb)
             {
                 can_reset = true,
                 unlocked = true
             };
-            m.魔法_次_附魔_魔法粉末_grid.Visibility = 0;
             ec_cost = new List<Tuple<string, double2, double2>>
             {
                 new Tuple<string, double2, double2>("白色粉末", 1e6, 1.45),   //2.9528
@@ -1767,13 +1832,15 @@ namespace mix_idle
             ec.set_init_cost(ec_cost, 1, 100, 50, 0.9);
             ec.set_produce("魔法粉末", 5, 1.15);
             enchants.Add("魔法粉末", ec);
+            ec.p = new position("", 0, 0);
+            #endregion
 
+            #region 烈焰粉末
             ec = new enchant("烈焰粉末", lgb)
             {
                 can_reset = true,
                 unlocked = false
             };
-            m.魔法_次_附魔_烈焰粉末_grid.Visibility = (Visibility)1;
             ec_cost = new List<Tuple<string, double2, double2>>
             {
                 new Tuple<string, double2, double2>("白色粉末", 200e6, 1.5),  //1.7165
@@ -1783,13 +1850,15 @@ namespace mix_idle
             ec.set_init_cost(ec_cost, 1, 100, 30, 0.9);
             ec.set_produce("烈焰粉末", 1, 1.306);
             enchants.Add("烈焰粉末", ec);
+            ec.p = new position("", 0, 1);
+            #endregion
 
+            #region 魔法糖浆
             ec = new enchant("魔法糖浆", lgb)
             {
                 can_reset = true,
                 unlocked = false
             };
-            m.魔法_次_附魔_魔法糖浆_grid.Visibility = (Visibility)1;
             ec_cost = new List<Tuple<string, double2, double2>>
             {
                 new Tuple<string, double2, double2>("糖浆", 1, 1.32),        //2.2599
@@ -1798,6 +1867,8 @@ namespace mix_idle
             ec.set_init_cost(ec_cost, 1, 100, 100, 0.9);
             ec.set_produce("魔法糖浆", 1, 1.2);
             enchants.Add("魔法糖浆", ec);   //拿去喂祭坛得到双倍魔力
+            ec.p = new position("", 0, 2);
+            #endregion
 
 
             spell sp;
@@ -1843,7 +1914,7 @@ namespace mix_idle
 
             sp.description.Add("已达到最大等级！");
             sp.set_init_cost(ct, 0, ct.Count);
-            upgrades.Add("探索魔法", sp);
+            spell_add(sp, null);
             #endregion
 
             // 法术创作
@@ -1907,7 +1978,7 @@ namespace mix_idle
 
             sp.description.Add("已达到最大等级！");
             sp.set_init_cost(ct, 0, ct.Count);
-            upgrades.Add("法术创作", sp);
+            spell_add(sp, null);
             #endregion
 
             List<List<Tuple<string, double2>>> cta;
@@ -1920,7 +1991,6 @@ namespace mix_idle
                 normal = true,
                 unlocked = false
             };
-            m.魔法_法术_白色魔法_grid.Visibility = (Visibility)1;
 
             sp.add_passive("无效果");
             sp.add_active("不可用");
@@ -2028,7 +2098,7 @@ namespace mix_idle
             sp.cost_table_active = cta;
             sp.description.Add("已达到最大等级！");
             sp.set_init_cost(ct, 0, ct.Count);
-            upgrades.Add("白色魔法", sp);
+            spell_add(sp, new position("", 0, 1));
             #endregion
 
             // 绿色魔法
@@ -2039,7 +2109,6 @@ namespace mix_idle
                 normal = true,
                 unlocked = false
             };
-            m.魔法_法术_绿色魔法_grid.Visibility = (Visibility)1;
 
             sp.add_passive("无效果");
             sp.add_active("不可用");
@@ -2120,7 +2189,7 @@ namespace mix_idle
             sp.cost_table_active = cta;
             sp.description.Add("已达到最大等级！");
             sp.set_init_cost(ct, 0, ct.Count);
-            upgrades.Add("绿色魔法", sp);
+            spell_add(sp, new position("", 1, 1));
             #endregion
 
 
@@ -2132,7 +2201,6 @@ namespace mix_idle
                 normal = true,
                 unlocked = false
             };
-            m.魔法_法术_红色魔法_grid.Visibility = (Visibility)1;
 
             sp.add_passive("无效果");
             sp.add_active("不可用");
@@ -2199,7 +2267,7 @@ namespace mix_idle
             sp.cost_table_active = cta;
             sp.description.Add("已达到最大等级！");
             sp.set_init_cost(ct, 0, ct.Count);
-            upgrades.Add("红色魔法", sp);
+            spell_add(sp, new position("", 2, 1));
             #endregion
 
             // 橙色魔法
@@ -2210,7 +2278,6 @@ namespace mix_idle
                 normal = true,
                 unlocked = false
             };
-            m.魔法_法术_橙色魔法_grid.Visibility = (Visibility)1;
 
             sp.add_passive("无效果");
             sp.add_active("不可用");
@@ -2265,7 +2332,7 @@ namespace mix_idle
             sp.cost_table_active = cta;
             sp.description.Add("已达到最大等级！");
             sp.set_init_cost(ct, 0, ct.Count);
-            upgrades.Add("橙色魔法", sp);
+            spell_add(sp, new position("", 0, 2));
             #endregion
 
             // 蓝色魔法
@@ -2276,7 +2343,6 @@ namespace mix_idle
                 normal = true,
                 unlocked = false
             };
-            m.魔法_法术_蓝色魔法_grid.Visibility = (Visibility)1;
 
             sp.add_passive("无效果");
             sp.add_active("不可用");
@@ -2333,7 +2399,7 @@ namespace mix_idle
             sp.cost_table_active = cta;
             sp.description.Add("已达到最大等级！");
             sp.set_init_cost(ct, 0, ct.Count);
-            upgrades.Add("蓝色魔法", sp);
+            spell_add(sp, new position("", 1, 2));
             #endregion
 
             // 无色魔法
@@ -2344,7 +2410,6 @@ namespace mix_idle
                 normal = true,
                 unlocked = false
             };
-            m.魔法_法术_无色魔法_grid.Visibility = (Visibility)1;
 
             sp.add_passive("无效果");
             sp.add_active("不可用");
@@ -2401,35 +2466,37 @@ namespace mix_idle
             sp.cost_table_active = cta;
             sp.description.Add("已达到最大等级！");
             sp.set_init_cost(ct, 0, ct.Count);
-            upgrades.Add("无色魔法", sp);
+            spell_add(sp, new position("", 2, 2));
             #endregion
 
             //战斗经验药水
             #region
-            ec = new enchant("战斗经验药水", lgb)
+            str = "战斗经验药水";
+            ec = new enchant(str, lgb)
             {
                 can_reset = true,
                 is_potion = true,
                 unlocked = true
             };
-            m.魔法_次_药水_战斗经验药水_grid.Visibility = 0;
             ec_cost = new List<Tuple<string, double2, double2>>
             {
                 new Tuple<string, double2, double2>("植物原料", 400, 12)
             };
             ec.set_init_cost(ec_cost, 1, 100, 10, 1.4);
-            enchants.Add("战斗经验药水", ec);
+            enchants.Add(str, ec);
+            potion_colors.Add(str, A(0, 255, 200));
+            ec.p = new position("", 0, 0);
             #endregion
 
             //攻击药水
             #region
-            ec = new enchant("攻击药水", lgb)
+            str = "攻击药水";
+            ec = new enchant(str, lgb)
             {
                 can_reset = true,
                 is_potion = true,
                 unlocked = true
             };
-            m.魔法_次_药水_攻击药水_grid.Visibility = 0;
             ec_cost = new List<Tuple<string, double2, double2>>
             {
                 new Tuple<string, double2, double2>("动物原料", 100, 4)
@@ -2437,53 +2504,59 @@ namespace mix_idle
             ec.set_init_cost(ec_cost, 1, 100, 5, 1);
             //(5 + 0.2n) * (1 + 0.005n) 
             ec.set_changing_time(0.2, 0.005);
-            enchants.Add("攻击药水", ec);
+            enchants.Add(str, ec);
+            potion_colors.Add(str, A(255, 255, 0));
+            ec.p = new position("", 0, 1);
             #endregion
 
             //魔力药水
             #region
-            ec = new enchant("魔力药水", lgb)
+            str = "魔力药水";
+            ec = new enchant(str, lgb)
             {
                 can_reset = true,
                 is_potion = true,
                 unlocked = true
             };
-            m.魔法_次_药水_魔力药水_grid.Visibility = 0;
             ec_cost = new List<Tuple<string, double2, double2>>
             {
                 new Tuple<string, double2, double2>("魔法粉末", 1500, 10)
             };
             ec.set_init_cost(ec_cost, 1, 100, 20, 1.8);
-            enchants.Add("魔力药水", ec);
+            enchants.Add(str, ec);
+            potion_colors.Add(str, A(0, 200, 255));
+            ec.p = new position("", 0, 2);
             #endregion
 
             //烈焰药水
             #region
-            ec = new enchant("烈焰药水", lgb)
+            str = "烈焰药水";
+            ec = new enchant(str, lgb)
             {
                 can_reset = true,
                 is_potion = true,
                 unlocked = false
             };
-            m.魔法_次_药水_烈焰药水_grid.Visibility = (Visibility)1;
             ec_cost = new List<Tuple<string, double2, double2>>
             {
                 new Tuple<string, double2, double2>("烈焰粉末", 4, 5)
             };
             ec.set_init_cost(ec_cost, 1, 100, 20, 1);
             ec.set_changing_time(1, 0.01);
-            enchants.Add("烈焰药水", ec);
+            enchants.Add(str, ec);
+            potion_colors.Add(str, A(255, 0, 0));
+            ec.p = new position("", 1, 0);
             #endregion
 
             //幸运药水
             #region
-            ec = new enchant("幸运药水", lgb)
+            str = "幸运药水";
+            ec = new enchant(str, lgb)
             {
                 can_reset = true,
                 is_potion = true,
                 unlocked = false
             };
-            m.魔法_次_药水_幸运药水_grid.Visibility = (Visibility)1;
             ec_cost = new List<Tuple<string, double2, double2>>
             {
                 new Tuple<string, double2, double2>("魔法糖浆", 100, 3),
@@ -2491,7 +2564,9 @@ namespace mix_idle
             };
             ec.set_init_cost(ec_cost, 1, 100, 40, 1);
             ec.set_changing_time(2, 0.015);
-            enchants.Add("幸运药水", ec);
+            enchants.Add(str, ec);
+            potion_colors.Add(str, A(255, 200, 255));
+            ec.p = new position("", 1, 1);
             #endregion
 
             #endregion
