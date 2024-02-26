@@ -63,14 +63,6 @@ namespace mix_idle
             {
                 return true;
             }
-            /*
-            foreach (FrameworkElement f in target.Children)
-            {
-                if (f.Name == name)
-                {
-                    return true;
-                }
-            }*/
             return false;
         }   
 

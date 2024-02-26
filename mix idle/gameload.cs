@@ -23,7 +23,6 @@ namespace mix_idle
         {
             data_init();
             visual_init();
-            framework_elements = new Dictionary<string, FrameworkElement>();
 
             number_mode = unlocks.number_mode;
             m.number_mode_combobox.SelectedIndex = number_mode;
@@ -333,13 +332,6 @@ namespace mix_idle
             //no.5 采矿：
             #region
             采矿_options = make_group(m.采矿_option_grid);
-
-            mine_generate();
-            get_field();
-
-
-            heater_generate();
-
             #endregion
 
             //no.6 核心：

@@ -216,7 +216,7 @@ namespace mix_idle
             g1_res.Add(str, r);
             layer.resources.Add(r);
 
-            layer.unlocked = true;
+            layer.unlocked = false;
             layer.prepare("vm_g1_map_grid", new Point(900, 200),
                 /* text */A(139, 35, 35), "水晶", "Microsoft YaHei UI", 0.3,
                 /* fill */A(191, 239, 255), 100,

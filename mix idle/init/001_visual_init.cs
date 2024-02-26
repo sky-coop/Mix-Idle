@@ -60,11 +60,17 @@ namespace mix_idle
             {
                 g.Visibility = (Visibility)1;
             }
-
+            if (framework_elements == null)
+            {
+                framework_elements = new Dictionary<string, FrameworkElement>();
+            }
             visual_create_bp();
             visual_create_craft();
             visual_create_enemies();
             visual_create_magic();
+            mine_generate();
+            get_field();
+            heater_generate();
 
             制造_options = make_group(m.制造_option_grid);
 

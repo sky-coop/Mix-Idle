@@ -50,6 +50,8 @@ namespace mix_idle
             m.方块.Visibility = 0;
             m.转生.Visibility = 0;
 
+            //TO DELETE
+            m.娱乐.Visibility = 0;
 
             m.制造_菜单_食物_grid.Visibility = (Visibility)1;
 
@@ -2693,33 +2695,45 @@ namespace mix_idle
             };
             res_group.Add("钢", r);
 
+            int n = 4;
             //根据 未花费的转生点数比例 获得奖励
             //a%未花费   Max(1, 3 ^ (a / 100) * n ^ 0.1) 降低挖掘所需的采矿点数（经验随之下降，但降幅低于采矿点数需求的降幅）
-            treasures.Add("荧光宝石", new treasure("荧光宝石", getSCB(Color.FromRgb(200, 200, 255)), 50, 1e-4));
+            treasures.Add("荧光宝石", new treasure("荧光宝石", getSCB(Color.FromRgb(200, 200, 255)), 50, 1e-4,
+                new position("", n % 4, n / 4)));
 
+            n++;
             //根据 熔炉等级 获得奖励
             //f熔炉等级  1 + [(0.05 * k) ^ 3 * (n ^ 0.2)] 倍增燃料速度值
-            treasures.Add("熔岩球", new treasure("熔岩球", getSCB(Color.FromRgb(255, 160, 50)), 100, 5e-5));
+            treasures.Add("熔岩球", new treasure("熔岩球", getSCB(Color.FromRgb(255, 160, 50)), 100, 5e-5,
+                new position("", n % 4, n / 4)));
 
+            n++;
             //根据 现有魔力 获得奖励
             //m魔力      (n + 1) ^ [0.01 * log10(m + 1)]  倍增所有方块获取（不包括采矿中的挖掘）
             //           (n ^ 0.3 + 1) ^ [0.01 * log10(m + 1)]  倍增格子边长
-            treasures.Add("魔方", new treasure("魔方", getSCB(Color.FromRgb(150, 200, 150)), 200, 3e-5));
+            treasures.Add("魔方", new treasure("魔方", getSCB(Color.FromRgb(150, 200, 150)), 200, 3e-5,
+                new position("", n % 4, n / 4)));
 
+            n++;
             //根据 目前选中的敌人等级 获得奖励
             //k等级      [1 + 0.002 * log10(n + 1)] ^ k   倍增所有能量获取
-            treasures.Add("脉冲符文", new treasure("脉冲符文", getSCB(Color.FromRgb(225, 225, 25)), 400, 1.5e-5));
+            treasures.Add("脉冲符文", new treasure("脉冲符文", getSCB(Color.FromRgb(225, 225, 25)), 400, 1.5e-5,
+                new position("", n % 4, n / 4)));
 
+            n++;
             //根据 未花费的采矿点数比例 获得奖励
             //a%未花费   (((n + 1) ^ 0.04) ^ (a / 100 + 1))   倍增所有宝物获取
-            treasures.Add("宝箱", new treasure("宝箱", getSCB(Color.FromRgb(255, 180, 255)), 1200, 2e-6));
+            treasures.Add("宝箱", new treasure("宝箱", getSCB(Color.FromRgb(255, 180, 255)), 1200, 2e-6,
+                new position("", n % 4, n / 4)));
 
+            n++;
             //根据 历史生成的采矿区域数 获得奖励
             //h区域数    1 + [(n ^ 0.1) * (h ^ 0.5)] 降低白色方块生产器时间
             //           1 + [Min(n, 1) * (h ^ 0.3)] 降低白色方块生产器产量
-            treasures.Add("光速徽章", new treasure("光速徽章", getSCB(Color.FromRgb(255, 240, 225)), 4000, 1e-7));
+            treasures.Add("光速徽章", new treasure("光速徽章", getSCB(Color.FromRgb(255, 240, 225)), 4000, 1e-7,
+                new position("", n % 4, n / 4)));
 
-
+            tr_all_page = n / 4;
 
             #region
             u = new upgrade("熔炉升级", "采矿")
@@ -2809,29 +2823,60 @@ namespace mix_idle
             #endregion
 
             minep.init();
-            mine_generate();
+            //mine_generate();
             minef.init(this, 1000, 10, 5, 1, 1.8, 1);
             minef.generate();
 
-            get_field();
+            //get_field();
 
             furance.init();
-            heater_generate();
+            //heater_generate();
 
-            x_recipes.Add("植物原料", new heater_x_recipe("植物原料", "烤植物", null, 1, 0, 20000, 1));    //at f 100K: 100K 烤植物/s
-            x_recipes.Add("动物原料", new heater_x_recipe("动物原料", "烤动物", null, 1, 0, 60000, 100));  //at f 100K: 1K 烤动物/s
-            x_recipes.Add("铜矿", new heater_x_recipe("铜矿", "铜", null, 1, 0, 300e3, 3000));             //at f 300K: 100 铜/s     
-            x_recipes.Add("铁矿", new heater_x_recipe("铁矿", "铁", null, 1, 0, 1000e3, 10000));           //at f 1M: 100 铁/s     
-            x_recipes.Add("铁", new heater_x_recipe("铁", "钢", null, 0.001, 0, 200e6, 20e3));             //at f 200M: 10000 * 0.001 = 10 钢/s   
+            str = "植物原料";
+            xlist.Add(str);
+            x_recipes.Add(str, new heater_x_recipe(str, "烤植物", null, 1, 0, 20000, 1));
+                //at f 100K: 100K 烤植物/s
+
+            str = "动物原料";
+            xlist.Add(str);
+            x_recipes.Add(str, new heater_x_recipe(str, "烤动物", null, 1, 0, 60000, 100));
+                //at f 100K: 1K 烤动物/s
+
+            str = "铜矿";
+            xlist.Add(str);
+            x_recipes.Add(str, new heater_x_recipe(str, "铜", null, 1, 0, 300e3, 3000));
+                //at f 300K: 100 铜/s
+
+            str = "铁矿";
+            xlist.Add(str);
+            x_recipes.Add(str, new heater_x_recipe(str, "铁", null, 1, 0, 1000e3, 10000));
+                //at f 1M: 100 铁/s     
+
+            str = "铁";
+            xlist.Add(str);
+            x_recipes.Add(str, new heater_x_recipe(str, "钢", null, 0.001, 0, 200e6, 20e3));
+                //at f 200M: 10000 * 0.001 = 10 钢/s   
 
             //增加等于损耗
             //f^0.5 * gain = loss * f
             //loss * fmfm - gain * fm = 0
             //fm = gain / loss  f = (gain / loss) ^ 2    fdrop = loss * f = gain ^ 2 / loss    消耗 = fdrop / fproduct = gain ^ 2 / loss / fproduct
+
+            str = "木头方块";
+            ylist.Add(str);
             y_recipes.Add("木头方块", new heater_y_recipe("木头方块", 1, 100, 0, 0.025));            //f = (40 / loss) ^ 2 = 160K       消耗 = 160K / 0.1 / 1 = 1.6M
-            y_recipes.Add("煤", new heater_y_recipe("煤", 3000, 8000, 1, 50));                       //f = (60 / loss) ^ 2 = 360K       消耗 = 360K / 0.1 / 3K = 1200
-            y_recipes.Add("烈焰粉末", new heater_y_recipe("烈焰粉末", 4000, 200e3, 3, 50));          //f = (80 / loss) ^ 2 = 640K       消耗 = 640K / 0.1 / 4K = 1600
-            y_recipes.Add("石油", new heater_y_recipe("石油", 1e6, 5e9, 8, 10e3));                //f = (100 / loss) ^ 2 = 1M        消耗 = 1M / 0.1 / 1M = 10
+
+            str = "煤";
+            ylist.Add(str);
+            y_recipes.Add(str, new heater_y_recipe(str, 3000, 8000, 1, 50));                       //f = (60 / loss) ^ 2 = 360K       消耗 = 360K / 0.1 / 3K = 1200
+
+            str = "烈焰粉末";
+            ylist.Add(str);
+            y_recipes.Add(str, new heater_y_recipe(str, 4000, 200e3, 3, 50));          //f = (80 / loss) ^ 2 = 640K       消耗 = 640K / 0.1 / 4K = 1600
+
+            str = "石油";
+            ylist.Add(str);
+            y_recipes.Add(str, new heater_y_recipe(str, 1e6, 5e9, 8, 10e3));                //f = (100 / loss) ^ 2 = 1M        消耗 = 1M / 0.1 / 1M = 10
 
             #endregion
 

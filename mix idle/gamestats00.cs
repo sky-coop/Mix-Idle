@@ -479,6 +479,8 @@ namespace mix_idle
             if (name == "调试a")
             {
                 m.魔法.Visibility = 0;
+                m.采矿.Visibility = 0;
+                minep.unlocked = true;
                 m.娱乐.Visibility = 0;
                 // TODO: 给资源
                 // TODO EX: 输入框改变资源

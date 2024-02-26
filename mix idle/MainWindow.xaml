@@ -378,7 +378,7 @@
                         </Grid>
                     </Grid>
                 </Grid>
-                <Grid x:Name="魔法_grid">
+                <Grid x:Name="魔法_grid" d:IsHidden="True">
                     <Grid.RowDefinitions>
                         <RowDefinition Height="50"/>
                         <RowDefinition/>
@@ -570,7 +570,7 @@
                         </Grid>
                     </Grid>
                 </Grid>
-                <Grid x:Name="采矿_grid" d:IsHidden="True">
+                <Grid x:Name="采矿_grid">
                     <Grid.RowDefinitions>
                         <RowDefinition Height="50"/>
                         <RowDefinition/>
@@ -1374,7 +1374,7 @@
                 </Grid>
             </Grid>
             <TextBlock x:Name="FPS" HorizontalAlignment="Right" TextWrapping="Wrap" Text="FPS: 100" VerticalAlignment="Top" Foreground="White" MouseLeftButtonDown="debug" Margin="0,0,0.328,0" Width="60" FontSize="14" FontFamily="Comic Sans MS"/>
-            <TextBlock x:Name="详细信息框" Background="Black" HorizontalAlignment="Left" VerticalAlignment="Top" Foreground="White" FontSize="16" FontFamily="Comic Sans MS" FontWeight="Bold"/>
+            <TextBlock x:Name="详细信息框" Background="Black" HorizontalAlignment="Left" VerticalAlignment="Top" Foreground="White" FontSize="16" FontFamily="Comic Sans MS" FontWeight="Bold" IsHitTestVisible="False"/>
         </Grid>
     </Grid>
 </Window>

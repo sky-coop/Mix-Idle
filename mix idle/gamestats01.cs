@@ -2469,11 +2469,13 @@ namespace mix_idle
         {
             public double2 div;
             public bool is_treasure = true;
+            public position pos;
             public treasure(string name, SolidColorBrush brush, double2 luckreq, 
-                double2 div_, int LOC = 1, double val = 0): base(LOC, val, name, brush)
+                double2 div_, position p, double val = 0): base(1, val, name, brush)
             {
                 luck_req = luckreq;
                 div = div_;
+                pos = p;
             }
         }
         Dictionary<string, treasure> treasures = new Dictionary<string, treasure>();
@@ -3625,7 +3627,7 @@ namespace mix_idle
         #region
         int tr_page = 1;
         int tr_max_page = 1;
-        int tr_all_page = 2;
+        int tr_all_page = 1;
         private void tr_page_update(int x)
         {
             tr_max_page = Math.Max(tr_max_page, x);

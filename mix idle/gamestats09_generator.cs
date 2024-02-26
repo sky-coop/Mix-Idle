@@ -167,8 +167,8 @@ namespace mix_idle
         Dictionary<string, FrameworkElement> framework_elements = new Dictionary<string, FrameworkElement>();
         [NonSerialized]
         Dictionary<string, ComboBoxItem> xs_tb = new Dictionary<string, ComboBoxItem>();
-        string[] xlist;
-        string[] ylist;
+        List<string> xlist = new List<string>();
+        List<string> ylist = new List<string>();
         [NonSerialized]
         Dictionary<string, ComboBoxItem> ys_tb = new Dictionary<string, ComboBoxItem>();
 
@@ -179,8 +179,6 @@ namespace mix_idle
 
             xs_tb = new Dictionary<string, ComboBoxItem>();
             ys_tb = new Dictionary<string, ComboBoxItem>();
-            xlist = new string[] { "植物原料", "动物原料", "铜矿", "铁矿", "铁" };
-            ylist = new string[] { "木头方块", "煤", "烈焰粉末", "石油" };
             m.采矿_炼制_熔炉_原料_combobox.Items.Clear();
             m.采矿_炼制_熔炉_燃料_combobox.Items.Clear();
             foreach (string a in xlist)
